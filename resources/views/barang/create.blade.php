@@ -61,7 +61,7 @@
 				<label for="expire" class="col-sm-2 control-label">Expiry Date</label>
 				
 				<div class="col-sm-8">
-					<input type="date" class="form-control1" id="expire" placeholder="" name="stok_barang" min="0">
+					<input type="date" class="form-control1" id="expire" placeholder="" name="expiry_date" min="0">
 				</div>
 
 				<div class="col-sm-2">
