@@ -123,9 +123,6 @@
 		else
 		{
 			barangs.push(args);
-<<<<<<< HEAD
-			$tr = 
-=======
 			updateTable();
 		}
 	}
@@ -135,8 +132,7 @@
 		var tr= "";
 		for (var i = 0; i < barangs.length; i++)
 		{
-			tr += 
->>>>>>> 849e17f975e98cbaf1ddd849f5eec51f3ee9df57
+			tr +=
 			"<tr>" +
 				"<td>" + barangs[i][1] + "</td>" + 
 				"<td>" + barangs[i][2] + "</td>" +
