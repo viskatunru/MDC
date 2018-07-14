@@ -91,6 +91,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<li>
 										<a href="{{route("barang_create")}}">Tambah Barang Baru</a>
 									</li>
+									<li>
+										<a href="{{route("category_create")}}">Tambah Kategori Baru</a>
+									</li>
 								</ul>
 							</li>
 							

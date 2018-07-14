@@ -63,6 +63,10 @@
 				<div class="col-sm-8">
 					<input type="date" class="form-control1" id="expire" placeholder="" name="stok_barang" min="0">
 				</div>
+
+				<div class="col-sm-2">
+				    <a class="btn btn-primary" onclick>+</a> <!--disini-->
+				</div>
 			</div>
 			
 			<div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">

@@ -122,7 +122,7 @@
 			alert('Barang tersebut sudah ditambahkan.');
 		else
 		{
-			barangs.push(args[0]);
+			barangs.push(args);
 			$tr = 
 			"<tr>" +
 				"<td>" + args[1] + "</td>" + 
@@ -138,9 +138,10 @@
 
 	function barangIsAdded(id)
 	{
+
 		for (var i = 0; i < barangs.length; i++)
 		{
-			if (barangs[i] === id)
+			if (barangs[i][0] === id)
 				return true;
 		}
 		return false;
@@ -148,7 +149,10 @@
 
 	function deleteBarang(id)
 	{
-		alert('Delete id = ' + id);
+		for (var i = 0; i < barangs.length; i++)
+		{
+			if (barangs[i][0] == id)
+		}	
 	}
 	$(document).ready(function(){
 
