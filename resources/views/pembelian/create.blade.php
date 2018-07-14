@@ -122,25 +122,34 @@
 			alert('Barang tersebut sudah ditambahkan.');
 		else
 		{
-			barangs.push(args[0]);
-			$tr = 
-			"<tr>" +
-				"<td>" + args[1] + "</td>" + 
-				"<td>" + args[2] + "</td>" +
-				"<input type='hidden' name='id_" + barangs.length + "' value='" + args[0] + "'>" +
-				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + barangs.length + "'></td>" +
-				"<td><input type='date' class='form-control1' placeholder='Expire' required name='expire_" + barangs.length + "'</td>" +
-				"<td><a onclick='deleteBarang(" + args[0] + ")' class='btn btn-delete'>Hapus</a></td>" + 
-			"</tr>";
-			$('#tBarangs').append($tr);
+			barangs.push(args);
+			updateTable();
 		}
+	}
+
+	function updateTable()
+	{
+		var tr= "";
+		for (var i = 0; i < barangs.length; i++)
+		{
+			tr += 
+			"<tr>" +
+				"<td>" + barangs[i][1] + "</td>" + 
+				"<td>" + barangs[i][2] + "</td>" +
+				"<input type='hidden' name='id_" + barangs.length + "' value='" + barangs[i][0] + "'>" +
+				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + i + "'></td>" +
+				"<td><input type='date' class='form-control1' placeholder='Expire' required name='expire_" + i + "'</td>" +
+				"<td><a onclick='deleteBarang(" + barangs[i][0] + ")' class='btn btn-delete'>Hapus</a></td>" + 
+			"</tr>";
+		}
+		$('#tBarangs').html(tr);
 	}
 
 	function barangIsAdded(id)
 	{
 		for (var i = 0; i < barangs.length; i++)
 		{
-			if (barangs[i] === id)
+			if (barangs[i][0] === id)
 				return true;
 		}
 		return false;
@@ -148,7 +157,15 @@
 
 	function deleteBarang(id)
 	{
-		alert('Delete id = ' + id);
+		for (var i = 0; i < barangs.length; i++)
+		{
+			if (barangs[i][0] === id)
+			{
+				alert("Barang deleted " + barangs[i][0]);
+				barangs.splice(i, 1);
+				updateTable();
+			}
+		}
 	}
 	$(document).ready(function(){
 
