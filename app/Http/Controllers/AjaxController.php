@@ -22,24 +22,9 @@ class AjaxController extends Controller
     	date_add($format, date_interval_create_from_date_string("$tanggal days"));
 
         $uppBound = date_format($format, 'Y-m-d');
-        
         $expires = Expire::where('tanggal', '>=', "$year-$month-$date 00:00:00")
                 ->where('tanggal', '<=', "$uppBound 00:00:00")->get();
-
-        $temps = Pembelian::all();/*Barang::whereHas('pembelians', function($query) use ($date, $month, $year, $uppBound) {
-            $query->where('expire', '>=', "$year-$month-$date 00:00:00")
-                ->where('expire', '<=', "$uppBound 00:00:00");
-        })->get();*/
-        $barangs = array();
-        foreach ($expires as $e)
-        {
-            $barangs[] = $e->barang();
-        }
-
-    	//$expires = Expire::where('tanggal', '>=', "$year-$month-$date 00:00:00")
-    	//		->where('tanggal', '<=', "$year-$month-$uppBound 00:00:00")
-    	//		->get();
-        return view('template.barangByExpire', compact('barangs'));
+        return view('template.barangByExpire', compact('expires'));
     }
 
     public function expireHariIni()

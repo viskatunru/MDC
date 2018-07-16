@@ -26,7 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $now = Carbon::now();
+
         $barangs = Barang::all();
+        $pemakaians = Pemakaian::where('tanggal', '=', date_format($now , 'Y-m-d'))->get();
         $dokters = Dokter::all();
         return view('home', compact('barangs', 'dokters'));
     }
