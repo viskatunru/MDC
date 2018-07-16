@@ -19,7 +19,7 @@
 			<tbody>
 				@foreach($expires as $expire)
 					<tr>
-						<td>{{date("d F Y", strtotime($expire->tanggal))}}</td>
+						<td>{{date("j F Y", strtotime($expire->tanggal))}}</td>
 						<td>{{$expire->jumlah}}</td>
 						<td>{{$expire->penyimpanan->nama}}</td>
 						<td>

@@ -13,7 +13,6 @@
 				@endforeach
 			</select>
 
-
 			<div class="form-group">
 				<label for="focusedinput" class="col-sm-2 control-label">Tanggal Pembelian</label>
 
@@ -21,7 +20,7 @@
 					<input required type="date" class="form-control1" id="focusedinput" placeholder="Tanggal" name="tanggal">
 				</div>
 			</div>
-			
+
 			<div class="form-group">
 				<label for="focusedinput" class="col-sm-2 control-label">Nama Supplier</label>
 				

@@ -7,6 +7,13 @@
     <div class="tab-pane active" id="horizontal-form">
         <form class="form-horizontal" method="post" action="#">
             {{csrf_field()}}
+
+            <select id="seed_penyimpanan" hidden>
+                @foreach($penyimpanans as $p)
+                    <option value="{{$p->id}}">{{$p->nama}}</option>
+                @endforeach
+            </select>
+
             <input type="hidden" name="id_barang" value="{{$barang->id}}">
             <div class="form-group">
                 <label for="kode_barang" class="col-sm-2 control-label">Kode Barang</label>
@@ -84,6 +91,7 @@
                                 <tr class="warning">
                                     <th>Tanggal Expired</th>
                                     <th>Stok Barang</th>
+                                    <th>Penyimpanan</th>
                                     <th>Hapus</th>
                                 </tr>
                             </thead>
@@ -141,7 +149,8 @@
             tr += 
             "<tr>" +
                 "<td><input type='date' class='form-control1' value='" + expires[i]['tanggal'] + "' required name='expire_" + i+ "'</td>" + 
-                "<td><input type='number' class='form-control1' value='"+ expires[i]['jumlah'] + "' required name='jumlah_" + i + "'></td>";
+                "<td><input type='number' class='form-control1' value='"+ expires[i]['jumlah'] + "' required name='jumlah_" + i + "'></td>" +
+                "<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ i + "'></select></td>";
             if (expires[i]['id'] == null)
                 tr += "<td><a onclick='deleteExpire(" + i + ")' class='btn btn-delete'>Hapus</a></td>";
             else
@@ -149,6 +158,7 @@
             "</tr>";
         }
         $('#tExpire').html(tr);
+        $('.cb_penyimpanan').html($('#seed_penyimpanan').html());
     }
 
     $(document).ready(function(){

@@ -19,7 +19,7 @@
 				@foreach($pembelians as $pembelian)
 					<tr>
 						<td>{{$pembelian->id}}</td>
-						<td>{{date('d F Y', strtotime($pembelian->tanggal))}}</td>
+						<td>{{date('j F Y', strtotime($pembelian->tanggal))}}</td>
 						<td><u><a href="/supplier/show/{{$pembelian->supplier->id}}">{{$pembelian->supplier->nama}}</a></u></td>
 						<td>
 							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan Detail</a>
