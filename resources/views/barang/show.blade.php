@@ -3,7 +3,6 @@
 @section('content')
 <h3 style="margin-bottom:10px;">{{$barang->kode}} - {{$barang->nama}}</h3>
 
-@if (count($expires) > 0)
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
 		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
@@ -17,22 +16,23 @@
 			</thead>
 			
 			<tbody>
-				@foreach($expires as $expire)
-					<tr>
-						<td>{{date("j F Y", strtotime($expire->tanggal))}}</td>
-						<td>{{$expire->jumlah}}</td>
-						<td>{{$expire->penyimpanan->nama}}</td>
-						<td>
-							<a href="" class="btn btn-primary">Edit</a>
-							<a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
-						</td>
-					</tr>
-				@endforeach
+				@if (count($expires) > 0)
+					@foreach($expires as $expire)
+						<tr>
+							<td>{{date("j F Y", strtotime($expire->tanggal))}}</td>
+							<td>{{$expire->jumlah}}</td>
+							<td>{{$expire->penyimpanan->nama}}</td>
+							<td>
+								<a href="" class="btn btn-primary">Edit</a>
+								<a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
+							</td>
+						</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 	</div>
 </div>
-@endif
 
 <form id="formPemakaian">
 	<select id="tipe">

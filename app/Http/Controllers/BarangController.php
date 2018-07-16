@@ -167,7 +167,7 @@ class BarangController extends Controller
             $expire->save();
             $counter++;
         }
-        return redirect()->action('BarangController@edit');
+        return redirect()->action('BarangController@edit', [$id]);
     }
 
     /**
