@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<h3>PEMBELIAN DARI: Fondaco ({{date("d F Y", strtotime($pembelian->tanggal))}})</h3>
+<h3>PEMBELIAN DARI: Fondaco ({{date("j F Y", strtotime($pembelian->tanggal))}})</h3>
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
 		<table class="table table-striped">
@@ -17,12 +17,12 @@
 			<tbody>
 				@foreach($barangs as $barang)
 				<tr>
-					<td>{{$barang->kode}}</td>
+					<td><u><a href="/barang/show/{{$barang->id}}">{{$barang->kode}}</a></u></td>
 					<td>{{$barang->nama}}</td>
 					<td>{{$barang->pivot->jumlah}}</td>
 					<td>
 						@if($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first() !== null)
-						{{ date("d F Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}
+						{{ date("j F Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}
 						@else
 						Tidak memiliki tanggal expired.
 						@endif

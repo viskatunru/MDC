@@ -13,7 +13,7 @@
 		<tr>
 			<td>{{$expire->barang->kode}}</td>
 			<td>{{$expire->barang->nama}}</td>
-			<td>{{$expire->tanggal}}</td>
+			<td>{{date('j F Y', strtotime($expire->tanggal))}}</td>
 			<td>{{$expire->jumlah}}</td>
 			<td>{{$expire->penyimpanan->nama}}</td>
 		</tr>

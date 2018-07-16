@@ -49,7 +49,7 @@
 	
 	<!-- Judul -->
 	<div class="panel-heading">
-		<h2>Daftar Pemakaian Barang {{date('d F Y')}}</h2>
+		<h2>Daftar Pemakaian Barang {{date('j F Y')}}</h2>
 		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
 	</div>
 	
