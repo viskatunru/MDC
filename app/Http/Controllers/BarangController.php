@@ -77,6 +77,7 @@ class BarangController extends Controller
             $expire = new Expire;
             $expire->tanggal = $tanggal;
             $expire->jumlah = $jumlah;
+            $expire->sisa = $sisa;
             $expire->penyimpanan_id = $barang->penyimpanan_id;
             $expire->barang_id = $barang->id;
             $expire->pembelian_id = null;

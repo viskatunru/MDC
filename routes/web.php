@@ -29,7 +29,6 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/barang/edit/{id}', 'BarangController@update');
 	Route::get('/barang/delete/{id}', 'BarangController@destroy');
 
-
 	Route::get('/dokter', 'DokterController@index')->name("dokter_all");
 	Route::get('/dokter/show/{id}', 'DokterController@show');
 	Route::get('/dokter/add', 'DokterController@create')->name('dokter_create');

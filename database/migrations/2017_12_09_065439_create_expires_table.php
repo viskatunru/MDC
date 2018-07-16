@@ -17,6 +17,7 @@ class CreateExpiresTable extends Migration
             $table->increments('id');
             $table->date('tanggal');
             $table->integer('jumlah');
+            $table->integer('sisa');
             $table->timestamps();
         });
     }
