@@ -9,14 +9,14 @@
 		</tr>
 	</thead>
 	<tbody>
-		@foreach($barangs as $barang)
-			@foreach($barang as $b)
-			<td>{{$b->kode}}</td>
-			<td>{{$b->nama}}</td>
-			<td>{{$b->pivot->expire}}</td>
-			<td>{{$b->pivot->sisa}}</td>
-			<td>{{$b->lokasi}}</td>
-			@endforeach	
+		@foreach($expires as $expire)
+		<tr>
+			<td>{{$expire->barang->kode}}</td>
+			<td>{{$expire->barang->nama}}</td>
+			<td>{{$expire->tanggal}}</td>
+			<td>{{$expire->jumlah}}</td>
+			<td>{{$expire->penyimpanan->nama}}</td>
+		</tr>
 		@endforeach
 	</tbody>
 </table>
