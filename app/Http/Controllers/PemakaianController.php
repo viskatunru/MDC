@@ -77,7 +77,6 @@ class PemakaianController extends Controller
                 }
             }
         }
-
         return redirect()->action('PemakaianController@index');
     }
 

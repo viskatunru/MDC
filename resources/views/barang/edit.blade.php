@@ -104,8 +104,7 @@
 </div>
 
 <script type="text/javascript">
-    var expires = new Array();
-    
+    var expires = {!! $barang->expires !!};
     function tambahExpire()
     {
         if($('#expire').val() != "")
@@ -129,13 +128,17 @@
         for (var i = 0; i < expires.length; i++)
         {
             tr += 
-            "<tr>" +
-                "<td><input type='date' class='form-control1' value='" + expires[i] + "' required name='expire_" + i+ "'</td>" + 
-                "<td><input type='number' class='form-control1' value=1 required name='jumlah_" + i + "'></td>" +
+            "<tr><input type='hidden' class='form-control1' value='" + expires[i]['id'] + "'></input>" +
+                "<td><input type='date' class='form-control1' value='" + expires[i]['tanggal'] + "' required name='expire_" + i+ "'</td>" + 
+                "<td><input type='number' class='form-control1' value='"+ expires[i]['jumlah'] + "' required name='jumlah_" + i + "'></td>" +
                 "<td><a onclick='deleteExpire(" + i + ")' class='btn btn-delete'>Hapus</a></td>" + 
             "</tr>";
         }
         $('#tExpire').html(tr);
     }
+
+    $(document).ready(function(){
+        updateTable();
+    });
 </script>
 @endsection

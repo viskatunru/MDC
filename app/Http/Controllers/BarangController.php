@@ -77,7 +77,7 @@ class BarangController extends Controller
             $expire = new Expire;
             $expire->tanggal = $tanggal;
             $expire->jumlah = $jumlah;
-            $expire->sisa = $sisa;
+            $expire->sisa = $jumlah;
             $expire->penyimpanan_id = $barang->penyimpanan_id;
             $expire->barang_id = $barang->id;
             $expire->pembelian_id = null;
@@ -106,7 +106,7 @@ class BarangController extends Controller
     {
         //
         $barang = Barang::find($id);
-        $expires = $barang->expires;
+        $expires = $barang->expires();
 
         return view('barang.show', compact('barang' , 'expires'));
     }
