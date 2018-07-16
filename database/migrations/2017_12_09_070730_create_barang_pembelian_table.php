@@ -21,8 +21,6 @@ class CreateBarangPembelianTable extends Migration
             $table->foreign('pembelian_id')->references('id')->on('pembelians')->onDelete('cascade');
 
             $table->integer('jumlah');
-            $table->integer('sisa');
-            $table->timestamp('expire')->nullable();
         });
     }
 

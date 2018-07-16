@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Pembelian, App\Supplier, App\Barang, App\Category;
+use App\Pembelian, App\Supplier, App\Barang, App\Category, App\Penyimpanan, App\Expire;
 class PembelianController extends Controller
 {
     /**
@@ -27,7 +27,8 @@ class PembelianController extends Controller
     {
         $suppliers = Supplier::all();
         $categories = Category::all();
-        return view('pembelian.create', compact('suppliers', 'categories'));
+        $penyimpanans = Penyimpanan::all();
+        return view('pembelian.create', compact('suppliers', 'categories', 'penyimpanans'));
     }
 
     public function store(Request $request)
@@ -37,16 +38,25 @@ class PembelianController extends Controller
         $pembelian->supplier_id = $request->supplier_id;
         $pembelian->save();
 
-        $counter = 1;
+        $counter = 0;
         $total = 0;
         while (isset($request["id_$counter"]))
         {
             $idBarang = $request["id_$counter"];
             $jumlah = $request["jumlah_$counter"];
-            $expire = $request["expire_$counter"];
+            $tanggal = $request["expire_$counter"];
+            $penyimpanan = $request["penyimpanan_$counter"];
+
+            $expire = new Expire;
+            $expire->tanggal = $tanggal;
+            $expire->jumlah = $jumlah;
+            $expire->penyimpanan_id = $penyimpanan;
+            $expire->barang_id = $idBarang;
+            $expire->pembelian_id = $pembelian->id;
+            $expire->save();
 
             $pembelian->barangs()->attach($idBarang, 
-                ['jumlah' => $jumlah, 'expire' => $expire, 'sisa' => $jumlah]);
+                ['jumlah' => $jumlah]);
 
             $barang = Barang::find($idBarang);
             $barang->stok += $jumlah;
@@ -112,7 +122,7 @@ class PembelianController extends Controller
         //
         $pembelian = Pembelian::find($id);
         $barangs = $pembelian->barangs;
-        return view('pembelian.show', compact('barangs', 'id'));
+        return view('pembelian.show', compact('barangs', 'pembelian'));
     }
 
     public function editBarang($idPembelian, $idBarang)

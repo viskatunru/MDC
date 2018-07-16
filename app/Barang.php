@@ -31,4 +31,8 @@ class Barang extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function penyimpanan()
+    {
+        return $this->belongsTo('App\Penyimpanan');
+    }
 }

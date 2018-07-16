@@ -58,7 +58,7 @@ class PemakaianController extends Controller
 
         if ($expire != null)
         {
-            $pemakaian->expire_id = $expire_id;
+            $pemakaian->expire_id = $expire->id;
             $expire->jumlah -= $request->jumlah_barang;
             $expire->save();
         }

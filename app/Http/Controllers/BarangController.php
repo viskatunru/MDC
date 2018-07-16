@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Barang, App\Dokter, App\Pembelian, App\Category, App\Supplier;
-
+use App\Barang, App\Dokter, App\Pembelian, App\Category, App\Supplier, App\Penyimpanan;
+use App\Expire;
 class BarangController extends Controller
 {
     public function json()
@@ -39,7 +39,8 @@ class BarangController extends Controller
         $categories = Category::all();
         $dokters = Dokter::all();
         $suppliers = Supplier::all();
-        return view('barang.create', compact('categories'));
+        $penyimpanans = Penyimpanan::all();
+        return view('barang.create', compact('categories', 'penyimpanans'));
     }
 
     /**
@@ -62,10 +63,28 @@ class BarangController extends Controller
         $barang = new Barang;
         $barang->kode = $request->kode_barang;
         $barang->nama = $request->nama_barang;
-        $barang->lokasi = $request->lokasi_barang;
         $barang->stok = $request->stok_barang;
         $barang->category_id = $request->id_kategori;
+        $barang->penyimpanan_id = $request->id_penyimpanan;
         $barang->save();
+
+        $counter = 0;
+        while (isset($request["expire_$counter"]))
+        {
+            $tanggal = $request["expire_$counter"];
+            $jumlah = $request["jumlah_$counter"];
+
+            $expire = new Expire;
+            $expire->tanggal = $tanggal;
+            $expire->jumlah = $jumlah;
+            $expire->penyimpanan_id = $barang->penyimpanan_id;
+            $expire->barang_id = $barang->id;
+            $expire->pembelian_id = null;
+            $expire->save();
+            $counter++;
+        }
+
+
 /*
         $pembelian = new Pembelian;
         $pembelian->supplier_id = $request->id_supplier;

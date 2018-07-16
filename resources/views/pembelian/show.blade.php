@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<h3>PEMBELIAN DARI: Fondaco (ID: 1, 14 Desember 2017)</h3>
+<h3>PEMBELIAN DARI: Fondaco ({{date("d M Y", strtotime($pembelian->tanggal))}})</h3>
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
 		<table class="table table-striped">
@@ -10,7 +10,7 @@
 					<th>Kode Barang</th>
 					<th>Nama Barang</th>
 					<th>Jumlah Pembelian</th>
-					<th>Tanggal Expired</th>
+					<th>Expiry Date (Y-M-D)</th>
 					<th>Edit</th>
 				</tr>
 			</thead>
@@ -20,8 +20,8 @@
 					<td>{{$barang->kode}}</td>
 					<td>{{$barang->nama}}</td>
 					<td>{{$barang->pivot->jumlah}}</td>
-					<td>1 January 2019</td>
-					<td><a class="btn btn-primary" href="/pembelian/barang/edit/{{$id}}/{{$barang->id}}">Edit</a></td>
+					<td>{{ date("d M Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}</td>
+					<td><a class="btn btn-primary" href="/pembelian/barang/edit/{{$pembelian->id}}/{{$barang->id}}">Edit</a></td>
 				</tr>
 				@endforeach
 			</tbody>

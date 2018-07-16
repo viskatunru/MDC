@@ -22,7 +22,7 @@
 				@foreach($barangs as $barang)
 					<tr>
 						<td>{{$barang->id}}</td>
-						<td><a href="/barang/show/{{$barang->id}}">{{$barang->kode}}</a></td>
+						<td><u><a href="/barang/show/{{$barang->id}}">{{$barang->kode}}</a></u></td>
 						<td><a href="/barang/show/{{$barang->id}}">{{$barang->nama}}</a></td>
 						<td>{{$barang->category->nama}}</td>
 						<td>{{$barang->lokasi}}</td>

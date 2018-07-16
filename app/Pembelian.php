@@ -9,7 +9,7 @@ class Pembelian extends Model
     //
     public function barangs()
     {
-    	return $this->belongsToMany('App\Barang')->withPivot('jumlah', 'expire', 'sisa');
+    	return $this->belongsToMany('App\Barang')->withPivot('jumlah');
     }
 
     public function supplier()

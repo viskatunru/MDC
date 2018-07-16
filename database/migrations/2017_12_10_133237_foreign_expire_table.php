@@ -20,6 +20,9 @@ class ForeignExpireTable extends Migration
 
             $table->integer('barang_id')->unsigned();
             $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('cascade');
+
+            $table->integer('pembelian_id')->unsigned()->nullable();
+            $table->foreign('pembelian_id')->references('id')->on('pembelians')->onDelete('cascade');
         });
     }
 

@@ -15,7 +15,7 @@ class CreatePembeliansTable extends Migration
     {
         Schema::create('pembelians', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamp('tanggal');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

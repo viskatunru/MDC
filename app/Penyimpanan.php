@@ -16,6 +16,11 @@ class Penyimpanan extends Model
         return $this->hasMany('App\Expire');
     }
 
+    public function barangs()
+    {
+        return $this->hasMany('App\Barang');
+    }
+
     public function getBarangs()
     {
         $id = $this->id;

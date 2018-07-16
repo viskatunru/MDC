@@ -7,6 +7,12 @@
 	<div class="tab-pane active" id="horizontal-form">
 		<form class="form-horizontal" method="post" action="#">
 			{{csrf_field()}}
+			<select id="seed_penyimpanan" hidden>
+				@foreach($penyimpanans as $p)
+					<option value="{{$p->id}}">{{$p->nama}}</option>
+				@endforeach
+			</select>
+
 
 			<div class="form-group">
 				<label for="focusedinput" class="col-sm-2 control-label">Tanggal</label>
@@ -67,6 +73,7 @@
 								<th>Nama Barang</th>
 								<th>Jumlah Pembelian</th>
 								<th>Tanggal Expired</th>
+								<th>Penyimpanan</th>
 								<th>Hapus</th>
 							</tr>
 						</thead>
@@ -129,20 +136,25 @@
 
 	function updateTable()
 	{
-		var tr= "";
+		var tr = "";
+		var counter = 0;
 		for (var i = 0; i < barangs.length; i++)
 		{
 			tr += 
 			"<tr>" +
 				"<td>" + barangs[i][1] + "</td>" + 
 				"<td>" + barangs[i][2] + "</td>" +
-				"<input type='hidden' name='id_" + barangs.length + "' value='" + barangs[i][0] + "'>" +
-				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + i + "'></td>" +
-				"<td><input type='date' class='form-control1' placeholder='Expire' required name='expire_" + i + "'</td>" +
+				"<input type='hidden' name='id_" + counter + "' value='" + barangs[i][0] + "'>" +
+				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + counter + "'></td>" +
+				"<td><input type='date' class='form-control1' placeholder='Expire' required name='expire_" + counter + "'</td>" +
+				"<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ counter + "'></select></td>" +
 				"<td><a onclick='deleteBarang(" + barangs[i][0] + ")' class='btn btn-delete'>Hapus</a></td>" + 
 			"</tr>";
+			counter++;
 		}
 		$('#tBarangs').html(tr);
+
+		$('.cb_penyimpanan').html($('#seed_penyimpanan').html());
 	}
 
 	function barangIsAdded(id)

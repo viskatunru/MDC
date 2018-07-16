@@ -14,9 +14,13 @@ class ForeignBarangsTable extends Migration
     public function up()
     {
         //
-        Schema::table('barangs', function (Blueprint $table) {
+        Schema::table('barangs', function (Blueprint $table) 
+        {
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+
+            $table->integer('penyimpanan_id')->unsigned();
+            $table->foreign('penyimpanan_id')->references('id')->on('penyimpanans')->onDelete('cascade');
         });
     }
 
