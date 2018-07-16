@@ -17,7 +17,7 @@
 			<tbody>
 				@foreach($barangs as $barang)
 				<tr>
-					<td>{{$barang->kode}}</td>
+					<td><u><a href="/barang/show/{{$barang->id}}">{{$barang->kode}}</a></u></td>
 					<td>{{$barang->nama}}</td>
 					<td>{{$barang->pivot->jumlah}}</td>
 					<td>

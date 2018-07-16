@@ -22,8 +22,8 @@
 					<tr>
 						<td>{{$pemakaian->id}}</td>
 						<td>{{date('j F Y', strtotime($pemakaian->tanggal))}}</td>
-						<td><a href="/barang/show/{{$pemakaian->barang->id}}">{{$pemakaian->barang->kode}}</a></td>
-						<td><a href="/barang/show/{{$pemakaian->barang->id}}">{{$pemakaian->barang->nama}}</a></td>
+						<td><u><a href="/barang/show/{{$pemakaian->barang->id}}">{{$pemakaian->barang->kode}}</a></u></td>
+						<td>{{$pemakaian->barang->nama}}</td>
 						<td>{{$pemakaian->jumlah}}</td>
 						<td>
 							<a href="/pemakaian/edit/{{$pemakaian->id}}"><button class="btn btn-primary">Edit</button></a>
