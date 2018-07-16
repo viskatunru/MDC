@@ -27,7 +27,6 @@
 				
 				<div class="col-sm-8">
 					<select name="supplier_id" class="form-control1" id="supplier_id">
-						<option selected disabled>...</option>
 						@foreach($suppliers as $supplier)
 							<option value="{{$supplier->id}}">{{$supplier->nama}}</option>
 						@endforeach
@@ -71,7 +70,7 @@
 							<tr class="warning">
 								<th>Kode Barang</th>
 								<th>Nama Barang</th>
-								<th>Jumlah Pembelian</th>
+								<th>Jumlah Barang</th>
 								<th>Tanggal Expired</th>
 								<th>Penyimpanan</th>
 								<th>Hapus</th>

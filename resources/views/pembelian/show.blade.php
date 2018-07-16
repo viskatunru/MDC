@@ -10,7 +10,7 @@
 					<th>Kode Barang</th>
 					<th>Nama Barang</th>
 					<th>Jumlah Pembelian</th>
-					<th>Expiry Date (Y-M-D)</th>
+					<th>Expiry Date</th>
 					<th>Edit</th>
 				</tr>
 			</thead>
