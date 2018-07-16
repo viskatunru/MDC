@@ -47,22 +47,36 @@ class PemakaianController extends Controller
         $pemakaian->dokter_id = $request->id_dokter;
         $pemakaian->barang_id = $request->id_barang;
         $pemakaian->jumlah = $request->jumlah_barang;
+        $pemakaian->save();
 
         $barang = Barang::find($request->id_barang);
         $barang->stok -= $request->jumlah_barang;
         $barang->save();
 
-        $expire = Expire::where('barang_id', '=', $barang->id)
-                ->where('jumlah', '>', 0)
-                ->orderBy('tanggal', 'asc')->first();
+        $expires = Expire::where('barang_id', '=', $barang->id)
+                ->where('sisa', '>', 0)
+                ->orderBy('tanggal', 'asc')->get();
 
-        if ($expire != null)
+        if ($expires != null)
         {
-            $pemakaian->expire_id = $expire->id;
-            $expire->jumlah -= $request->jumlah_barang;
-            $expire->save();
+            $jumlahBarang = $request->jumlah_barang;
+            foreach($expires as $expire)
+            {
+                $expire->sisa -= $jumlah_barang;
+
+                if ($expire->sisa >= 0)
+                {
+                    $expire->save();
+                    break;
+                }
+                else
+                {
+                    $jumlahBarang = $expire->sisa * -1;
+                    $expire->sisa = 0;
+                    $expire->save();
+                }
+            }
         }
-        $pemakaian->save();
 
         return redirect()->action('PemakaianController@index');
     }

@@ -20,10 +20,6 @@ class ForeignPemakaiansTable extends Migration
 
             $table->integer('barang_id')->unsigned();
             $table->foreign('barang_id')->references('id')->on('barangs')->onDelete('cascade');
-
-            $table->integer('expire_id')->unsigned()->nullable();
-            $table->foreign('expire_id')->references('id')->on('expires')->onDelete('cascade');
-
         });
     }
 

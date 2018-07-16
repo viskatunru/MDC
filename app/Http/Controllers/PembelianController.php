@@ -52,6 +52,7 @@ class PembelianController extends Controller
                 $expire = new Expire;
                 $expire->tanggal = $tanggal;
                 $expire->jumlah = $jumlah;
+                $expire->sisa = $jumlah;
                 $expire->penyimpanan_id = $penyimpanan;
                 $expire->barang_id = $idBarang;
                 $expire->pembelian_id = $pembelian->id;
