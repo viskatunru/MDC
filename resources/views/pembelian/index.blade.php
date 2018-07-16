@@ -11,8 +11,7 @@
 					<th data-sortable="true">ID</th>
 					<th data-sortable="true">Tanggal</th>
 					<th data-sortable="true">Nama Supplier</th>
-					<th>Tampilkan Semua Barang</th>
-					<!--<th>Aksi</th>-->
+					<th>Aksi</th>
 				</tr>
 			</thead>
 			
@@ -22,12 +21,10 @@
 						<td>{{$pembelian->id}}</td>
 						<td>{{date('d F Y', strtotime($pembelian->tanggal))}}</td>
 						<td>{{$pembelian->supplier->nama}}</td>
-						<td><a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan</a></td>
-						<!--
 						<td>
-							<a href="/pembelian/edit/{{$pembelian->id}}" class="btn btn-primary">Edit</a>
-							<a href="/pembelian/delete/{{$pembelian->id}}" class="btn btn-delete">Hapus</a>
-						</td>-->
+							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan Semua Barang</a>
+							<a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
+						</td>
 					</tr>
 				@endforeach
 			</tbody>

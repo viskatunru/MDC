@@ -11,7 +11,7 @@
 					<th>Nama Barang</th>
 					<th>Jumlah Pembelian</th>
 					<th>Expiry Date</th>
-					<th>Edit</th>
+					<th>Aksi</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,7 +21,10 @@
 					<td>{{$barang->nama}}</td>
 					<td>{{$barang->pivot->jumlah}}</td>
 					<td>{{ date("d M Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}</td>
-					<td><a class="btn btn-primary" href="/pembelian/barang/edit/{{$pembelian->id}}/{{$barang->id}}">Edit</a></td>
+					<td>
+						<a class="btn btn-primary" href="/pembelian/barang/edit/{{$pembelian->id}}/{{$barang->id}}">Edit</a>
+						<a class="btn btn-delete" href="" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
+					</td>
 				</tr>
 				@endforeach
 			</tbody>
