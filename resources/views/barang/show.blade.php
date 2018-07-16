@@ -6,7 +6,7 @@
 
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
-		<h3>Tanggal Expired</h3>
+		<h3>Detail Expired</h3>
 		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 			<thead>
 				<tr class="warning">
@@ -24,22 +24,13 @@
 						<td>{{$expire->tanggal}}</td>
 						<td>{{$expire->jumlah}}</td>
 						<td>{{$expire->penyimpanan->nama}}</td>
-						<td><a href="/pemakaian/add" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Buang</a></td>
+						<td><a href="/pemakaian/add" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Edit</a></td>
 					</tr>
 				@endforeach
 			</tbody>
 		</table>
 	</div>
 </div>
-
-<!-- -->
-
-@foreach($expires as $expire)
-	{{$expire->id}}
-	{{$expire->tanggal}}
-	{{$expire->jumlah}}
-	{{$expire->penyimpanan->nama}}
-@endforeach
 
 <form id="formPemakaian">
 	<select id="tipe">
