@@ -21,7 +21,6 @@
 				
 				<div class="col-sm-8">
 					<select name="id_dokter" id="nama_dokter" class="form-control1">
-						<option selected disabled>...</option>
 						@foreach($dokters as $dokter)
 							<option value="{{$dokter->id}}">{{$dokter->nama}}</option>
 						@endforeach
@@ -34,7 +33,6 @@
 				
 				<div class="col-sm-5">
 					<select name="id_barang" id="cBoxBarang" class="form-control1">
-						<option selected disabled>...</option>
 						@foreach($barangs as $barang)
 							<option value="{{$barang->id}}">{{$barang->nama}}</option>
 						@endforeach
@@ -45,7 +43,6 @@
 				
 				<div class="col-sm-2">
 					<select disabled class="form-control1" id="cBoxStok">
-						<option selected disabled>...</option>
 						@foreach($barangs as $barang)
 							<option value="{{$barang->id}}">{{$barang->stok}}</option>
 						@endforeach

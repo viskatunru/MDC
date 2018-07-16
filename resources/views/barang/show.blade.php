@@ -12,16 +12,21 @@
 				<tr class="warning">
 					<th data-sortable="true">Tanggal Expired</th>
 					<th data-sortable="true">Jumlah</th>
+					<th data-sortable="true">Penyimpanan</th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				<tr>
-					<td>1 January 2019</td>
-					<td>10</td>
-					<td><a href="/pemakaian/add" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Buang</a></td>
-				</tr>
+				@foreach($expires as $expire)
+					<tr>
+						{{$expire->id}}
+						<td>{{$expire->tanggal}}</td>
+						<td>{{$expire->jumlah}}</td>
+						<td>{{$expire->penyimpanan->nama}}</td>
+						<td><a href="/pemakaian/add" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Buang</a></td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 	</div>
