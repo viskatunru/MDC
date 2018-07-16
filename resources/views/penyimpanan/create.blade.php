@@ -9,7 +9,7 @@
 		    {{csrf_field()}}
 		    
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Nama Tempat Penyimpanan</label>
+				<label for="focusedinput" class="col-sm-2 control-label">Nama Penyimpanan</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control1" id="focusedinput" placeholder="" name="nama_penyimpanan">
 				</div>

@@ -10,18 +10,18 @@ ul, ol {margin: 0;}
 p {margin: 0;}
 
 html, body{
-  	font-family: 'Roboto', sans-serif;
+  	font-family: Helvetica, sans-serif;
     font-size: 100%;
   	background:#000;
   	overflow-x: hidden;
 }
-body a{
+/*body a{
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-moz-transition:0.5s all;
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
-}
+}*/
 /*-- header --*/
 .navbar .navbar-nav li a {
   padding: 0 10px;
@@ -220,12 +220,12 @@ body a{
 }
 .navbar-default.sidebar {
   background-color: #000;
-  font-family: 'Roboto', sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 nav.top1.navbar.navbar-default.navbar-static-top {
   background-color:rgb(6, 217, 149);
   border: none !important;
-  font-family: 'Roboto', sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 .navbar-default .navbar-brand {
   color: #fff !important;
@@ -864,7 +864,7 @@ i.dollar1{
 .graphs{
   padding: 2em 1em;
   background: #f2f4f8;
-  font-family: 'Roboto', sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 canvas#doughnut, canvas#line, canvas#polarArea, #bar, #pie, #radar{
   background-color: rgb(255, 255, 255);
@@ -1091,20 +1091,28 @@ button.note-color-btn {
   color: #fff !important;
 }
 .btn-primary:hover{
+  background-color: rgb(0, 181, 122) !important;
+  border-color: rgb(0, 181, 122) !important;
+}
+/*.btn-primary:hover{
   background-color: #fff !important;
   border-color: rgb(6, 217, 149) !important;
   color: rgb(6, 217, 149) !important;
-}
+}*/
 .btn-delete{
-  background-color: #ff2028 !important;
-  border-color: #ff2028 !important;
+  background-color: rgb(255, 32, 40) !important;
+  border-color: rgb(255, 32, 40) !important;
   color: #fff !important;
 }
 .btn-delete:hover{
+  background-color: rgb(236, 30, 37) !important;
+  border-color: rgb(236, 30, 37) !important;
+}
+/*.btn-delete:hover{
   background-color: #fff !important;
   border-color: #ff383f;
   color: #ff383f !important;
-}
+}*/
 h2.modal-title {
   font-size: 1.3em;
   color:#999;

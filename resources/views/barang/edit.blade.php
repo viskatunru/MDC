@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<h3>EDIT BARANG (ID: {{$barang->id}})</h3>
+<h3>EDIT BARANG</h3>
 
 <div class="tab-content">
     <div class="tab-pane active" id="horizontal-form">
@@ -30,7 +30,6 @@
                 
                 <div class="col-sm-8">
                     <select name="id_kategori" id="id_kategori" class="form-control1">
-                        <option selected disabled>...</option>
                         @foreach($categories as $category)
                         <option value="{{$category->id}}" @if($category->id == $barang->category_id) selected @endif>{{$category->nama}}</option>
                         @endforeach
@@ -43,10 +42,14 @@
 			</div>
 
             <div class="form-group">
-                <label for="lokasi_barang" class="col-sm-2 control-label">Lokasi Barang</label>
+                <label for="lokasi_barang" class="col-sm-2 control-label">Penyimpanan Barang</label>
                 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control1" id="lokasi_barang" placeholder="" name="lokasi_barang" value="{{$barang->lokasi}}">
+                    <input type="text" class="form-control1" id="lokasi_barang" placeholder="" name="lokasi_barang" value="{{$barang->penyimpanan->nama}}">
+                </div>
+
+                <div class="col-sm-2">
+                    <a class="btn btn-primary" href="/penyimpanan/add">+</a>
                 </div>
             </div>
 

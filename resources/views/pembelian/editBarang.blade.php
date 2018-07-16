@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<h3>EDIT BARANG (ID: {{$barang->id}})</h3>
+<h3>EDIT BARANG</h3>
 
 <div class="tab-content">
     <div class="tab-pane active" id="horizontal-form">

@@ -20,9 +20,9 @@
 					<tr>
 						<td>{{$pembelian->id}}</td>
 						<td>{{date('d F Y', strtotime($pembelian->tanggal))}}</td>
-						<td>{{$pembelian->supplier->nama}}</td>
+						<td><u><a href="/supplier/show/{{$pembelian->supplier->id}}">{{$pembelian->supplier->nama}}</a></u></td>
 						<td>
-							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan Semua Barang</a>
+							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan Detail</a>
 							<a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
 						</td>
 					</tr>

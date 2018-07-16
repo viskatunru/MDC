@@ -8,7 +8,6 @@
 		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 			<thead>
 				<tr class="warning">
-					<th data-sortable="true">ID</th>
 					<th data-sortable="true">Nama Supplier</th>
 					<th>Tampilkan Semua Pembelian</th>
 					<th>Aksi</th>
@@ -18,7 +17,6 @@
 			<tbody>
 				@foreach($suppliers as $supplier)
 					<tr>
-						<td>{{$supplier->id}}</td>
 						<td>{{$supplier->nama}}</a></td>
 						<td><a href="/supplier/show/{{$supplier->id}}" class="btn btn-primary">Tampilkan</a></td>
 						<td>
