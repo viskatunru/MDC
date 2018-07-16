@@ -142,7 +142,7 @@
 				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + counter + "'></td>" +
 				"<td><input type='date' class='form-control1' placeholder='Expire' name='expire_" + counter + "'</td>" +
 				"<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ counter + "'></select></td>" +
-				"<td><a onclick='deleteBarang(" + barangs[i][0] + ")' class='btn btn-delete'>Hapus</a></td>" + 
+				"<td><a onclick='deleteBarang(" + counter + ")' class='btn btn-delete'>Hapus</a></td>" + 
 			"</tr>";
 			counter++;
 		}
@@ -166,14 +166,8 @@
 	{		
 		if(confirm('Apakah anda yakin?'))
 		{
-			for (var i = 0; i < barangs.length; i++)
-			{
-				if (barangs[i][0] === id)
-				{
-					barangs.splice(i, 1);
-					updateTable();
-				}
-			}
+			barangs.splice(id, 1);
+			updateTable();
 		}
 	}
 	$(document).ready(function(){

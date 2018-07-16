@@ -143,10 +143,6 @@ class PembelianController extends Controller
         $barang->pivot->jumlah = $jumlahBaru;
         if ($barang->pivot->jumlah < 0)
             $barang->pivot->jumlah = 0;
-        $barang->pivot->expire = $request->expire;
-        $barang->pivot->sisa -= $jumlahLama - $jumlahBaru;
-        if ($barang->pivot->sisa < 0)
-            $barang->pivot->sisa = 0;
 
         $barang->pivot->save();
         $barang->stok -= $jumlahLama - $jumlahBaru;
@@ -161,6 +157,9 @@ class PembelianController extends Controller
     {
         $pembelian = Pembelian::find($idPembelian);
         $barang = $pembelian->barangs()->wherePivot('id', '=', $id)->first();
+        $barang->stok -= $barang->pivot->jumlah;
+        $barang->save();
+
         $barang->pivot->delete();
         return redirect()->action('PembelianController@show', ['id' => $idPembelian]);
     }
