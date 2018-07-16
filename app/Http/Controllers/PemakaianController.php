@@ -62,7 +62,7 @@ class PemakaianController extends Controller
             $jumlahBarang = $request->jumlah_barang;
             foreach($expires as $expire)
             {
-                $expire->sisa -= $jumlah_barang;
+                $expire->sisa -= $jumlahBarang;
 
                 if ($expire->sisa >= 0)
                 {

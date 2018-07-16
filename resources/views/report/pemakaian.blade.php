@@ -62,7 +62,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</head>
 	
 	<body>
-		<h3>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime($pemakaiansBulanIni[0]->tanggal))}}</h3>
+		<h3>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahun-$bulan"))}}</h3>
 
 		<table class="table table-striped">
 			<thead>

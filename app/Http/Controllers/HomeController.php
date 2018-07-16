@@ -54,7 +54,7 @@ class HomeController extends Controller
             $barang = $pemakaian->barang;
             $barangs[$barang->id]->stok += $pemakaian->jumlah;
         }
-        return view('report.pemakaian', compact('barangs', 'dokters', 'pemakaiansBulanIni'));
+        return view('report.pemakaian', compact('barangs', 'dokters', 'pemakaiansBulanIni', 'tahun', 'bulan'));
     }
 
     public function test()

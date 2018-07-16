@@ -106,7 +106,7 @@ class BarangController extends Controller
     {
         //
         $barang = Barang::find($id);
-        $expires = $barang->expires();
+        $expires = $barang->expires;
 
         return view('barang.show', compact('barang' , 'expires'));
     }
@@ -122,9 +122,9 @@ class BarangController extends Controller
         //
         $barang = Barang::find($id);
         $categories = Category::all();
-        
+        $penyimpanans = Penyimpanan::all();        
 
-        return view('barang.edit', compact('barang', 'categories'));
+        return view('barang.edit', compact('barang', 'categories', 'penyimpanans'));
     }
 
     /**
@@ -137,7 +137,7 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $barang = new Barang;
+        $barang = Barang::find($id);
         $barang->kode = $request->kode_barang;
         $barang->nama = $request->nama_barang;
         $barang->stok = $request->stok_barang;
@@ -158,7 +158,7 @@ class BarangController extends Controller
                 $expire = new Expire;
                 $expire->sisa = $jumlah;
             }
-            
+
             $expire->tanggal = $tanggal;
             $expire->jumlah = $jumlah;
             $expire->penyimpanan_id = $barang->penyimpanan_id;
@@ -167,7 +167,7 @@ class BarangController extends Controller
             $expire->save();
             $counter++;
         }
-
+        return view('');
     }
 
     /**

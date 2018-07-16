@@ -45,25 +45,13 @@ class AjaxController extends Controller
     public function expireHariIni()
     {
         $expires = Expire::where('tanggal', '=', date("Y-m-d 00:00:00"))->get();
-        $barangs = array();
-        foreach ($expires as $e)
-        {
-            $barangs[] = $e->barang();
-        }
-        return view('template.expireHariIni', compact('barangs'));
+        return view('template.expireHariIni', compact('expires'));
     }
 
     public function expireBulanIni()
     {
-        $expires = Expire::whereMonth('tanggal', '=', date('m'))->get();
-
-        $barangs = array();
-        foreach ($expires as $e)
-        {
-            $barangs[] = $e->barang();
-        }
-
-        return view('template.expireBulanIni', compact('barangs'));
+        $expires = Expire::whereYear('tanggal', '=', date('Y'))->whereMonth('tanggal', '=', date('m'))->get();
+        return view('template.expireBulanIni', compact('expires'));
     }
 
     public function barangYangExpire($barangs)

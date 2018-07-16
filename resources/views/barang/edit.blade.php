@@ -7,7 +7,7 @@
     <div class="tab-pane active" id="horizontal-form">
         <form class="form-horizontal" method="post" action="#">
             {{csrf_field()}}
-            
+            <input type="hidden" name="id_barang" value="{{$barang->id}}">
             <div class="form-group">
                 <label for="kode_barang" class="col-sm-2 control-label">Kode Barang</label>
                 
@@ -45,7 +45,11 @@
                 <label for="lokasi_barang" class="col-sm-2 control-label">Penyimpanan Barang</label>
                 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control1" id="lokasi_barang" placeholder="" name="lokasi_barang" value="{{$barang->penyimpanan->nama}}">
+                    <select name="id_penyimpanan" class="form-control1">
+                        @foreach($penyimpanans as $p)
+                            <option value="{{$p->id}}" @if($p->id == $barang->penyimpanan_id) selected @endif>{{$p->nama}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="col-sm-2">
