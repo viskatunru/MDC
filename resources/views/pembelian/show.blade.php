@@ -20,10 +20,16 @@
 					<td>{{$barang->kode}}</td>
 					<td>{{$barang->nama}}</td>
 					<td>{{$barang->pivot->jumlah}}</td>
-					<td>{{ date("d M Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}</td>
+					<td>
+						@if($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first() !== null)
+						{{ date("d M Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}
+						@else
+						Tidak memiliki expiry date
+						@endif
+					</td>
 					<td>
 						<a class="btn btn-primary" href="/pembelian/barang/edit/{{$pembelian->id}}/{{$barang->id}}">Edit</a>
-						<a class="btn btn-delete" href="" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
+						<a class="btn btn-delete" href="/pembelian/barang/delete/{{$pembelian->id}}/{{$barang->pivot->id}}" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
 					</td>
 				</tr>
 				@endforeach

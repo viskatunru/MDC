@@ -47,13 +47,16 @@ class PembelianController extends Controller
             $tanggal = $request["expire_$counter"];
             $penyimpanan = $request["penyimpanan_$counter"];
 
-            $expire = new Expire;
-            $expire->tanggal = $tanggal;
-            $expire->jumlah = $jumlah;
-            $expire->penyimpanan_id = $penyimpanan;
-            $expire->barang_id = $idBarang;
-            $expire->pembelian_id = $pembelian->id;
-            $expire->save();
+            if($tanggal != "")
+            {
+                $expire = new Expire;
+                $expire->tanggal = $tanggal;
+                $expire->jumlah = $jumlah;
+                $expire->penyimpanan_id = $penyimpanan;
+                $expire->barang_id = $idBarang;
+                $expire->pembelian_id = $pembelian->id;
+                $expire->save();
+            }
 
             $pembelian->barangs()->attach($idBarang, 
                 ['jumlah' => $jumlah]);
@@ -153,6 +156,14 @@ class PembelianController extends Controller
         $barang->save();
         return redirect()->action('PembelianController@show', ['id' => $request->id_pembelian]);
     }
+
+    public function deleteBarang($idPembelian, $id)
+    {
+        $pembelian = Pembelian::find($idPembelian);
+        $barang = $pembelian->barangs()->wherePivot('id', '=', $id)->first();
+        $barang->pivot->delete();
+        return redirect()->action('PembelianController@show', ['id' => $idPembelian]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -186,6 +197,14 @@ class PembelianController extends Controller
     {
         //
         $pembelian = Pembelian::find($id);
+        $barangs = $pembelian->barangs()->get();
+        //return $barangs;
+        foreach ($barangs as $barang)
+        {
+            $b = Barang::find($barang->id);
+            $b->stok -= $barang->pivot->jumlah;
+            $b->save();
+        }
         $pembelian->delete();
         return redirect()->action('PembelianController@index');
     }

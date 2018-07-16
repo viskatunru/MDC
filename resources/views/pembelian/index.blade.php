@@ -23,7 +23,7 @@
 						<td>{{$pembelian->supplier->nama}}</td>
 						<td>
 							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan Semua Barang</a>
-							<a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
+							<a href="/pembelian/delete/{{$pembelian->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
 						</td>
 					</tr>
 				@endforeach

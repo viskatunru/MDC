@@ -56,6 +56,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/pembelian/barang/edit/{idPembelian}/{idBarang}', 'PembelianController@storeEditBarang');
 	Route::post('/pembelian/add/step1', 'PembelianController@storePembelian');
 	Route::post('/pembelian/add/step2', 'PembelianController@storeBarang');
+	Route::get('/pembelian/barang/delete/{idPembelian}/{id}', 'PembelianController@deleteBarang');
+	Route::get('/pembelian/delete/{id}', 'PembelianController@destroy');
 
 	Route::get('/category/add', 'CategoryController@create')->name('category_create');
 	Route::post('/category/add', 'CategoryController@store');

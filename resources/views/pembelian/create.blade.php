@@ -140,7 +140,7 @@
 				"<td>" + barangs[i][2] + "</td>" +
 				"<input type='hidden' name='id_" + counter + "' value='" + barangs[i][0] + "'>" +
 				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + counter + "'></td>" +
-				"<td><input type='date' class='form-control1' placeholder='Expire' required name='expire_" + counter + "'</td>" +
+				"<td><input type='date' class='form-control1' placeholder='Expire' name='expire_" + counter + "'</td>" +
 				"<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ counter + "'></select></td>" +
 				"<td><a onclick='deleteBarang(" + barangs[i][0] + ")' class='btn btn-delete'>Hapus</a></td>" + 
 			"</tr>";

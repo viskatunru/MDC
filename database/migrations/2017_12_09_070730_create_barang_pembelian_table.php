@@ -14,6 +14,8 @@ class CreateBarangPembelianTable extends Migration
     public function up()
     {
         Schema::create('barang_pembelian', function (Blueprint $table) {
+            $table->increments('id');
+            
             $table->integer('barang_id')->unsigned()->index();
             $table->integer('pembelian_id')->unsigned()->index();
             
