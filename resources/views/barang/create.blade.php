@@ -54,7 +54,6 @@
 				<div class="col-sm-2">
 				    <a class="btn btn-primary" href="/penyimpanan/add">+</a>
 				</div>
-
 			</div>
 			
 			<div class="form-group">
@@ -66,7 +65,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="expire" class="col-sm-2 control-label">Expiry Date</label>
+				<label for="expire" class="col-sm-2 control-label">Tanggal Expired</label>
 				
 				<div class="col-sm-8">
 					<input type="date" class="form-control1" id="expire" placeholder="" name="expiry_date" min="0">
@@ -82,8 +81,8 @@
 					<table class="table table-striped">
 						<thead>
 							<tr class="warning">
-								<th>Expiry Dates</th>
-								<th>Jumlah Barang</th>
+								<th>Tanggal Expired</th>
+								<th>Stok Barang</th>
 								<th>Hapus</th>
 							</tr>
 						</thead>
@@ -116,7 +115,7 @@
 			updateTable();
 		}
 		else
-			alert("Tanggal expire tidak boleh kosong");
+			alert("Tanggal expired tidak boleh kosong.");
 	}
 
 	function deleteExpire($id)

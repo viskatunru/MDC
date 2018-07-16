@@ -58,9 +58,8 @@
 		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 			<thead>
 				<tr class="warning">
-					<th data-sortable="true">ID</th>
-					<th data-sortable="true">Kode Barang</th>
-					<th data-sortable="true">Nama Barang</th>
+					<th data-sortable="true">Kode</th>
+					<th data-sortable="true">Nama</th>
 					<th data-sortable="true">Kategori</th>
 					
 					@foreach($dokters as $dokter)
@@ -74,9 +73,8 @@
 			<tbody>
 				@foreach($barangs as $barang)
 					<tr>
-						<td>{{$barang->id}}</td>
-						<td><a href="/barang/show/{{$barang->id}}">{{$barang->kode}}</a></td>
-						<td><a href="/barang/show/{{$barang->id}}">{{$barang->nama}}</a></td>
+						<td><u><a href="/barang/show/{{$barang->id}}">{{$barang->kode}}</a></u></td>
+						<td>{{$barang->nama}}</td>
 						<td>{{$barang->category->nama}}</td>
 						
 						@foreach($dokters as $dokter)

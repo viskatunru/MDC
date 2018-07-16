@@ -15,7 +15,7 @@
 
 
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Tanggal</label>
+				<label for="focusedinput" class="col-sm-2 control-label">Tanggal Pembelian</label>
 
 				<div class="col-sm-8">
 					<input required type="date" class="form-control1" id="focusedinput" placeholder="Tanggal" name="tanggal">
@@ -23,7 +23,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Supplier</label>
+				<label for="focusedinput" class="col-sm-2 control-label">Nama Supplier</label>
 				
 				<div class="col-sm-8">
 					<select name="supplier_id" class="form-control1" id="supplier_id">
@@ -35,13 +35,13 @@
 			</div>
 
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Barang</label>
+				<label for="focusedinput" class="col-sm-2 control-label">Aksi</label>
 					
 				<div class="col-sm-3">
 					<a href="#" class="btn btn-primary" id="caribarang" style="width:100%;">Cari Barang</a>
 				</div>
 				<div class="col-sm-3">
-					<a href="#" class="btn btn-primary" id="tutupbarang" style="width:100%;">Tutup Pencarian Barang</a>
+					<a href="#" class="btn btn-delete" id="tutupbarang" style="width:100%;">Tutup Pencarian Barang</a>
 				</div>
 			</div>
 
@@ -51,8 +51,8 @@
 					<table class="table table-striped" id="tablebarang" data-toggle="table" data-url="/barang/json" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 						<thead>
 							<tr class="warning">
-								<th data-sortable="true" data-field="kode">Kode Barang</th>
-								<th data-sortable="true" data-field="nama">Nama Barang</th>
+								<th data-sortable="true" data-field="kode">Kode</th>
+								<th data-sortable="true" data-field="nama">Nama</th>
 								<th data-sortable="true" data-field="namakategori">Kategori</th>
 								<th data-sortable="true" data-field="stok">Stok Saat Ini</th>
 								<th data-field="id" data-formatter="LinkFormatter">Aksi</th>
@@ -68,9 +68,9 @@
 					<table class="table table-striped">
 						<thead>
 							<tr class="warning">
-								<th>Kode Barang</th>
-								<th>Nama Barang</th>
-								<th>Jumlah Barang</th>
+								<th>Kode</th>
+								<th>Nama</th>
+								<th>Jumlah</th>
 								<th>Tanggal Expired</th>
 								<th>Penyimpanan</th>
 								<th>Hapus</th>
@@ -86,7 +86,7 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<button type="submit" class="btn-primary btn" style="width:100%;">Kirim</button>
+						<button type="submit" class="btn btn-primary" style="width:100%;">Kirim</button>
 					</div>
 				</div>
 			</div>

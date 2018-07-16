@@ -87,7 +87,8 @@
   height: inherit;
   color: #A6A6A6;
   vertical-align: middle;
-  cursor: pointer;
+  /*cursor: pointer;*/
+  cursor: default;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -108,14 +109,14 @@
 	border-right: 6px solid rgba(0, 0, 0, 0);
 	border-top: 6px solid rgb(6, 217, 149);
 }
-.cal1 .clndr .clndr-table tr .day.today:hover {
+/*.cal1 .clndr .clndr-table tr .day.today:hover {
   	color: #FFF;
   	background:rgb(2, 208, 142);
 }
 .cal1 .clndr .clndr-table tr .day:hover{
 	color: #FFF;
   	background:rgb(2, 199, 135);
-}
+}*/
 .cal1 .clndr .clndr-table tr .day.today.event {
      background:rgb(6, 217, 149);
 	 color:#FFF;
@@ -128,7 +129,7 @@
   box-sizing: border-box;
   font-size:0.8em;
   text-align:center;
-  cursor:pointer;
+  /*cursor:pointer;*/
 }
 .cal1 .clndr .clndr-table tr .empty,
 .cal1 .clndr .clndr-table tr .adjacent-month {

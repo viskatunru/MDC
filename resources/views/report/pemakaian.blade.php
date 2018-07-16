@@ -62,13 +62,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</head>
 	
 	<body>
-		<h3>Daftar Barang Bulan {{date('F Y', strtotime($pemakaiansBulanIni[0]->tanggal))}}</h3>
+		<h3>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime($pemakaiansBulanIni[0]->tanggal))}}</h3>
 
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Kode</th>
-					<th>Nama Barang</th>
+					<th>Nama</th>
 					<th>Stok Awal</th>
 					<?php $jumlah = array(); ?>
 					@foreach($dokters as $dokter)
@@ -82,7 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<tbody>
 				@foreach($barangs as $barang)
 					<tr>
-						<td>XXXXXXXX</td>
+						<td>{{$barang->kode}}</td>
 						<td><a href="/barang/show/{{$barang->id}}">{{$barang->nama}}</a></td>
 						<td>{{$barang->stok}}</td>
 

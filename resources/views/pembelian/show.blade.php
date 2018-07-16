@@ -1,16 +1,16 @@
 @extends('master')
 
 @section('content')
-<h3>PEMBELIAN DARI: Fondaco ({{date("d M Y", strtotime($pembelian->tanggal))}})</h3>
+<h3>PEMBELIAN DARI: Fondaco ({{date("d F Y", strtotime($pembelian->tanggal))}})</h3>
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
 		<table class="table table-striped">
 			<thead>
 				<tr class="warning">
-					<th>Kode Barang</th>
-					<th>Nama Barang</th>
-					<th>Jumlah Pembelian</th>
-					<th>Expiry Date</th>
+					<th>Kode</th>
+					<th>Nama</th>
+					<th>Jumlah</th>
+					<th>Tanggal Expired</th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
@@ -22,7 +22,7 @@
 					<td>{{$barang->pivot->jumlah}}</td>
 					<td>
 						@if($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first() !== null)
-						{{ date("d M Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}
+						{{ date("d F Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}
 						@else
 						Tidak memiliki expiry date
 						@endif
