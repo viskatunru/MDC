@@ -29,13 +29,13 @@ class AjaxController extends Controller
 
     public function expireHariIni()
     {
-        $expires = Expire::where('tanggal', '=', date("Y-m-d 00:00:00"))->get();
+        $expires = Expire::where('tanggal', '=', date("Y-m-d 00:00:00"))->orderBy('tanggal')->get();
         return view('template.expireHariIni', compact('expires'));
     }
 
     public function expireBulanIni()
     {
-        $expires = Expire::whereYear('tanggal', '=', date('Y'))->whereMonth('tanggal', '=', date('m'))->get();
+        $expires = Expire::whereYear('tanggal', '=', date('Y'))->whereMonth('tanggal', '=', date('m'))->orderBy('tanggal')->get();
         return view('template.expireBulanIni', compact('expires'));
     }
 
