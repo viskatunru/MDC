@@ -60,15 +60,82 @@
                     <input type="number" class="form-control1" id="stok_barang" placeholder="" name="stok_barang" value="{{$barang->stok}}" min="0">
                 </div>
             </div>
-			
+
+            <hr>
+
+            <div class="form-group">
+                <label for="expire" class="col-sm-2 control-label">Tanggal Expired</label>
+                
+                <div class="col-sm-8">
+                    <input type="date" class="form-control1" id="expire" placeholder="" name="expiry_date" min="0">
+                </div>
+
+                <div class="col-sm-2">
+                    <a class="btn btn-primary" href="#" onclick="tambahExpire()">+</a>
+                </div>
+
+                <div class="panel panel-warning col-sm-8 col-sm-offset-2" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+                    <div class="panel-body no-padding">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr class="warning">
+                                    <th>Tanggal Expired</th>
+                                    <th>Stok Barang</th>
+                                    <th>Hapus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tExpire">
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<button type="submit" class="btn-primary btn">Kirim</button>
+						<button type="submit" class="btn btn-primary btn-full">Kirim</button>
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
+
+<script type="text/javascript">
+    var expires = new Array();
+    
+    function tambahExpire()
+    {
+        if($('#expire').val() != "")
+        {
+            expires.push($('#expire').val());
+            updateTable();
+        }
+        else
+            alert("Tanggal expired tidak boleh kosong.");
+    }
+
+    function deleteExpire($id)
+    {
+        expires.splice($id, 1);
+        updateTable();
+    }
+
+    function updateTable()
+    {
+        var tr = "";
+        for (var i = 0; i < expires.length; i++)
+        {
+            tr += 
+            "<tr>" +
+                "<td><input type='date' class='form-control1' value='" + expires[i] + "' required name='expire_" + i+ "'</td>" + 
+                "<td><input type='number' class='form-control1' value=1 required name='jumlah_" + i + "'></td>" +
+                "<td><a onclick='deleteExpire(" + i + ")' class='btn btn-delete'>Hapus</a></td>" + 
+            "</tr>";
+        }
+        $('#tExpire').html(tr);
+    }
+</script>
 @endsection

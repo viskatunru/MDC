@@ -121,6 +121,8 @@ class BarangController extends Controller
         //
         $barang = Barang::find($id);
         $categories = Category::all();
+        
+
         return view('barang.edit', compact('barang', 'categories'));
     }
 

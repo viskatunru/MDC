@@ -9,19 +9,22 @@ h1, h2, h3 {margin-top: 0; margin-bottom: 15px;}
 ul, ol {margin: 0;}
 p {margin: 0;}
 
-html, body{
+html, body {
   	font-family: Helvetica, sans-serif;
     font-size: 100%;
   	background:#000;
   	overflow-x: hidden;
 }
-/*body a{
+/*body a {
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-moz-transition:0.5s all;
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }*/
+hr {
+  border-top: 1px solid #ddd !important;
+}
 /*-- header --*/
 .navbar .navbar-nav li a {
   padding: 0 10px;
@@ -862,6 +865,7 @@ i.dollar1{
 }
 /*-- graphs --*/
 .graphs{
+  min-height: 100vh;
   padding: 2em 1em;
   background: #f2f4f8;
   font-family: Helvetica, sans-serif;
@@ -1085,34 +1089,37 @@ button.note-color-btn {
 .modal {
   overflow-y:auto !important;
 }
-.btn-primary{
+.btn-primary {
   background-color: rgb(0, 200, 135) !important;
   border-color: rgb(0, 200, 135) !important;
   color: #fff !important;
 }
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: rgb(0, 181, 122) !important;
   border-color: rgb(0, 181, 122) !important;
 }
-/*.btn-primary:hover{
+/*.btn-primary:hover {
   background-color: #fff !important;
   border-color: rgb(6, 217, 149) !important;
   color: rgb(6, 217, 149) !important;
 }*/
-.btn-delete{
+.btn-delete {
   background-color: rgb(255, 32, 40) !important;
   border-color: rgb(255, 32, 40) !important;
   color: #fff !important;
 }
-.btn-delete:hover{
+.btn-delete:hover {
   background-color: rgb(236, 30, 37) !important;
   border-color: rgb(236, 30, 37) !important;
 }
-/*.btn-delete:hover{
+/*.btn-delete:hover {
   background-color: #fff !important;
   border-color: #ff383f;
   color: #ff383f !important;
 }*/
+.btn-full {
+  width: 100% !important;
+}
 h2.modal-title {
   font-size: 1.3em;
   color:#999;

@@ -40,7 +40,7 @@ class PenyimpananController extends Controller
         $penyimpanan->nama = $request->nama_penyimpanan;
         $penyimpanan->save();
 
-        return redirect()->action('BarangController@create');
+        return redirect()->back();
     }
 
     /**

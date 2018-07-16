@@ -19,7 +19,7 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<button type="submit" class="btn-primary btn">Kirim</button>
+						<button type="submit" class="btn btn-primary btn-full">Kirim</button>
 					</div>
 				</div>
 			</div>
