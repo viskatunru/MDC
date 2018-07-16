@@ -59,7 +59,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/category/add', 'CategoryController@create')->name('category_create');
 	Route::post('/category/add', 'CategoryController@store');
 
-	Route::get('/penyimpanan/add', 'PenyimpananController@create');
+	Route::get('/penyimpanan/add', 'PenyimpananController@create')->name('penyimpanan_create');
 	Route::post('/penyimpanan/add', 'PenyimpananController@store');
 
 	Route::get('/pdf/stok', 'HomeController@cetakLaporanStok');

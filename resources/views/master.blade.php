@@ -86,13 +86,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<a href="{{route("barang_all")}}"><i class="fa fa-table nav_icon"></i>BARANG<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">
 									<li>
-										<a href="{{route("barang_all")}}">Daftar Barang</a>
+										<a href="{{route('barang_all')}}">Daftar Barang</a>
 									</li>
 									<li>
-										<a href="{{route("barang_create")}}">Tambah Barang Baru</a>
+										<a href="{{route('barang_create')}}">Tambah Barang Baru</a>
 									</li>
 									<li>
-										<a href="{{route("category_create")}}">Tambah Kategori Baru</a>
+										<a href="{{route('category_create')}}">Tambah Kategori Baru</a>
+									</li>
+									<li>
+										<a href="{{route('penyimpanan_create')}}">Tambah Penyimpanan Baru</a>
 									</li>
 								</ul>
 							</li>
@@ -148,7 +151,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</li>
 								</ul>
 							</li>
-							
 						</ul>
 					</div>
 				</div>

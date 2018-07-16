@@ -29,7 +29,6 @@
 				
 				<div class="col-sm-8">
 					<select name="id_kategori" id="kategori" class="form-control1">
-						<option selected disabled>...</option>
 						@foreach($categories as $category)
 							<option value="{{$category->id}}">{{$category->nama}}</option>
 						@endforeach
@@ -72,7 +71,7 @@
 				<div class="col-sm-8">
 					<input type="date" class="form-control1" id="expire" placeholder="" name="expiry_date" min="0">
 				</div>
-				
+
 				<div class="col-sm-2">
 				    <a class="btn btn-primary" href="#" onclick="tambahExpire()">+</a>
 				</div>
