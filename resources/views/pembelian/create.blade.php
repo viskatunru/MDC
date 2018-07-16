@@ -124,13 +124,8 @@
 
 	function addBarang(...args)
 	{
-		if (barangIsAdded(args[0]))
-			alert('Barang tersebut sudah ditambahkan.');
-		else
-		{
 			barangs.push(args);
 			updateTable();
-		}
 	}
 
 	function updateTable()
@@ -168,14 +163,16 @@
 	}
 
 	function deleteBarang(id)
-	{
-		for (var i = 0; i < barangs.length; i++)
+	{		
+		if(confirm('Apakah anda yakin?'))
 		{
-			if (barangs[i][0] === id)
+			for (var i = 0; i < barangs.length; i++)
 			{
-				alert("Barang deleted " + barangs[i][0]);
-				barangs.splice(i, 1);
-				updateTable();
+				if (barangs[i][0] === id)
+				{
+					barangs.splice(i, 1);
+					updateTable();
+				}
 			}
 		}
 	}
