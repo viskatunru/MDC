@@ -51,8 +51,8 @@
 					<table class="table table-striped" id="tablebarang" data-toggle="table" data-url="/barang/json" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 						<thead>
 							<tr class="warning">
-								<th data-sortable="true" data-field="kode">Kode Barang</th>
-								<th data-sortable="true" data-field="nama">Nama Barang</th>
+								<th data-sortable="true" data-field="kode">Kode</th>
+								<th data-sortable="true" data-field="nama">Nama</th>
 								<th data-sortable="true" data-field="namakategori">Kategori</th>
 								<th data-sortable="true" data-field="stok">Stok Saat Ini</th>
 								<th data-field="id" data-formatter="LinkFormatter">Aksi</th>

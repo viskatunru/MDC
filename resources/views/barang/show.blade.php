@@ -1,12 +1,10 @@
 @extends('master')
 
 @section('content')
-<h3 style="margin-bottom:10px;">{{$barang->nama}}</h3>
-<h4>({{$barang->kode}}, {{$barang->category->nama}}, {{$barang->lokasi}})</h4>
+<h3 style="margin-bottom:10px;">{{$barang->kode}} - {{$barang->nama}}</h3>
 
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
-		<h3>Detail Expired</h3>
 		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 			<thead>
 				<tr class="warning">
@@ -20,11 +18,13 @@
 			<tbody>
 				@foreach($expires as $expire)
 					<tr>
-						{{$expire->id}}
-						<td>{{$expire->tanggal}}</td>
+						<td>{{date("d F Y", strtotime($expire->tanggal))}}</td>
 						<td>{{$expire->jumlah}}</td>
 						<td>{{$expire->penyimpanan->nama}}</td>
-						<td><a href="/pemakaian/add" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Edit</a></td>
+						<td>
+							<a href="" class="btn btn-primary">Edit</a>
+							<a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
+						</td>
 					</tr>
 				@endforeach
 			</tbody>
@@ -56,7 +56,7 @@
 		<option value="11">November</option>
 		<option value="12">Desember</option>
 	</select>
-	<input type="submit" name="" value="Submit" class="btn btn-primary">
+	<input type="submit" name="" value="Kirim" class="btn btn-primary">
 </form>
 
 <div id="divPemakaian">
