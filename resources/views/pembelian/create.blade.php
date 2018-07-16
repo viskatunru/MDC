@@ -140,7 +140,7 @@
 		var counter = 0;
 		for (var i = 0; i < barangs.length; i++)
 		{
-			tr += 
+			tr +=
 			"<tr>" +
 				"<td>" + barangs[i][1] + "</td>" + 
 				"<td>" + barangs[i][2] + "</td>" +
@@ -159,6 +159,7 @@
 
 	function barangIsAdded(id)
 	{
+
 		for (var i = 0; i < barangs.length; i++)
 		{
 			if (barangs[i][0] === id)

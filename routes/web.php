@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/pembelian/add/step1', 'PembelianController@storePembelian');
 	Route::post('/pembelian/add/step2', 'PembelianController@storeBarang');
 
-	Route::get('/category/add', 'CategoryController@create');
+	Route::get('/category/add', 'CategoryController@create')->name('category_create');
 	Route::post('/category/add', 'CategoryController@store');
 
 	Route::get('/penyimpanan/add', 'PenyimpananController@create');

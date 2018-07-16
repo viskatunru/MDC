@@ -49,7 +49,7 @@
 	
 	<!-- Judul -->
 	<div class="panel-heading">
-		<h2>Daftar Barang Bulan {{date('F Y')}}</h2>
+		<h2>Daftar Pemakaian Barang Bulan {{date('F Y')}}</h2>
 		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
 	</div>
 	
@@ -110,14 +110,14 @@
 	
 	<!-- Judul -->
 	<div class="panel-heading">
-		<h2>CEK EXPIRE</h2>
+		<h2>CEK EXPIRED</h2>
 		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
 	</div>
 	
 	<!-- Isi -->
 	<div class="panel-body no-padding" style="display: block;">
 		<form method="get" id="formHariExpire">
-			<h4 id="hariExpire">Expire dalam berapa hari?</h4>
+			<h4 id="hariExpire">Expired dalam berapa hari?</h4>
 			<input type="number" name="hari" id="inputHari" min="0" value="0"><br><br>
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>
