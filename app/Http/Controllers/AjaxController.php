@@ -23,15 +23,17 @@ class AjaxController extends Controller
 
         $uppBound = date_format($format, 'Y-m-d');
         
+        $expires = Expire::where('tanggal', '>=', "$year-$month-$date 00:00:00")
+                ->where('tanggal', '<=', "$uppBound 00:00:00")->get();
+
         $temps = Pembelian::all();/*Barang::whereHas('pembelians', function($query) use ($date, $month, $year, $uppBound) {
             $query->where('expire', '>=', "$year-$month-$date 00:00:00")
                 ->where('expire', '<=', "$uppBound 00:00:00");
         })->get();*/
         $barangs = array();
-        foreach ($temps as $pembelian)
+        foreach ($expires as $e)
         {
-            $barangs[] = $pembelian->barangs()->wherePivot('expire', '>=', "$year-$month-$date 00:00:00")
-                ->wherePivot('expire', '<=', "$uppBound 00:00:00")->get();
+            $barangs[] = $e->barang();
         }
 
     	//$expires = Expire::where('tanggal', '>=', "$year-$month-$date 00:00:00")
@@ -42,11 +44,11 @@ class AjaxController extends Controller
 
     public function expireHariIni()
     {
-        $temps = Pembelian::all();
+        $expires = Expire::where('tanggal', '=', date("Y-m-d 00:00:00"))->get();
         $barangs = array();
-        foreach ($temps as $pembelian)
+        foreach ($expires as $e)
         {
-            $barangs[] = $pembelian->barangs()->wherePivot('expire', '=', date("Y-m-d 00:00:00"))->get();
+            $barangs[] = $e->barang();
         }
         return view('template.expireHariIni', compact('barangs'));
     }
@@ -55,11 +57,10 @@ class AjaxController extends Controller
     {
         $expires = Expire::whereMonth('tanggal', '=', date('m'))->get();
 
-        $temps = Pembelian::all();
         $barangs = array();
-        foreach ($temps as $pembelian)
+        foreach ($expires as $e)
         {
-            $barangs[] = $pembelian->barangs()->wherePivot('expire', 'like', '%-'.date('m').'-%')->get();
+            $barangs[] = $e->barang();
         }
 
         return view('template.expireBulanIni', compact('barangs'));

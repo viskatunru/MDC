@@ -14,6 +14,6 @@
 			@endforeach
 		@endforeach
 	@else
-		Tidak ada barang expired hari ini.
+		Tidak ada barang expired bulan ini.
 	@endif
 </div>

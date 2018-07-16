@@ -163,8 +163,9 @@
 			data: { 
 			tanggal: $('#inputHari').val()
 			}, 
-			success: function( msg ) {
-			$('#barangByExpireDiv').html(msg);
+			success: function( msg ) 
+			{
+				$('#barangByExpireDiv').html(msg);
 			}
 		});
 	});
@@ -179,7 +180,8 @@
 		$.ajax({
 			type: "GET",
 			url: "/ajax/expire/bulanini",
-			success: function( msg ) {
+			success: function( msg ) 
+			{
 				$('#divExpireBulanIni').html(msg);
 			}
 		});
