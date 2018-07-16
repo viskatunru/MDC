@@ -71,6 +71,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/barang/json', 'BarangController@json');
 
 	Route::get('/expire/edit/{id}', 'ExpireController@edit');
+
+	Route::get('/barang/expire/delete/{id}');
+
 	//Ajax
 	Route::get('/ajax/barangByExpiryDate', 'AjaxController@barangByExpiryDate')->name('ajax_expire');
 	Route::get('/ajax/barang/showMonthly', 'PemakaianController@showMonthly');

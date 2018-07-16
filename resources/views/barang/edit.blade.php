@@ -73,7 +73,6 @@
                 <div class="col-sm-2">
                     <a class="btn btn-primary" href="#" onclick="tambahExpire()">+</a>
                 </div>
-
                 <div class="panel panel-warning col-sm-8 col-sm-offset-2" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
                     <div class="panel-body no-padding">
                         <table class="table table-striped">
@@ -105,11 +104,16 @@
 
 <script type="text/javascript">
     var expires = {!! $barang->expires !!};
+    console.log(expires);
     function tambahExpire()
     {
         if($('#expire').val() != "")
         {
-            expires.push($('#expire').val());
+            var e = new Array();
+            e['tanggal'] = $('#expire').val();
+            e['jumlah'] = 1;
+
+            expires.push(e);
             updateTable();
         }
         else
@@ -127,11 +131,17 @@
         var tr = "";
         for (var i = 0; i < expires.length; i++)
         {
+            if (expires[i]['id'] != null)
+                tr += "<input type='hidden' class='form-control1' name='id_" + i + "' value='" + expires[i]['id'] + "'></input>";
+
             tr += 
-            "<tr><input type='hidden' class='form-control1' value='" + expires[i]['id'] + "'></input>" +
+            "<tr>" +
                 "<td><input type='date' class='form-control1' value='" + expires[i]['tanggal'] + "' required name='expire_" + i+ "'</td>" + 
-                "<td><input type='number' class='form-control1' value='"+ expires[i]['jumlah'] + "' required name='jumlah_" + i + "'></td>" +
-                "<td><a onclick='deleteExpire(" + i + ")' class='btn btn-delete'>Hapus</a></td>" + 
+                "<td><input type='number' class='form-control1' value='"+ expires[i]['jumlah'] + "' required name='jumlah_" + i + "'></td>";
+            if (expires[i]['id'] == null)
+                tr += "<td><a onclick='deleteExpire(" + i + ")' class='btn btn-delete'>Hapus</a></td>";
+            else
+                tr += "<td><a onclick='/barang/expire/delete/" + expires[i]['id'] + "' class='btn btn-delete'>Hapus Database</a></td>";
             "</tr>";
         }
         $('#tExpire').html(tr);

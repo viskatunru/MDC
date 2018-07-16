@@ -137,15 +137,37 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $barang = Barang::find($id);
+        $barang = new Barang;
         $barang->kode = $request->kode_barang;
         $barang->nama = $request->nama_barang;
-        $barang->lokasi = $request->lokasi_barang;
         $barang->stok = $request->stok_barang;
         $barang->category_id = $request->id_kategori;
-
+        $barang->penyimpanan_id = $request->id_penyimpanan;
         $barang->save();
-        return redirect()->action('BarangController@index');
+
+        $counter = 0;
+        while (isset($request["expire_$counter"]))
+        {
+            $tanggal = $request["expire_$counter"];
+            $jumlah = $request["jumlah_$counter"];
+
+            if (isset($request["id_$counter"]))
+                $expire = Expire::find($request["id_$counter"]);
+            else
+            {
+                $expire = new Expire;
+                $expire->sisa = $jumlah;
+            }
+            
+            $expire->tanggal = $tanggal;
+            $expire->jumlah = $jumlah;
+            $expire->penyimpanan_id = $barang->penyimpanan_id;
+            $expire->barang_id = $barang->id;
+            $expire->pembelian_id = null;
+            $expire->save();
+            $counter++;
+        }
+
     }
 
     /**
