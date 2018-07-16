@@ -54,7 +54,7 @@
             </div>
 
             <div class="form-group">
-                <label for="stok_barang" class="col-sm-2 control-label">Stok Barang</label>
+                <label for="stok_barang" class="col-sm-2 control-label">Stok Total Barang</label>
                 
                 <div class="col-sm-8">
                     <input type="number" class="form-control1" id="stok_barang" placeholder="" name="stok_barang" value="{{$barang->stok}}" min="0">
