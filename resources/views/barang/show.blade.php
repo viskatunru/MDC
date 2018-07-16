@@ -3,6 +3,7 @@
 @section('content')
 <h3 style="margin-bottom:10px;">{{$barang->kode}} - {{$barang->nama}}</h3>
 
+@if (count($expire) > 0)
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
 		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
@@ -31,6 +32,7 @@
 		</table>
 	</div>
 </div>
+@endif
 
 <form id="formPemakaian">
 	<select id="tipe">

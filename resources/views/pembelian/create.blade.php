@@ -170,7 +170,7 @@
 			updateTable();
 		}
 	}
-	
+
 	$(document).ready(function(){
 
 	});

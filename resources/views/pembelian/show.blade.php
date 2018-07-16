@@ -24,7 +24,7 @@
 						@if($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first() !== null)
 						{{ date("d F Y", strtotime($barang->expires()->where('pembelian_id', '=', $pembelian->id)->first()->tanggal)) }}
 						@else
-						Tidak memiliki expiry date
+						Tidak memiliki tanggal expired.
 						@endif
 					</td>
 					<td>
