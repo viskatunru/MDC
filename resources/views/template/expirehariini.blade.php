@@ -7,6 +7,7 @@
 				<h5><a href="/barang/show/{{$e->barang->id}}">{{$e->barang->kode}} - {{$e->barang->nama}}</a></h5>
 					<p>Tanggal: {{date('j F Y', strtotime($e->tanggal))}}</p>
 					<p>Stok Expired: {{$e->jumlah}}</p>
+					<p>Penyimpanan: {{$e->penyimpanan->nama}}</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>
