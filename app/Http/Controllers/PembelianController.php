@@ -151,12 +151,17 @@ class PembelianController extends Controller
         $barang->pivot->jumlah = $jumlahBaru;
         if ($barang->pivot->jumlah < 0)
             $barang->pivot->jumlah = 0;
-
+        
+        $barang->pivot->harga_satuan = $request->harga_satuan;
         $barang->pivot->save();
+
+        $pembelian = Pembelian::find($request->id_pembelian);
+        $pembelian->harga_total = $barang->pivot->harga_satuan * $barang->pivot->jumlah;
+        $pembelian->save();
+
         $barang->stok -= $jumlahLama - $jumlahBaru;
         if ($barang->stok < 0)
             $barang->stok = 0;
-        
         $barang->save();
         return redirect()->action('PembelianController@show', ['id' => $request->id_pembelian]);
     }

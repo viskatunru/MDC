@@ -9,6 +9,8 @@
 			<thead>
 				<tr class="warning">
 					<th data-sortable="true">ID</th>
+					<th data-sortable="true">No Invoice</th>
+					<th data-sortable="true">Harga Total</th>
 					<th data-sortable="true">Tanggal</th>
 					<th>Tampilkan Semua Barang</th>
 				</tr>
@@ -18,6 +20,8 @@
 				@foreach($pembelians as $pembelian)
 					<tr>
 						<td>{{$pembelian->id}}</td>
+						<td>{{$pembelian->no_invoice}}</td>
+						<td>{{$pembelian->harga_total}}</td>
 						<td>{{date('j F Y', strtotime($pembelian->tanggal))}}</td>
 						<td><a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan</a></td>
 					</tr>

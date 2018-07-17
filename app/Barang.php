@@ -35,4 +35,9 @@ class Barang extends Model
     {
         return $this->belongsTo('App\Penyimpanan');
     }
+
+    public function bulans()
+    {
+        return $this->belongsToMany('App\Bulan')->withPivot('stok_awal');
+    }
 }

@@ -66,10 +66,8 @@ class BarangController extends Controller
         $barang->stok = $request->stok_barang;
         $barang->category_id = $request->id_kategori;
         $barang->penyimpanan_id = $request->id_penyimpanan;
+        $barang->harga_beli = $request->harga_satuan;
         $barang->save();
-
-        $pembelian = Pembelian::find(1);
-        $barang->pembelians()->attach(1, ['jumlah' => $barang->stok, 'harga_satuan' => $request->harga_satuan]);
 
         $counter = 0;
         while (isset($request["expire_$counter"]))
