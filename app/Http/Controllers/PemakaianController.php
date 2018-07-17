@@ -74,7 +74,7 @@ class PemakaianController extends Controller
                 else
                 {
                     $pemakaian->expires()->attach($expire->id, ['jumlah' => $jumlahBarang + $expire->sisa]);
-                    
+
                     $jumlahBarang = $expire->sisa * -1;
                     $expire->sisa = 0;
                     $expire->save();
@@ -182,17 +182,20 @@ class PemakaianController extends Controller
         $tahun = Input::get('tahun', date('Y'));
         $bulan = Input::get('bulan', date('m'));
         $idBarang = Input::get('id_barang', 0);
-
 /*
         $pemakaians = Pemakaian::selectRaw('tanggal, sum(jumlah) as sum')->whereYear('tanggal', '=', $tahun)
             ->get()
             ->groupBy(function($val) {
                 return Carbon::parse($val->tanggal)->format('m');
             });
-*/
-        $pemakaians = Pemakaian::selectRaw('sum(jumlah) as totalPemakaian, MONTH(tanggal) as bulan')
-                ->whereYear('tanggal', '=', $tahun)
-                ->groupBy('bulan')->get();
-        return view('template.pemakaianbarang', compact('pemakaians'));
+*/      
+        $barang = Barang::find($idBarang);
+        $months = array();
+
+        for($i = 1; $i <= 12; $i++)
+        {
+            $months[$i] = $barang->pemakaians()->whereYear('tanggal', '=', $tahun)->whereMonth('tanggal', '=', $i)->sum('jumlah');
+        }
+        return view('template.pemakaianbarang', compact('months'));
     }
 }
