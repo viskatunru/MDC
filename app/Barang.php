@@ -38,6 +38,6 @@ class Barang extends Model
 
     public function bulans()
     {
-        return $this->belongsToMany('App\Bulan')->withPivot('stok_awal');
+        return $this->belongsToMany('App\Bulan', 'bulan_barang')->withPivot('stok_awal');
     }
 }

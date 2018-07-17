@@ -74,6 +74,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/barang/expire/delete/{id}', 'ExpireController@destroy');
 
+	Route::post('/bulan/generate', 'BulanController@generateStok');
 	//Ajax
 	Route::get('/ajax/barangByExpiryDate', 'AjaxController@barangByExpiryDate')->name('ajax_expire');
 	Route::get('/ajax/barang/showMonthly', 'PemakaianController@showMonthly');
