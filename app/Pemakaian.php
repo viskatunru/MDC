@@ -18,8 +18,8 @@ class Pemakaian extends Model
     	return $this->belongsTo('App\Barang');
     }
 
-    public function pemakaians()
+    public function expires()
     {
         return $this->belongsToMany('App\Expire')->withPivot('jumlah');
-    }    
+    }   
 }

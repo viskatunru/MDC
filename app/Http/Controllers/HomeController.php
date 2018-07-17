@@ -56,7 +56,6 @@ class HomeController extends Controller
                     $barang["dokter_$dokter->id"] = "-";
             }
         }
-
         return $barangs;
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Barang, App\Dokter, App\Pembelian, App\Category, App\Supplier, App\Penyimpanan;
-use App\Expire;
+use App\Expire, App\Bulan, Carbon\Carbon;
 class BarangController extends Controller
 {
     public function json()
@@ -70,10 +70,10 @@ class BarangController extends Controller
         $barang->harga_beli = $request->harga_satuan;
         $barang->save();
 
-        $bulan = Bulan::where('bulan', '=', $request->bulan."-01")->first();
-        if ($bulan == "")
+        $bulan = Bulan::where('bulan', '=', date_format(Carbon::now() , 'Y-m-01'))->first();
+        if ($bulan != "")
         {
-            
+            $bulan->barangs()->attach($barang->id, ['stok_awal' => $barang->stok]);
         }
 
         $counter = 0;
