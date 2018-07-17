@@ -17,7 +17,7 @@
 				<label for="focusedinput" class="col-sm-2 control-label">Nomor Invoice</label>
 
 				<div class="col-sm-8">
-					<input required type="text" class="form-control1" id="focusedinput" placeholder="Nomor Invoice" name="no_invoice">
+					<input required type="text" class="form-control1" id="focusedinput" name="no_invoice">
 				</div>
 			</div>
 
