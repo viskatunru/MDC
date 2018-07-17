@@ -68,6 +68,9 @@ class BarangController extends Controller
         $barang->penyimpanan_id = $request->id_penyimpanan;
         $barang->save();
 
+        $pembelian = Pembelian::find(1);
+        $barang->pembelians()->attach(1, ['jumlah' => $barang->stok, 'harga_satuan' => $request->harga_satuan]);
+
         $counter = 0;
         while (isset($request["expire_$counter"]))
         {
@@ -84,7 +87,6 @@ class BarangController extends Controller
             $expire->save();
             $counter++;
         }
-
 
 /*
         $pembelian = new Pembelian;
