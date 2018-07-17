@@ -70,6 +70,12 @@ class BarangController extends Controller
         $barang->harga_beli = $request->harga_satuan;
         $barang->save();
 
+        $bulan = Bulan::where('bulan', '=', $request->bulan."-01")->first();
+        if ($bulan == "")
+        {
+            
+        }
+
         $counter = 0;
         while (isset($request["expire_$counter"]))
         {

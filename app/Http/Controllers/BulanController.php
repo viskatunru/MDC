@@ -21,7 +21,7 @@ class BulanController extends Controller
     		{
 	    		$bulan->barangs()->attach($b->id, ['stok_awal' => $b->stok]);
 	    	}
-    	}	
+    	}
 		return view('report.bulan', compact('bulan'));
     }
 }

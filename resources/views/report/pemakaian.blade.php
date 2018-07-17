@@ -62,7 +62,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</head>
 	
 	<body>
-		<h3>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahun-$bulan"))}}</h3>
+		<h3>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3>
 
 		<table class="table table-striped">
 			<thead>
@@ -84,7 +84,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<tr>
 						<td>{{$barang->kode}}</td>
 						<td><a href="/barang/show/{{$barang->id}}">{{$barang->nama}}</a></td>
-						<td>{{$barang->stok}}</td>
+						<td>{{$barang->pivot->stok_awal}}</td>
 
 						<?php $total = 0;?>
 						@foreach($pemakaiansBulanIni->where("barang_id", '=', $barang->id) as $pemakaian)
@@ -109,7 +109,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						@endforeach
 
 						<td>{{$total}}</td>
-						<td>{{$barang->stok - $total}}</td>
+						<td>{{$barang->pivot->stok_awal - $total}}</td>
 					</tr>
 				@endforeach
 			</tbody>

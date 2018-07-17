@@ -55,48 +55,23 @@
 	
 	<!-- Isi -->
 	<div class="panel-body no-padding">
-		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
+		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true" data-url="/ajax/pemakaian/harian">
 			<thead>
 				<tr class="warning">
-					<th data-sortable="true">Kode</th>
-					<th data-sortable="true">Nama</th>
-					<th data-sortable="true">Kategori</th>
+					<th data-sortable="true" data-field="kode">Kode</th>
+					<th data-sortable="true" data-field="nama">Nama</th>
+					<th data-sortable="true" data-field="kategori">Kategori</th>
 					
 					@foreach($dokters as $dokter)
-						<th data-sortable="true">{{$dokter->nama}}</th>
+						<th data-sortable="true" data-field="dokter_{{$dokter->id}}">{{$dokter->nama}}</th>
 					@endforeach
 					
-					<th data-sortable="true">Stok Saat Ini</th>
+					<th data-sortable="true" data-field="stok">Stok Saat Ini</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				@foreach($barangs as $barang)
-					<tr>
-						<td><u><a href="/barang/show/{{$barang->id}}">{{$barang->kode}}</a></u></td>
-						<td>{{$barang->nama}}</td>
-						<td>{{$barang->category->nama}}</td>
-						
-						@foreach($dokters as $dokter)
-							<?php
-							$pemakaians = $barang->pemakaians->where('dokter_id', '=', $dokter->id);
-							$jumlah = 0;
-							foreach ($pemakaians as $pemakaian)
-							{
-								$jumlah += $pemakaian->jumlah;
-							}
-							?>
-							
-							@if($jumlah > 0)
-								<td>{{$jumlah}}</td>
-							@else
-								<td>-</td>
-							@endif
-						@endforeach
-						
-						<td>{{$barang->stok}}</td>
-					</tr>
-				@endforeach
+
 			</tbody>
 		</table>
 	</div>

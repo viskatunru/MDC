@@ -19,7 +19,7 @@
                 <label for="kode_barang" class="col-sm-2 control-label">Kode Barang</label>
                 
                 <div class="col-sm-8">
-                    <input type="number" class="form-control1" id="kode_barang" placeholder="" name="kode_barang" value="{{$barang->kode}}" min="0">
+                    <input type="text" class="form-control1" id="kode_barang" placeholder="" name="kode_barang" value="{{$barang->kode}}">
                 </div>
             </div>
 

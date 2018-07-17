@@ -81,6 +81,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/ajax/barang/showYearly', 'PemakaianController@showYearly');
 	Route::get('/ajax/expire/hariini', 'AjaxController@expireHariIni');
 	Route::get('/ajax/expire/bulanini', 'AjaxController@expireBulanIni');
+	Route::get('/ajax/pemakaian/harian', 'HomeController@pemakaianHarianJSON');
 	});
 Auth::routes();
 
