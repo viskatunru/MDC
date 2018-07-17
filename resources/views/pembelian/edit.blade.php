@@ -153,8 +153,18 @@
 			counter++;
 		}
 		$('#tBarangs').html(tr);
-
 		$('.cb_penyimpanan').html($('#seed_penyimpanan').html());
+
+		for (var i = 0; i < barangs.length; i++)
+        {
+            $("#penyimpanan_" + i + " option").each(function()
+            {
+                if ($(this).val() == barangs[i][3])
+                {
+                    $(this).attr('selected', true);
+                }
+            });
+        }
 	}
 
 	function barangIsAdded(id)

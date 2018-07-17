@@ -73,7 +73,7 @@
             </div>
 
             <div class="form-group">
-                <label for="harga_satuan" class="col-sm-2 control-label">Harga Beli Satuan</label>
+                <label for="harga_satuan" class="col-sm-2 control-label">Harga Satuan</label>
                 
                 <div class="col-sm-8">
                     <input type="text" class="form-control1" id="harga_satuan" placeholder="" name="harga_satuan" value="{{$barang->harga_beli}}">

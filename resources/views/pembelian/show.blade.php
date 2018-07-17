@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<h3>PEMBELIAN ({{$pembelian->no_invoice}}): {{$pembelian->supplier->nama}} ({{date("j F Y", strtotime($pembelian->tanggal))}}) : </h3>
+<h3>PEMBELIAN DARI: {{$pembelian->supplier->nama}} ({{$pembelian->no_invoice}} - {{date("j F Y", strtotime($pembelian->tanggal))}})</h3>
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
 		<table class="table table-striped">
