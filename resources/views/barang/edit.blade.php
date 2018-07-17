@@ -72,6 +72,14 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="harga_satuan" class="col-sm-2 control-label">Harga Beli Satuan</label>
+                
+                <div class="col-sm-8">
+                    <input type="text" class="form-control1" id="harga_satuan" placeholder="" name="harga_satuan" value="{{$barang->pembelians()->where('pembelian_id', '=', '1')->first()->pivot->harga_satuan}}"> <!-- ingat ganti -->
+                </div>
+            </div>
+
             <hr>
 
             <div class="form-group">

@@ -5,7 +5,7 @@
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
 		<table class="table table-striped">
-			<center><h4>Daftar Barang Dibeli</h4></center>
+			<center><h4>Daftar Pembelian Barang</h4></center>
 			<thead>
 				<tr class="warning">
 					<th>Kode</th>
