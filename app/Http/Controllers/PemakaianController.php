@@ -55,7 +55,7 @@ class PemakaianController extends Controller
         $barang->save();
 
         $expires = Expire::where('barang_id', '=', $barang->id)
-                ->where('sisa', '>', 0)
+                ->where('sisa', '>', 0)->where('tanggal', '>=', date_format(Carbon::now() , 'Y-m-01'))
                 ->orderBy('tanggal', 'asc')->get();
 
         if ($expires != null)
@@ -68,10 +68,13 @@ class PemakaianController extends Controller
                 if ($expire->sisa >= 0)
                 {
                     $expire->save();
+                    $pemakaian->expires()->attach($expire->id, ['jumlah' => $jumlahBarang]);
                     break;
                 }
                 else
                 {
+                    $pemakaian->expires()->attach($expire->id, ['jumlah' => $jumlahBarang + $expire->sisa]);
+                    
                     $jumlahBarang = $expire->sisa * -1;
                     $expire->sisa = 0;
                     $expire->save();
