@@ -150,7 +150,7 @@
             "<tr>" +
                 "<td><input type='date' class='form-control1' value='" + expires[i]['tanggal'] + "' required name='expire_" + i+ "'</td>" + 
                 "<td><input type='number' class='form-control1' value='"+ expires[i]['jumlah'] + "' required name='jumlah_" + i + "'></td>" +
-                "<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ i + "'></select></td>";
+                "<td><select class='form-control1 cb_penyimpanan' id='penyimpanan_" + i + "' name='penyimpanan_"+ i + "'></select></td>";
             if (expires[i]['id'] == null)
                 tr += "<td><a onclick='deleteExpire(" + i + ")' class='btn btn-delete'>Hapus</a></td>";
             else
@@ -159,6 +159,17 @@
         }
         $('#tExpire').html(tr);
         $('.cb_penyimpanan').html($('#seed_penyimpanan').html());
+        
+        for (var i = 0; i < expires.length; i++)
+        {
+            $("#penyimpanan_" + i + " option").each(function()
+            {
+                if ($(this).val() == expires[i]['penyimpanan_id'])
+                {
+                    $(this).attr('selected', true);
+                }
+            });
+        }
     }
 
     $(document).ready(function(){
