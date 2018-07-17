@@ -138,12 +138,29 @@
 	
 	<!-- Isi -->
 	<div class="panel-body no-padding" style="display: block;">
-		<form method="get" action="/pdf/stok">
+		<form method="get" action="/pdf/stok" target="_blank">
 			<input type="month" name="bulan" value="<?=date('Y-m')?>"><br><br>
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>
 	</div>
+</div>
 
+<div class="panel panel-blue" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+	
+	<!-- Judul -->
+	<div class="panel-heading">
+		<h2>Generate Stok Awal</h2>
+		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+	</div>
+	
+	<!-- Isi -->
+	<div class="panel-body no-padding" style="display: block;">
+		<form method="post" action="/bulan/generate" target="_blank">
+			{{csrf_field()}}
+			<input type="month" name="bulan" value="<?=date('Y-m')?>"><br><br>
+			<button type="submit" class="btn btn-primary">Kirim</button>
+		</form>
+	</div>
 </div>
 
 <!-- STYLESHEET / SCRIPT -->
