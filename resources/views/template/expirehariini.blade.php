@@ -5,7 +5,7 @@
 			<div class="activity-row">
 				<div class="col-xs-12 activity-desc">
 				<h5><u><a href="/barang/show/{{$e->barang->id}}">{{$e->barang->kode}} - {{$e->barang->nama}}</a></u></h5>
-					<p>Tanggal: {{date('j F Y', strtotime($e->tanggal))}}</p>
+					<p>Tanggal Expired: {{date('j F Y', strtotime($e->tanggal))}}</p>
 					<p>Stok Expired: {{$e->jumlah}}</p>
 					<p>Penyimpanan: {{$e->penyimpanan->nama}}</p>
 				</div>

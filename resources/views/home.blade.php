@@ -36,7 +36,6 @@
 		
 			<div id="divExpireBulanIni">
 			</div>
-			
 		</div>
 	</div>
 	
@@ -94,7 +93,9 @@
 			<input type="number" name="hari" id="inputHari" min="0" value="0"><br><br>
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>
-		
+
+		<br>
+
 		<div id="barangByExpireDiv">
 			
 		</div>
