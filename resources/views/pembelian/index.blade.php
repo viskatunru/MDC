@@ -11,6 +11,7 @@
 					<th data-sortable="true">ID</th>
 					<th data-sortable="true">Tanggal</th>
 					<th data-sortable="true">Nama Supplier</th>
+					<th data-sortable="true">Harga Total</th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
@@ -21,6 +22,7 @@
 						<td>{{$pembelian->id}}</td>
 						<td>{{date('j F Y', strtotime($pembelian->tanggal))}}</td>
 						<td><u><a href="/supplier/show/{{$pembelian->supplier->id}}">{{$pembelian->supplier->nama}}</a></u></td>
+						<td>{{$pembelian->harga_total}}</td>
 						<td>
 							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan Detail</a>
 							<a href="/pembelian/edit/{{$pembelian->id}}" class="btn btn-primary">Edit</a>
