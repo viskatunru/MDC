@@ -10,7 +10,7 @@
 
             <select id="seed_penyimpanan" hidden>
                 @foreach($penyimpanans as $p)
-                    <option value="{{$p->id}}">{{$p->nama}}</option>
+                    <option value="{{$p->id}}" @if($p->id == $barang->penyimpanan_id) selected @endif>{{$p->nama}}</option>
                 @endforeach
             </select>
 
@@ -19,7 +19,7 @@
                 <label for="kode_barang" class="col-sm-2 control-label">Kode Barang</label>
                 
                 <div class="col-sm-8">
-                    <input type="text" class="form-control1" id="kode_barang" placeholder="" name="kode_barang" value="{{$barang->kode}}">
+                    <input type="number" class="form-control1" id="kode_barang" placeholder="" name="kode_barang" value="{{$barang->kode}}" min="0">
                 </div>
             </div>
 

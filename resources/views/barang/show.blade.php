@@ -8,6 +8,7 @@
 		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 			<thead>
 				<tr class="warning">
+					<th data-sortable="true">Nomor Invoice</th>
 					<th data-sortable="true">Tanggal Expired</th>
 					<th data-sortable="true">Jumlah</th>
 					<th data-sortable="true">Penyimpanan</th>
@@ -19,6 +20,13 @@
 				@if (count($expires) > 0)
 					@foreach($expires as $expire)
 						<tr>
+							<td>
+								@if(isset($expire->pembelian))
+								{{$expire->pembelian->no_invoice}}
+								@else
+								-
+								@endif
+							</td>
 							<td>{{date("j F Y", strtotime($expire->tanggal))}}</td>
 							<td>{{$expire->jumlah}}</td>
 							<td>{{$expire->penyimpanan->nama}}</td>

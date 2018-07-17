@@ -75,7 +75,7 @@
 				<label for="harga_satuan" class="col-sm-2 control-label">Harga Beli Satuan</label>
 				
 				<div class="col-sm-8">
-					<input type="text" class="form-control1" id="harga_satuan" placeholder="" name="harga_satuan">
+					<input type="number" class="form-control1" id="harga_satuan" placeholder="" name="harga_satuan" min="0">
 				</div>
 			</div>
 			
