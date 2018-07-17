@@ -4,16 +4,16 @@
 			<thead>
 				<tr>
 					<th>Bulan</th>
-					<th>Jumlah</th>
+					<th>Jumlah Pemakaian</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($pemakaians as $pemakaian)
-				<tr>
-					<td>{{date("F", strtotime($pemakaian->bulan))}}</td>
-					<td>{{$pemakaian->totalPemakaian}}</td>
-				</tr>
-				@endforeach
+				@for($i = 1; $i <= 12; $i++)
+					<tr>
+						<td>{{date('F', strtotime("2018-$i-01"))}}</td>
+						<td>{{$months[$i]}}</td>
+					</tr>
+				@endfor
 			</tbody>
 		</table>
 	</div>
