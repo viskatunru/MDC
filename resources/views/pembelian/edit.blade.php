@@ -64,15 +64,15 @@
 			<div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 				<div class="panel-body no-padding">
 					<h3>Daftar Pembelian Barang</h3>
-					<table class="table table-striped">
+					<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 						<thead>
 							<tr class="warning">
-								<th>Kode</th>
-								<th>Nama</th>
-								<th>Jumlah</th>
-								<th>Tanggal Expired</th>
-								<th>Penyimpanan</th>
-								<th>Hapus</th>
+								<th data-sortable="true">Kode</th>
+								<th data-sortable="true">Nama</th>
+								<th data-sortable="true">Jumlah</th>
+								<th data-sortable="true">Tanggal Expired</th>
+								<th data-sortable="true">Penyimpanan</th>
+								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody id="tBarangs">

@@ -92,14 +92,14 @@
 				    <a class="btn btn-primary" href="#" onclick="tambahExpire()">+</a>
 				</div>
 
-				<div class="panel panel-warning col-sm-8 col-sm-offset-2" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+				<div class="panel panel-warning col-sm-10 col-sm-offset-1" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 					<div class="panel-body no-padding">
-						<table class="table table-striped">
+						<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 							<thead>
 								<tr class="warning">
-									<th>Tanggal Expired</th>
-									<th>Stok Barang</th>
-									<th>Penyimpanan</th>
+									<th data-sortable="true">Tanggal Expired</th>
+									<th data-sortable="true">Stok Barang</th>
+									<th data-sortable="true">Penyimpanan</th>
 									<th>Hapus</th>
 								</tr>
 							</thead>
@@ -130,6 +130,10 @@
 	});
 
 	$('#penyimpanan').selectize({
+	    sortField: 'text'
+	});
+
+	$('#a').selectize({
 	    sortField: 'text'
 	});
 	
@@ -165,7 +169,6 @@
 		}
 		$('#tExpire').html(tr);
 		$('.cb_penyimpanan').html($('#seed_penyimpanan').html());
-
 	}
 
 	$(document).ready(function(){

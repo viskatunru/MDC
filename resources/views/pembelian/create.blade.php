@@ -9,7 +9,7 @@
 			{{csrf_field()}}
 			<select id="seed_penyimpanan" hidden>
 				@foreach($penyimpanans as $p)
-					<option value="{{$p->id}}" @if($p->id == 0) selected @endif>{{$p->nama}}</option>
+					<option value="{{$p->id}}">{{$p->nama}}</option>
 				@endforeach
 			</select>
 
@@ -73,16 +73,16 @@
 			<div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 				<div class="panel-body no-padding">
 					<h3>Daftar Pembelian Barang</h3>
-					<table class="table table-striped">
+					<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 						<thead>
 							<tr class="warning">
-								<th>Kode</th>
-								<th>Nama</th>
-								<th>Jumlah</th>
-								<th>Harga Total</th>
-								<th>Tanggal Expired</th>
-								<th>Penyimpanan</th>
-								<th>Hapus</th>
+								<th data-sortable="true">Kode</th>
+								<th data-sortable="true">Nama</th>
+								<th data-sortable="true">Jumlah</th>
+								<th data-sortable="true">Harga Total</th>
+								<th data-sortable="true">Tanggal Expired</th>
+								<th data-sortable="true">Penyimpanan</th>
+								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody id="tBarangs">
@@ -135,7 +135,7 @@
 
 	function LinkFormatter(value, row, index) {
 		return "<a class='btn btn-primary' " +
-		"onclick='addBarang("+ row['id'] + ',"' + row['kode'] + '","' + row['nama']+ '"' + ")'>Tambah</a>";
+		"onclick='addBarang("+ row['id'] + ',"' + row['kode'] + '","' + row['nama'] + '","' + row['penyimpanan_id']+ '"' + ")'>Tambah</a>";
 	}
 
 	function addBarang(...args)
@@ -155,17 +155,27 @@
 				"<td>" + barangs[i][1] + "</td>" + 
 				"<td>" + barangs[i][2] + "</td>" +
 				"<input type='hidden' name='id_" + counter + "' value='" + barangs[i][0] + "'>" +
-				"<td><input type='number' class='form-control1' value=1 min='1' required name='jumlah_" + counter + "'></td>" +
+				"<td><input type='number' class='form-control1' min='1' required name='jumlah_" + counter + "'></td>" +
 				"<td><input type='number' class='form-control1' placeholder='' min='0' name='harga_" + counter +"'</td>" +
 				"<td><input type='date' class='form-control1' placeholder='' name='expire_" + counter + "'</td>" +
-				"<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ counter + "'></select></td>" +
+				"<td><select class='form-control1 cb_penyimpanan' id='penyimpanan_"+ counter + "' name='penyimpanan_"+ counter + "'></select></td>" +
 				"<td><a onclick='deleteBarang(" + counter + ")' class='btn btn-delete'>Hapus</a></td>" + 
 			"</tr>";
 			counter++;
 		}
 		$('#tBarangs').html(tr);
-
 		$('.cb_penyimpanan').html($('#seed_penyimpanan').html());
+
+		for (var i = 0; i < barangs.length; i++)
+        {
+            $("#penyimpanan_" + i + " option").each(function()
+            {
+                if ($(this).val() == barangs[i][3])
+                {
+                    $(this).attr('selected', true);
+                }
+            });
+        }
 	}
 
 	function barangIsAdded(id)
