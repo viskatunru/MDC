@@ -47,7 +47,7 @@
                 
                 <div class="col-sm-8">
                     <input type="number" class="form-control1" id="harga_satuan" placeholder="" name="harga_satuan"
-                    value="{{$barang->pivot->harga_satuan}}">
+                    value="{{$barang->pivot->harga_satuan}}" min="0">
                 </div>
             </div>
 

@@ -26,4 +26,8 @@ class Expire extends Model
         return $this->belongsToMany('App\Pemakaian')->withPivot('jumlah');
     }
 
+    public function pembelian()
+    {
+        return $this->belongsTo('App\Pembelian');
+    }
 }

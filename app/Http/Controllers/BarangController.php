@@ -13,6 +13,7 @@ class BarangController extends Controller
         foreach ($barangs as $barang)
         {
             $barang->namakategori = $barang->category->nama;
+            $barang->namapenyimpanan = $barang->penyimpanan->nama;
         }
         return $barangs;
     }
@@ -68,6 +69,12 @@ class BarangController extends Controller
         $barang->penyimpanan_id = $request->id_penyimpanan;
         $barang->harga_beli = $request->harga_satuan;
         $barang->save();
+
+        $bulan = Bulan::where('bulan', '=', $request->bulan."-01")->first();
+        if ($bulan == "")
+        {
+            
+        }
 
         $counter = 0;
         while (isset($request["expire_$counter"]))
@@ -143,6 +150,7 @@ class BarangController extends Controller
         $barang->stok = $request->stok_barang;
         $barang->category_id = $request->id_kategori;
         $barang->penyimpanan_id = $request->id_penyimpanan;
+        $barang->harga_beli = $request->harga_satuan;
         $barang->save();
 
         $counter = 0;

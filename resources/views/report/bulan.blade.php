@@ -82,7 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<td>{{$i++}}</td>
 						<td>{{$barang->kode}}</td>
 						<td>{{$barang->nama}}</td>
-						<td>{{$barang->stok}}</td>
+						<td>{{$barang->pivot->stok_awal}}</td>
 					</tr>
 				@endforeach
 			</tbody>

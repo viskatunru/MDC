@@ -9,15 +9,15 @@
 			{{csrf_field()}}
 			<select id="seed_penyimpanan" hidden>
 				@foreach($penyimpanans as $p)
-					<option value="{{$p->id}}">{{$p->nama}}</option>
+					<option value="{{$p->id}}" @if($p->id == 0) selected @endif>{{$p->nama}}</option>
 				@endforeach
 			</select>
 
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Nomor Invoice</label>
+				<label for="no_invoice" class="col-sm-2 control-label">Nomor Invoice</label>
 
 				<div class="col-sm-8">
-					<input required type="text" class="form-control1" id="focusedinput" name="no_invoice">
+					<input required type="text" class="form-control1" id="no_invoice" name="no_invoice">
 				</div>
 			</div>
 
@@ -61,6 +61,7 @@
 								<th data-sortable="true" data-field="kode">Kode</th>
 								<th data-sortable="true" data-field="nama">Nama</th>
 								<th data-sortable="true" data-field="namakategori">Kategori</th>
+								<th data-sortable="true" data-field="namapenyimpanan">Penyimpanan</th>
 								<th data-sortable="true" data-field="stok">Stok Saat Ini</th>
 								<th data-field="id" data-formatter="LinkFormatter">Aksi</th>
 							</tr>
@@ -154,9 +155,9 @@
 				"<td>" + barangs[i][1] + "</td>" + 
 				"<td>" + barangs[i][2] + "</td>" +
 				"<input type='hidden' name='id_" + counter + "' value='" + barangs[i][0] + "'>" +
-				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + counter + "'></td>" +
-				"<td><input type='number' class='form-control1' placeholder='Harga' name='harga_" + counter +"'</td>" +
-				"<td><input type='date' class='form-control1' placeholder='Expire' name='expire_" + counter + "'</td>" +
+				"<td><input type='number' class='form-control1' value=1 min='1' required name='jumlah_" + counter + "'></td>" +
+				"<td><input type='number' class='form-control1' placeholder='' min='0' name='harga_" + counter +"'</td>" +
+				"<td><input type='date' class='form-control1' placeholder='' name='expire_" + counter + "'</td>" +
 				"<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ counter + "'></select></td>" +
 				"<td><a onclick='deleteBarang(" + counter + ")' class='btn btn-delete'>Hapus</a></td>" + 
 			"</tr>";

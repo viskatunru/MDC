@@ -1244,6 +1244,18 @@ select[multiple] {
   background-color: #4484ce;
   border-color: #3178ca;
 }
+.panel.panel-green {
+  border-color: #00c887;
+}
+.panel.panel-green .panel-heading {
+  color: #fffde7;
+  background-color: #06d995;
+  border-color: #00c887;
+}
+.panel.panel-blue.col-md-6,
+.panel.panel-green.col-md-6 {
+  padding: 0;
+}
 .panel.panel-red {
   border-color: #ff2028;
 }

@@ -10,7 +10,7 @@
 
             <select id="seed_penyimpanan" hidden>
                 @foreach($penyimpanans as $p)
-                    <option value="{{$p->id}}">{{$p->nama}}</option>
+                    <option value="{{$p->id}}" @if($p->id == $barang->penyimpanan_id) selected @endif>{{$p->nama}}</option>
                 @endforeach
             </select>
 

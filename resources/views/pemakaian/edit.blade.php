@@ -58,7 +58,7 @@
 				<label for="jumlah" class="col-sm-2 control-label">Jumlah Pemakaian</label>
 				
 				<div class="col-sm-8">
-					<input type="number" id="jumlah" class="form-control1" placeholder="" name="jumlah_barang" min="1">
+					<input type="number" id="jumlah" class="form-control1" placeholder="" name="jumlah_barang" value="{{$pemakaian->jumlah}}" min="1">
 				</div>
 			</div>
 			

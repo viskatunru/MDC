@@ -55,48 +55,23 @@
 	
 	<!-- Isi -->
 	<div class="panel-body no-padding">
-		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
+		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true" data-url="/ajax/pemakaian/harian">
 			<thead>
 				<tr class="warning">
-					<th data-sortable="true">Kode</th>
-					<th data-sortable="true">Nama</th>
-					<th data-sortable="true">Kategori</th>
+					<th data-sortable="true" data-field="kode">Kode</th>
+					<th data-sortable="true" data-field="nama">Nama</th>
+					<th data-sortable="true" data-field="kategori">Kategori</th>
 					
 					@foreach($dokters as $dokter)
-						<th data-sortable="true">{{$dokter->nama}}</th>
+						<th data-sortable="true" data-field="dokter_{{$dokter->id}}">{{$dokter->nama}}</th>
 					@endforeach
 					
-					<th data-sortable="true">Stok Saat Ini</th>
+					<th data-sortable="true" data-field="stok">Stok Saat Ini</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				@foreach($barangs as $barang)
-					<tr>
-						<td><u><a href="/barang/show/{{$barang->id}}">{{$barang->kode}}</a></u></td>
-						<td>{{$barang->nama}}</td>
-						<td>{{$barang->category->nama}}</td>
-						
-						@foreach($dokters as $dokter)
-							<?php
-							$pemakaians = $barang->pemakaians->where('dokter_id', '=', $dokter->id);
-							$jumlah = 0;
-							foreach ($pemakaians as $pemakaian)
-							{
-								$jumlah += $pemakaian->jumlah;
-							}
-							?>
-							
-							@if($jumlah > 0)
-								<td>{{$jumlah}}</td>
-							@else
-								<td>-</td>
-							@endif
-						@endforeach
-						
-						<td>{{$barang->stok}}</td>
-					</tr>
-				@endforeach
+
 			</tbody>
 		</table>
 	</div>
@@ -127,8 +102,27 @@
 
 </div>
 
-<!-- PRINT LAPORAN -->
-<div class="panel panel-blue" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+<!-- LIHAT STOK AWAL -->
+<div class="panel panel-green col-md-6" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+	
+	<!-- Judul -->
+	<div class="panel-heading">
+		<h2>LIHAT STOK AWAL BULANAN</h2>
+		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+	</div>
+	
+	<!-- Isi -->
+	<div class="panel-body no-padding" style="display: block;">
+		<form method="post" action="/bulan/generate" target="_blank">
+			{{csrf_field()}}
+			<input type="month" name="bulan" value="<?=date('Y-m')?>"><br><br>
+			<button type="submit" class="btn btn-primary">Kirim</button>
+		</form>
+	</div>
+</div>
+
+<!-- LIHAT LAPORAN -->
+<div class="panel panel-blue col-md-6" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	
 	<!-- Judul -->
 	<div class="panel-heading">
@@ -139,24 +133,6 @@
 	<!-- Isi -->
 	<div class="panel-body no-padding" style="display: block;">
 		<form method="get" action="/pdf/stok" target="_blank">
-			<input type="month" name="bulan" value="<?=date('Y-m')?>"><br><br>
-			<button type="submit" class="btn btn-primary">Kirim</button>
-		</form>
-	</div>
-</div>
-
-<div class="panel panel-blue" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
-	
-	<!-- Judul -->
-	<div class="panel-heading">
-		<h2>Generate Stok Awal</h2>
-		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
-	</div>
-	
-	<!-- Isi -->
-	<div class="panel-body no-padding" style="display: block;">
-		<form method="post" action="/bulan/generate" target="_blank">
-			{{csrf_field()}}
 			<input type="month" name="bulan" value="<?=date('Y-m')?>"><br><br>
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>
