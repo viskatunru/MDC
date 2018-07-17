@@ -81,8 +81,6 @@ class ExpireController extends Controller
     {
         //
         $expire = Expire::find($id);
-        $expire->barang->stok += $expire->jumlah;
-        $expire->barang->save();
         $expire->delete();
 
         return redirect()->back();

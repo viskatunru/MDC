@@ -25,4 +25,5 @@ class Expire extends Model
     {
         return $this->belongsToMany('App\Pemakaian')->withPivot('jumlah');
     }
+
 }
