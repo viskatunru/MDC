@@ -62,7 +62,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</head>
 	
 	<body>
-		<h3>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3>
+		<center><h3>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3></center>
 
 		<table class="table table-striped">
 			<thead>
@@ -80,11 +80,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<th>Pengeluaran</th>
 				</tr>
 			</thead>
+			<?php $totalPengeluaranBulanIni = 0; ?>
 			<tbody>
 				@foreach($barangs as $barang)
 					<tr>
 						<td>{{$barang->kode}}</td>
-						<td><a href="/barang/show/{{$barang->id}}">{{$barang->nama}}</a></td>
+						<td>{{$barang->nama}}</td>
 						<td>{{$barang->pivot->stok_awal}}</td>
 
 						<?php $total = 0; $pengeluaranPerBarang = 0; $jumlahBarangTerhitung = 0;?>
@@ -102,7 +103,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								@endif
 							@endforeach
 						@endforeach
-
 						@foreach($dokters as $dokter)
 							<td>
 								<?php 
@@ -115,12 +115,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								?>
 							</td>
 						@endforeach
+						<?php 
+							$pengeluaranPerBarang = ($total - $jumlahBarangTerhitung) * $barang->harga_beli + $pengeluaranPerBarang; 
+							$totalPengeluaranBulanIni += $pengeluaranPerBarang
+						?>
 						<td>{{$total}}</td>
 						<td>{{$barang->pivot->stok_awal - $total}}</td>
-						<td>{{($total - $jumlahBarangTerhitung) * $barang->harga_beli + $pengeluaranPerBarang}}</td>
+						<td>{{$pengeluaranPerBarang}}</td>
 					</tr>
 				@endforeach
 			</tbody>
 		</table>
+		Total Pengeluaran Bulan July 2018 = Rp. {{$totalPengeluaranBulanIni}}
 	</body>
 </html>
