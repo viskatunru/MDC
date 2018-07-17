@@ -34,7 +34,7 @@
 				<label for="kategori" class="col-sm-2 control-label">Kategori Barang</label>
 				
 				<div class="col-sm-8">
-					<select name="id_kategori" id="kategori" class="form-control1">
+					<select name="id_kategori" id="kategori">
 						@foreach($categories as $category)
 							<option value="{{$category->id}}">{{$category->nama}}</option>
 						@endforeach
@@ -51,7 +51,7 @@
 				<label for="lokasi" class="col-sm-2 control-label">Penyimpanan Barang</label>
 				
 				<div class="col-sm-8">
-					<select class="form-control1" id="penyimpanan" name="id_penyimpanan">
+					<select id="penyimpanan" name="id_penyimpanan">
 						@foreach($penyimpanans as $p)
 							<option value="{{$p->id}}">{{$p->nama}}</option>
 						@endforeach
@@ -124,6 +124,14 @@
 
 <script type="text/javascript">
 	var expires = new Array();
+
+	$('#kategori').selectize({
+	    sortField: 'text'
+	});
+
+	$('#penyimpanan').selectize({
+	    sortField: 'text'
+	});
 	
 	function tambahExpire()
 	{

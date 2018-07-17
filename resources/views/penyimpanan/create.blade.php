@@ -9,9 +9,9 @@
 		    {{csrf_field()}}
 		    
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Nama Penyimpanan</label>
+				<label for="nama_penyimpanan" class="col-sm-2 control-label">Nama Penyimpanan</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control1" id="focusedinput" placeholder="" name="nama_penyimpanan">
+					<input type="text" class="form-control1" id="nama_penyimpanan" placeholder="" name="nama_penyimpanan">
 				</div>
 			</div>
 			

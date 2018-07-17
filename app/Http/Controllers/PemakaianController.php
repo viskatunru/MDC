@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request, Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 
-use App\Pemakaian, App\Dokter, App\Barang, App\Expire;
+use App\Pemakaian, App\Dokter, App\Barang, App\Expire, App\Category;
 
 class PemakaianController extends Controller
 {
@@ -30,8 +30,9 @@ class PemakaianController extends Controller
     {
         //
         $dokters = Dokter::all();
+        $categories = Category::all();
         $barangs = Barang::all();
-        return view('pemakaian.create', compact('dokters', 'barangs'));
+        return view('pemakaian.create', compact('dokters', 'categories', 'barangs'));
     }
 
     /**
@@ -103,7 +104,8 @@ class PemakaianController extends Controller
         $pemakaian = Pemakaian::find($id);
         $dokters = Dokter::all();
         $barangs = Barang::all();
-        return view('pemakaian.edit', compact('pemakaian', 'dokters', 'barangs'));
+        $categories = Category::all();
+        return view('pemakaian.edit', compact('pemakaian', 'dokters', 'barangs', 'categories'));
     }
 
     /**

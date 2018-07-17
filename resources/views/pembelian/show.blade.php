@@ -12,6 +12,7 @@
 					<th>Nama</th>
 					<th>Jumlah</th>
 					<th>Tanggal Expired</th>
+					<th>Penyimpanan</th>
 					<th>Harga Satuan</th>
 					<th>Harga Total</th>
 					<th>Aksi</th>
@@ -30,6 +31,7 @@
 						Tidak memiliki tanggal expired.
 						@endif
 					</td>
+					<td>{{$barang->penyimpanan->nama}}</td>
 					<td>{{$barang->pivot->harga_satuan}}</td>
 					<td>{{$pembelian->harga_total}}</td>
 					<td>

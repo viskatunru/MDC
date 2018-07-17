@@ -25,6 +25,7 @@
 						<td>{{$pembelian->harga_total}}</td>
 						<td>
 							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan Detail</a>
+							<a href="/pembelian/edit/{{$pembelian->id}}" class="btn btn-primary">Edit</a>
 							<a href="/pembelian/delete/{{$pembelian->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
 						</td>
 					</tr>

@@ -20,6 +20,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap-table.css">
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<link rel="stylesheet" type="text/css" href="/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="/css/selectize.default.css">
 		<link rel="stylesheet" type="text/css" href="/css/custom.css">
 		<!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900"> -->
 		
@@ -30,6 +31,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="/js/bootstrap-table.js"></script>
 		<script type="text/javascript" src="/js/metisMenu.min.js"></script>
+		<script type="text/javascript" src="/js/selectize.js"></script>
 		<script type="text/javascript" src="/js/custom.js"></script>
 		
 		<!-- Favicon -->

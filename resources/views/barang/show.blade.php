@@ -23,8 +23,8 @@
 							<td>{{$expire->jumlah}}</td>
 							<td>{{$expire->penyimpanan->nama}}</td>
 							<td>
-								<a href="" class="btn btn-primary">Edit</a>
-								<a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
+								<a href="/barang/edit/{{$barang->id}}" class="btn btn-primary">Edit</a>
+								<!-- <a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a> -->
 							</td>
 						</tr>
 					@endforeach

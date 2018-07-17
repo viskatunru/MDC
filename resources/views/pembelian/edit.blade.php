@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<h3>TAMBAH PEMBELIAN BARU</h3>
+<h3>EDIT PEMBELIAN</h3>
 
 <div class="tab-content" id="divpembelian">
 	<div class="tab-pane active" id="horizontal-form">
@@ -14,21 +14,12 @@
 			</select>
 
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Nomor Invoice</label>
-
-				<div class="col-sm-8">
-					<input required type="text" class="form-control1" id="focusedinput" placeholder="Nomor Invoice" name="no_invoice">
-				</div>
-			</div>
-
-			<div class="form-group">
 				<label for="tanggal" class="col-sm-2 control-label">Tanggal Pembelian</label>
 
 				<div class="col-sm-8">
-					<input required type="date" class="form-control1" id="tanggal" name="tanggal">
+					<input required type="date" class="form-control1" id="tanggal" name="tanggal" value="{{date('Y-m-d', strtotime($pembelian->tanggal))}}">
 				</div>
 			</div>
-
 
 			<div class="form-group">
 				<label for="supplier_id" class="col-sm-2 control-label">Nama Supplier</label>
@@ -36,7 +27,7 @@
 				<div class="col-sm-8">
 					<select name="supplier_id" id="supplier_id">
 						@foreach($suppliers as $supplier)
-							<option value="{{$supplier->id}}">{{$supplier->nama}}</option>
+							<option value="{{$supplier->id}}" @if($supplier->id == $pembelian->supplier_id) selected @endif>{{$supplier->nama}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -79,7 +70,6 @@
 								<th>Kode</th>
 								<th>Nama</th>
 								<th>Jumlah</th>
-								<th>Harga Total</th>
 								<th>Tanggal Expired</th>
 								<th>Penyimpanan</th>
 								<th>Hapus</th>
@@ -156,7 +146,6 @@
 				"<td>" + barangs[i][2] + "</td>" +
 				"<input type='hidden' name='id_" + counter + "' value='" + barangs[i][0] + "'>" +
 				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + counter + "'></td>" +
-				"<td><input type='number' class='form-control1' placeholder='Harga' name='harga_" + counter +"'</td>" +
 				"<td><input type='date' class='form-control1' placeholder='Expire' name='expire_" + counter + "'</td>" +
 				"<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ counter + "'></select></td>" +
 				"<td><a onclick='deleteBarang(" + counter + ")' class='btn btn-delete'>Hapus</a></td>" + 
