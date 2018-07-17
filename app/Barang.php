@@ -18,7 +18,7 @@ class Barang extends Model
 
     public function pembelians()
     {
-    	return $this->belongsToMany('App\Pembelian')->withPivot('jumlah', 'id');
+    	return $this->belongsToMany('App\Pembelian')->withPivot('jumlah', 'id', 'harga_satuan');
     }
 
     public function expires()

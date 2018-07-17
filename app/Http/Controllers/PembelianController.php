@@ -34,19 +34,23 @@ class PembelianController extends Controller
     public function store(Request $request)
     {
         $pembelian = new Pembelian;
+        $pembelian->no_invoice = $request->no_invoice;
         $pembelian->tanggal = $request->tanggal;
         $pembelian->supplier_id = $request->supplier_id;
+        $pembelian->harga_total = 0;
         $pembelian->save();
 
         $counter = 0;
         $total = 0;
+        $hargaTotal = 0;
         while (isset($request["id_$counter"]))
         {
             $idBarang = $request["id_$counter"];
             $jumlah = $request["jumlah_$counter"];
             $tanggal = $request["expire_$counter"];
+            $harga = $request["harga_$counter"];
             $penyimpanan = $request["penyimpanan_$counter"];
-
+            $hargaTotal += $harga;
             if($tanggal != "")
             {
                 $expire = new Expire;
@@ -60,13 +64,15 @@ class PembelianController extends Controller
             }
 
             $pembelian->barangs()->attach($idBarang, 
-                ['jumlah' => $jumlah]);
+                ['jumlah' => $jumlah, 'harga_satuan' => $harga / $jumlah]);
 
             $barang = Barang::find($idBarang);
             $barang->stok += $jumlah;
             $barang->save();
             $counter++;
         }
+        $pembelian->harga_total = $hargaTotal;
+        $pembelian->save();
         return redirect()->action('PembelianController@index');
     }
     public function storePembelian(Request $request)
