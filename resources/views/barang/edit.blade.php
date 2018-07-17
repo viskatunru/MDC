@@ -115,7 +115,7 @@
 </div>
 
 <script type="text/javascript">
-    var expires = {!! $barang->expires !!};
+    var expires = {!! $barang->expires()->orderBy('tanggal')->get() !!};
     console.log(expires);
     function tambahExpire()
     {
@@ -154,7 +154,8 @@
             if (expires[i]['id'] == null)
                 tr += "<td><a onclick='deleteExpire(" + i + ")' class='btn btn-delete'>Hapus</a></td>";
             else
-                tr += "<td><a onclick='/barang/expire/delete/" + expires[i]['id'] + "' class='btn btn-delete'>Hapus Database</a></td>";
+                tr += "<td><a href='/barang/expire/delete/" + expires[i]['id'] + "' class='btn btn-delete'" +
+                "onclick='return confirm(" + '"Apakah anda yakin?"' + ");'>Hapus Database</a></td>";
             "</tr>";
         }
         $('#tExpire').html(tr);

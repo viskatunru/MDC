@@ -106,7 +106,7 @@ class BarangController extends Controller
     {
         //
         $barang = Barang::find($id);
-        $expires = $barang->expires;
+        $expires = $barang->expires()->orderBy('tanggal')->get();
 
         return view('barang.show', compact('barang' , 'expires'));
     }

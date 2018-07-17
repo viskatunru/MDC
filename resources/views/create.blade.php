@@ -11,10 +11,10 @@
 				{{csrf_field()}}
 				
 				<div class="form-group">
-					<label for="focusedinput" class="col-sm-2 control-label">Tanggal</label>
+					<label for="tanggal" class="col-sm-2 control-label">Tanggal</label>
 					
 					<div class="col-sm-8">
-						<input type="date" class="form-control1" id="focusedinput" placeholder="" name="tanggal" required>
+						<input type="date" class="form-control1" id="tanggal" placeholder="" name="tanggal" required>
 					</div>
 				</div>
 
@@ -24,7 +24,6 @@
 					
 					<div class="col-sm-8">
 						<select name="id_supplier" id="selector1" class="form-control1">
-							<option selected disabled>...</option>
 							@foreach($suppliers as $supplier)
 								<option value="{{$supplier->id}}">{{$supplier->nama}}</option>
 							@endforeach
@@ -51,7 +50,7 @@
 				{{csrf_field()}}
 
 				<div class="form-group">
-					<label for="focusedinput" class="col-sm-2 control-label">Kode Barang</label>
+					<label for="kode" class="col-sm-2 control-label">Kode Barang</label>
 					
 					<div class="col-sm-8">
 						<input type="text" class="form-control1" id="kode" placeholder="" name="kode_barang" required>
@@ -59,7 +58,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="focusedinput" class="col-sm-2 control-label">Nama Barang</label>
+					<label for="nama" class="col-sm-2 control-label">Nama Barang</label>
 					
 					<div class="col-sm-8">
 						<input type="text" class="form-control1" id="nama" placeholder="" name="nama_barang" required>
@@ -67,7 +66,7 @@
 				</div>
 				
 				<div class="form-group">
-					<label for="focusedinput" class="col-sm-2 control-label">Jumlah Pembelian</label>
+					<label for="jumlah" class="col-sm-2 control-label">Jumlah Pembelian</label>
 					
 					<div class="col-sm-8">
 						<input type="number" class="form-control1" id="jumlah" placeholder="" name="stok" required>
@@ -75,7 +74,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="focusedinput" class="col-sm-2 control-label">Tanggal Expire</label>
+					<label for="expire" class="col-sm-2 control-label">Tanggal Expire</label>
 					
 					<div class="col-sm-8">
 						<input type="date" class="form-control1" id="expire" placeholder="" name="tanggal_expire" required>

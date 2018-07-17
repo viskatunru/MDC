@@ -9,10 +9,10 @@
 		    {{csrf_field()}}
 		    
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Nama Dokter</label>
+				<label for="nama_dokter" class="col-sm-2 control-label">Nama Dokter</label>
 				
 				<div class="col-sm-8">
-					<input type="text" class="form-control1" id="focusedinput" placeholder="" name="nama_dokter">
+					<input type="text" class="form-control1" id="nama_dokter" placeholder="" name="nama_dokter">
 				</div>
 			</div>
 			

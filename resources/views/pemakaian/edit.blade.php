@@ -9,10 +9,10 @@
 			{{csrf_field()}}
 			
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Tanggal</label>
+				<label for="tanggal" class="col-sm-2 control-label">Tanggal</label>
 				
 				<div class="col-sm-8">
-					<input type="date" class="form-control1" id="focusedinput" placeholder="" name="tanggal" value="{{date('Y-m-d', strtotime($pemakaian->tanggal))}}">
+					<input type="date" class="form-control1" id="tanggal" placeholder="" name="tanggal" value="{{date('Y-m-d', strtotime($pemakaian->tanggal))}}">
 				</div>
 			</div>
 			
@@ -30,7 +30,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="selector1" class="col-sm-2 control-label">Nama Barang</label>
+				<label for="cBoxBarang" class="col-sm-2 control-label">Nama Barang</label>
 				
 				<div class="col-sm-5">
 					<select name="id_barang" id="cBoxBarang" class="form-control1">
@@ -54,7 +54,7 @@
 			</div>
 			
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Jumlah Pemakaian</label>
+				<label for="jumlah" class="col-sm-2 control-label">Jumlah Pemakaian</label>
 				
 				<div class="col-sm-8">
 					<input type="number" id="jumlah" class="form-control1" placeholder="" name="jumlah_barang" min="1">

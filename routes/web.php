@@ -72,7 +72,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/expire/edit/{id}', 'ExpireController@edit');
 
-	Route::get('/barang/expire/delete/{id}');
+	Route::get('/barang/expire/delete/{id}', 'ExpireController@destroy');
 
 	//Ajax
 	Route::get('/ajax/barangByExpiryDate', 'AjaxController@barangByExpiryDate')->name('ajax_expire');

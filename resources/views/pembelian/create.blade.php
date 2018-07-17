@@ -14,15 +14,15 @@
 			</select>
 
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Tanggal Pembelian</label>
+				<label for="tanggal" class="col-sm-2 control-label">Tanggal Pembelian</label>
 
 				<div class="col-sm-8">
-					<input required type="date" class="form-control1" id="focusedinput" placeholder="Tanggal" name="tanggal">
+					<input required type="date" class="form-control1" id="tanggal" name="tanggal">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Nama Supplier</label>
+				<label for="supplier_id" class="col-sm-2 control-label">Nama Supplier</label>
 				
 				<div class="col-sm-8">
 					<select name="supplier_id" class="form-control1" id="supplier_id">
@@ -34,7 +34,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="focusedinput" class="col-sm-2 control-label">Aksi</label>
+				<label for="caribarang" class="col-sm-2 control-label">Aksi</label>
 					
 				<div class="col-sm-3">
 					<a href="#" class="btn btn-primary" id="caribarang" style="width:100%;">Cari Barang</a>

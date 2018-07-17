@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Expire;
 class ExpireController extends Controller
 {
     /**
@@ -80,5 +80,11 @@ class ExpireController extends Controller
     public function destroy($id)
     {
         //
+        $expire = Expire::find($id);
+        $expire->barang->stok += $expire->jumlah;
+        $expire->barang->save();
+        $expire->delete();
+
+        return redirect()->back();
     }
 }
