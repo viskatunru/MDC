@@ -36,7 +36,7 @@
                 <label for="id_kategori" class="col-sm-2 control-label">Kategori Barang</label>
                 
                 <div class="col-sm-8">
-                    <select name="id_kategori" id="id_kategori" class="form-control1">
+                    <select name="id_kategori" id="id_kategori">
                         @foreach($categories as $category)
                         <option value="{{$category->id}}" @if($category->id == $barang->category_id) selected @endif>{{$category->nama}}</option>
                         @endforeach
@@ -52,7 +52,7 @@
                 <label for="lokasi_barang" class="col-sm-2 control-label">Penyimpanan Barang</label>
                 
                 <div class="col-sm-8">
-                    <select name="id_penyimpanan" class="form-control1">
+                    <select name="id_penyimpanan" id="id_penyimpanan">
                         @foreach($penyimpanans as $p)
                             <option value="{{$p->id}}" @if($p->id == $barang->penyimpanan_id) selected @endif>{{$p->nama}}</option>
                         @endforeach
@@ -116,7 +116,15 @@
 
 <script type="text/javascript">
     var expires = {!! $barang->expires()->orderBy('tanggal')->get() !!};
-    console.log(expires);
+
+    $('#id_kategori').selectize({
+        sortField: 'text'
+    });
+
+    $('#id_penyimpanan').selectize({
+        sortField: 'text'
+    });
+
     function tambahExpire()
     {
         if($('#expire').val() != "")

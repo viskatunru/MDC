@@ -133,7 +133,8 @@ class PembelianController extends Controller
     {
         $pembelian = Pembelian::find($idPembelian);
         $barang = $pembelian->barangs()->find($idBarang);
-        return view('pembelian.editBarang', compact('pembelian', 'barang'));
+        $penyimpanans = Penyimpanan::all();
+        return view('pembelian.editBarang', compact('pembelian', 'barang', 'penyimpanans'));
     }
 
     public function storeEditBarang(Request $request)
@@ -173,6 +174,11 @@ class PembelianController extends Controller
     public function edit($id)
     {
         //
+        $pembelian = Pembelian::find($id);
+        $suppliers = Supplier::all();
+        $categories = Category::all();
+        $penyimpanans = Penyimpanan::all();
+        return view('pembelian.edit', compact('pembelian', 'suppliers', 'categories', 'penyimpanans'));
     }
 
     /**

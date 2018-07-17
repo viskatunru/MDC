@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('content')
-<h3>TAMBAH PEMBELIAN BARU</h3>
+<h3>EDIT PEMBELIAN</h3>
 
 <div class="tab-content" id="divpembelian">
 	<div class="tab-pane active" id="horizontal-form">
@@ -17,7 +17,7 @@
 				<label for="tanggal" class="col-sm-2 control-label">Tanggal Pembelian</label>
 
 				<div class="col-sm-8">
-					<input required type="date" class="form-control1" id="tanggal" name="tanggal">
+					<input required type="date" class="form-control1" id="tanggal" name="tanggal" value="{{date('Y-m-d', strtotime($pembelian->tanggal))}}">
 				</div>
 			</div>
 
@@ -27,7 +27,7 @@
 				<div class="col-sm-8">
 					<select name="supplier_id" id="supplier_id">
 						@foreach($suppliers as $supplier)
-							<option value="{{$supplier->id}}">{{$supplier->nama}}</option>
+							<option value="{{$supplier->id}}" @if($supplier->id == $pembelian->supplier_id) selected @endif>{{$supplier->nama}}</option>
 						@endforeach
 					</select>
 				</div>

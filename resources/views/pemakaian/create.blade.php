@@ -20,7 +20,7 @@
 				<label for="nama_dokter" class="col-sm-2 control-label">Nama Dokter</label>
 				
 				<div class="col-sm-8">
-					<select name="id_dokter" id="nama_dokter" class="form-control1">
+					<select name="id_dokter" id="nama_dokter">
 						@foreach($dokters as $dokter)
 							<option value="{{$dokter->id}}">{{$dokter->nama}}</option>
 						@endforeach
@@ -34,11 +34,11 @@
 				<div class="col-sm-5">
 					<select name="id_barang" id="cBoxBarang">
 						@foreach($categories as $c)
-						<optgroup data-group="{{$c->nama}}">
-							@foreach($c->barangs as $barang)
-								<option value="{{$barang->id}}">{{$barang->nama}}</option>
-							@endforeach
-						</optgroup>
+							<optgroup label="{{$c->nama}}">
+								@foreach($c->barangs as $barang)
+									<option value="{{$barang->id}}">{{$barang->nama}}</option>
+								@endforeach
+							</optgroup>
 						@endforeach
 					</select>
 				</div>
@@ -75,6 +75,10 @@
 
 <!-- SCRIPT -->
 <script type="text/javascript">
+	$('#nama_dokter').selectize({
+	    sortField: 'text'
+	});
+
 	$('#cBoxBarang').selectize({
 	    sortField: 'text'
 	});

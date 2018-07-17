@@ -104,7 +104,8 @@ class PemakaianController extends Controller
         $pemakaian = Pemakaian::find($id);
         $dokters = Dokter::all();
         $barangs = Barang::all();
-        return view('pemakaian.edit', compact('pemakaian', 'dokters', 'barangs'));
+        $categories = Category::all();
+        return view('pemakaian.edit', compact('pemakaian', 'dokters', 'barangs', 'categories'));
     }
 
     /**
