@@ -29,7 +29,6 @@
 				</div>
 			</div>
 
-
 			<div class="form-group">
 				<label for="supplier_id" class="col-sm-2 control-label">Nama Supplier</label>
 				

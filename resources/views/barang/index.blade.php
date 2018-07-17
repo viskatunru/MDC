@@ -26,7 +26,7 @@
 						<td>{{$barang->category->nama}}</td>
 						<td>{{$barang->penyimpanan->nama}}</td>
 						<td>{{$barang->stok}}</td>
-						<td>{{$barang->pembelians()->find(1)->pivot->harga_satuan}}</td>
+						<td>{{$barang->harga_beli}}</td>
 						<td>
 							<a href="/barang/edit/{{$barang->id}}" class="btn btn-primary">Edit</a>
 							<a href="/barang/delete/{{$barang->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>

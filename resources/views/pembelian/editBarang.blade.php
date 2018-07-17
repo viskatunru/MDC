@@ -43,6 +43,15 @@
             </div>
 
             <div class="form-group">
+                <label for="harga_satuan" class="col-sm-2 control-label">Harga Satuan</label>
+                
+                <div class="col-sm-8">
+                    <input type="number" class="form-control1" id="harga_satuan" placeholder="" name="harga_satuan"
+                    value="{{$barang->pivot->harga_satuan}}">
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label for="expire" class="col-sm-2 control-label">Tanggal Expired</label>
                 
                 <div class="col-sm-8">
