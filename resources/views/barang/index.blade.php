@@ -17,14 +17,17 @@
 					<th data-field="id" data-formatter="LinkFormatter">Aksi</th>
 				</tr>
 			</thead>
+
 			<tbody>
+
 			</tbody>
 		</table>
 	</div>
 </div>
+
 <script type="text/javascript">
 	function LinkFormatter(value, row, index) {
-		return "<a href='/barang/edit/" + row['id'] + "' class='btn btn-primary'>Edit</a>";
+		return "<a href='/barang/show/" + row['id'] + "' class='btn btn-blue'>Tampilkan</a><br><a href='/barang/edit/" + row['id'] + "' class='btn btn-primary'>Edit</a><br><a href='/barang/delete/" + row['id'] + "' class='btn btn-delete' onclick='return confirm(\"Apakah anda yakin?\");'>Hapus</a>";
 	}
 </script>
 @endsection

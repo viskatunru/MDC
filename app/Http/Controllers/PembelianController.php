@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use App\Pembelian, App\Supplier, App\Barang, App\Category, App\Penyimpanan, App\Expire;
 class PembelianController extends Controller
 {
-
     public function json()
     {
         $pembelians = Pembelian::all();
         foreach($pembelians as $p)
         {
+            $p->tanggal = date("j F Y", strtotime($p->tanggal));
             $p->harga_total = str_replace(',', '.', number_format($p->harga_total));
-            $p->nama_supplier = $p->supplier->nama;   
+            $p->nama_supplier = $p->supplier->nama;
             if ($p->status_pelunasan == 1)
                 $p->status = "Lunas";
             else
@@ -21,6 +21,7 @@ class PembelianController extends Controller
         }
         return $pembelians;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -219,6 +220,48 @@ class PembelianController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $pembelian = Pembelian::find($id);
+        $pembelian->no_invoice = $request->no_invoice;
+        $pembelian->tanggal = $request->tanggal;
+        $pembelian->supplier_id = $request->supplier_id;
+        $pembelian->harga_total = 0;
+        $pembelian->status_pelunasan = $request->status_pelunasan;
+        $pembelian->save();
+
+        $counter = 0;
+        $total = 0;
+        $hargaTotal = 0;
+        while (isset($request["id_$counter"]))
+        {
+            $idBarang = $request["id_$counter"];
+            $jumlah = $request["jumlah_$counter"];
+            $tanggal = $request["expire_$counter"];
+            $harga = $request["harga_$counter"];
+            $penyimpanan = $request["penyimpanan_$counter"];
+            $hargaTotal += $harga;
+            if($tanggal != "")
+            {
+                $expire = Expire::find($id);
+                $expire->tanggal = $tanggal;
+                $expire->jumlah = $jumlah;
+                $expire->sisa = $jumlah;
+                $expire->penyimpanan_id = $penyimpanan;
+                $expire->barang_id = $idBarang;
+                $expire->pembelian_id = $pembelian->id;
+                $expire->save();
+            }
+
+            $pembelian->barangs()->attach($idBarang, 
+                ['jumlah' => $jumlah, 'harga_satuan' => $harga / $jumlah]);
+
+            $barang = Barang::find($idBarang);
+            $barang->stok += $jumlah;
+            $barang->save();
+            $counter++;
+        }
+        $pembelian->harga_total = $hargaTotal;
+        $pembelian->save();
+        return redirect()->route('pembelian_all');
     }
 
     /**

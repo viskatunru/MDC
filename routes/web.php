@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/barang/edit/{id}', 'BarangController@edit');
 	Route::post('/barang/edit/{id}', 'BarangController@update');
 	Route::get('/barang/delete/{id}', 'BarangController@destroy');
+	Route::get('/barang/json', 'BarangController@json');
 
 	Route::get('/dokter', 'DokterController@index')->name("dokter_all");
 	Route::get('/dokter/show/{id}', 'DokterController@show');
@@ -45,6 +46,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/pemakaian/edit/{id}', 'PemakaianController@edit');
 	Route::post('/pemakaian/edit/{id}', 'PemakaianController@update');
 	Route::get('/pemakaian/delete/{id}', 'PemakaianController@destroy');
+	Route::get('/pemakaian/json', 'PemakaianController@json');
+	Route::get('/test', 'PemakaianController@showYearly');
 
 	Route::get('/pembelian/show/{id}', 'PembelianController@show');
 	Route::get('/pembelian/edit/{id}', 'PembelianController@edit');
@@ -70,15 +73,11 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/laporan/stok', 'HomeController@lihatLaporanStok');
 	Route::get('/pdf/stok', 'HomeController@cetakLaporanStok');
 
-	Route::get('/test', 'PemakaianController@showYearly');
-
-	Route::get('/barang/json', 'BarangController@json');
-
 	Route::get('/expire/edit/{id}', 'ExpireController@edit');
-
 	Route::get('/barang/expire/delete/{id}', 'ExpireController@destroy');
 
 	Route::post('/bulan/generate', 'BulanController@generateStok');
+	
 	//Ajax
 	Route::get('/ajax/barangByExpiryDate', 'AjaxController@barangByExpiryDate')->name('ajax_expire');
 	Route::get('/ajax/barang/showMonthly', 'PemakaianController@showMonthly');

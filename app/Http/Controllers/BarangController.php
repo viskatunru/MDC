@@ -18,6 +18,7 @@ class BarangController extends Controller
         }
         return $barangs;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -178,7 +179,6 @@ class BarangController extends Controller
             $expire->jumlah = $jumlah;
             $expire->penyimpanan_id = $penyimpananExpire;
             $expire->barang_id = $barang->id;
-            $expire->pembelian_id = null;
             $expire->save();
             $counter++;
         }

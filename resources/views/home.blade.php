@@ -17,7 +17,7 @@
 			
 			<!-- Judul -->
 			<div class="panel-heading" id="panel-heading-red">
-				<h4 class="panel-title">EXPIRED BULAN INI</h4>
+				<h4 class="panel-title panel-title-home">EXPIRED DALAM 1 BULAN</h4>
 			</div>
 
 			<div class="divActivityBox" id="divExpireBulanIni">
@@ -31,7 +31,7 @@
 		
 			<!-- Judul -->
 			<div class="panel-heading" id="panel-heading-blue">
-				<h4 class="panel-title">EXPIRED 3 BULAN</h4>
+				<h4 class="panel-title panel-title-home">EXPIRED DALAM 3 BULAN</h4>
 			</div>
 		
 			<div class="divActivityBox" id="divExpireTigaBulan">
@@ -45,7 +45,7 @@
 		
 			<!-- Judul -->
 			<div class="panel-heading" id="panel-heading-green">
-				<h4 class="panel-title">EXPIRED 6 BULAN</h4>
+				<h4 class="panel-title panel-title-home">EXPIRED DALAM 6 BULAN</h4>
 			</div>
 		
 			<div id="divExpireEnamBulan">

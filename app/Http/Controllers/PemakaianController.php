@@ -9,6 +9,20 @@ use App\Pemakaian, App\Dokter, App\Barang, App\Expire, App\Category;
 
 class PemakaianController extends Controller
 {
+    public function json()
+    {
+        $pemakaians = Pemakaian::all();
+        foreach($pemakaians as $p)
+        {
+            $p->tanggal = date("j F Y", strtotime($p->tanggal));
+            $p->jumlah = str_replace(',', '.', number_format($p->jumlah));
+            $p->nama_dokter = $p->dokter->nama;
+            $p->kode_barang = $p->barang->kode;
+            $p->nama_barang = $p->barang->nama;
+        }
+        return $pemakaians;
+    }
+
     /**
      * Display a listing of the resource.
      *

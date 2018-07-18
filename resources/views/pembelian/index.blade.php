@@ -14,13 +14,20 @@
 					<th data-sortable="true" data-field="nama_supplier">Nama Supplier</th>
 					<th data-sortable="true" data-field="harga_total">Harga Total</th>
 					<th data-sortable="true" data-field="status">Status Pelunasan</th>
-					<th>Aksi</th>
+					<th data-field="id" data-formatter="LinkFormatter">Aksi</th>
 				</tr>
 			</thead>
 			
 			<tbody>
+
 			</tbody>
 		</table>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function LinkFormatter(value, row, index) {
+		return "<a href='/pembelian/show/" + row['id'] + "' class='btn btn-blue'>Tampilkan</a><br><a href='/pembelian/edit/" + row['id'] + "' class='btn btn-primary'>Edit</a><br><a href='/pembelian/delete/" + row['id'] + "' class='btn btn-delete' onclick='return confirm(\"Apakah anda yakin?\");'>Hapus</a>";
+	}
+</script>
 @endsection

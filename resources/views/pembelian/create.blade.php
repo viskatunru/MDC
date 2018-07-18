@@ -52,8 +52,6 @@
 				</div>
 			</div>
 
-
-
 			<div class="form-group">
 				<label for="caribarang" class="col-sm-2 control-label">Aksi</label>
 					

@@ -777,6 +777,10 @@ i.icon_13{
   border-top-right-radius: 0 !important;
   color:#fff;
 }
+.panel-title-home {
+  font-size: 15px !important;
+  line-height: 155% !important;
+}
 #panel-heading-red {
   background-color:#ff383f;
 }

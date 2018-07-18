@@ -5,36 +5,29 @@
 
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
-		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
+		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true" data-url="/pemakaian/json">
 			<thead>
 				<tr class="warning">
-					<th data-sortable="true">ID</th>
-					<th data-sortable="true">Tanggal</th>
-					<th data-sortable="true">Nama Dokter</th>
-					<th data-sortable="true">Kode Barang</th>
-					<th data-sortable="true">Nama Barang</th>
-					<th data-sortable="true">Jumlah Pemakaian</th>
-					<th>Aksi</th>
+					<th data-sortable="true" data-field="id">ID</th>
+					<th data-sortable="true" data-field="tanggal">Tanggal</th>
+					<th data-sortable="true" data-field="nama_dokter">Nama Dokter</th>
+					<th data-sortable="true" data-field="kode_barang">Kode Barang</th>
+					<th data-sortable="true" data-field="nama_barang">Nama Barang</th>
+					<th data-sortable="true" data-field="jumlah">Jumlah Pemakaian</th>
+					<th data-field="id" data-formatter="LinkFormatter">Aksi</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				@foreach($pemakaians as $pemakaian)
-					<tr>
-						<td>{{$pemakaian->id}}</td>
-						<td>{{date('j F Y', strtotime($pemakaian->tanggal))}}</td>
-						<td><u><a href="/dokter/show/{{$pemakaian->dokter->id}}">{{$pemakaian->dokter->nama}}</a></u></td>
-						<td><u><a href="/barang/show/{{$pemakaian->barang->id}}">{{$pemakaian->barang->kode}}</a></u></td>
-						<td>{{$pemakaian->barang->nama}}</td>
-						<td class="right">{{str_replace(',', '.', number_format($pemakaian->jumlah))}}</td>
-						<td>
-							<a href="/pemakaian/edit/{{$pemakaian->id}}" class="btn btn-primary">Edit</a>
-							<a href="/pemakaian/delete/{{$pemakaian->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
-						</td>
-					</tr>
-				@endforeach
+				
 			</tbody>
 		</table>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function LinkFormatter(value, row, index) {
+		return "<a href='/pemakaian/edit/" + row['id'] + "' class='btn btn-primary'>Edit</a><br><a href='/pemakaian/delete/" + row['id'] + "' class='btn btn-delete' onclick='return confirm(\"Apakah anda yakin?\");'>Hapus</a>";
+	}
+</script>
 @endsection

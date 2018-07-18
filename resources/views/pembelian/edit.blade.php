@@ -14,6 +14,14 @@
 			</select>
 
 			<div class="form-group">
+				<label for="no_invoice" class="col-sm-2 control-label">Nomor Invoice</label>
+
+				<div class="col-sm-8">
+					<input required type="text" class="form-control1" id="no_invoice" name="no_invoice" value="{{$pembelian->no_invoice}}">
+				</div>
+			</div>
+
+			<div class="form-group">
 				<label for="tanggal" class="col-sm-2 control-label">Tanggal Pembelian</label>
 
 				<div class="col-sm-8">
@@ -29,6 +37,17 @@
 						@foreach($suppliers as $supplier)
 							<option value="{{$supplier->id}}" @if($supplier->id == $pembelian->supplier_id) selected @endif>{{$supplier->nama}}</option>
 						@endforeach
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="status_pelunasan" class="col-sm-2 control-label">Status Pelunasan</label>
+
+				<div class="col-sm-8">
+					<select required class="form-control1" name="status_pelunasan" id="status_pelunasan">
+						<option value="1" @if($pembelian->status_lunas == 1) selected @endif>Lunas</option>
+						<option value="0" @if($pembelian->status_lunas == 0) selected @endif>Belum Lunas</option>
 					</select>
 				</div>
 			</div>
@@ -152,7 +171,7 @@
 				"<input type='hidden' name='id_" + counter + "' value='" + barangs[i]['id'] + "'>" +
 				"<td><input type='number' class='form-control1' value='" + barangs[i]['pivot']['jumlah'] + "'  min='1' required name='jumlah_" + counter + "'></td>" +
 				"<td><input type='number' class='form-control1' value='" + barangs[i]['pivot']['harga_satuan'] * barangs[i]['pivot']['jumlah'] + "' min='0' name='harga_" + counter +"'></td>" +
-				"<td><input type='date' class='form-control1' value='' name='expire_" + counter + "'</td>" +
+				"<td><input type='date' class='form-control1' value='" + barangs[i]['pivot']['tanggal'] + "' name='expire_" + counter + "'</td>" +
 				"<td><select class='form-control1 cb_penyimpanan' id='penyimpanan_"+ counter + "' name='penyimpanan_"+ counter + "'></select></td>";
 			if (barangs[i]['id'] == null)
                 tr += "<td><a onclick='deleteBarang(" + i + ")' class='btn btn-delete'>Hapus</a></td>";

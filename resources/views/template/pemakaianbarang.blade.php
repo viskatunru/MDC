@@ -11,7 +11,7 @@
 				@for($i = 1; $i <= 12; $i++)
 					<tr>
 						<td>{{date('F', strtotime("2018-$i-01"))}}</td>
-						<td>{{$months[$i]}}</td>
+						<td>{{str_replace(',', '.', number_format($months[$i]))}}</td>
 					</tr>
 				@endfor
 			</tbody>
