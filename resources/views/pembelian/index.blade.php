@@ -27,7 +27,7 @@
 
 <script type="text/javascript">
 	function LinkFormatter(value, row, index) {
-		return "<a href='/pembelian/show/" + row['id'] + "' class='btn btn-blue'>Tampilkan</a><br><a href='/pembelian/edit/" + row['id'] + "' class='btn btn-primary'>Edit</a><br><a href='/pembelian/delete/" + row['id'] + "' class='btn btn-delete' onclick='return confirm(\"Apakah anda yakin?\");'>Hapus</a>";
+		return "<a href='/pembelian/show/" + row['id'] + "' class='btn btn-blue'>Tampilkan</a><br><a href='/pembelian/delete/" + row['id'] + "' class='btn btn-delete' onclick='return confirm(\"Apakah anda yakin?\");'>Hapus</a>";
 	}
 </script>
 @endsection
