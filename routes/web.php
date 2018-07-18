@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/supplier/edit/{id}', 'SupplierController@edit');
 	Route::post('/supplier/edit/{id}', 'SupplierController@update');
 	Route::get('/supplier/delete/{id}', 'SupplierController@destroy');
+	Route::get('/supplier/json', 'SupplierController@json');
 
 	Route::get('/barang', 'BarangController@index')->name("barang_all");
 	Route::get('/barang/show/{id}', 'BarangController@show');
