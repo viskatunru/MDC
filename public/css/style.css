@@ -260,8 +260,7 @@ hr {
   font-family: Helvetica, sans-serif;
 }
 nav.top1.navbar.navbar-default.navbar-static-top {
-  /*background-color:rgb(6, 217, 149);*/
-  background-color:#4484ce;
+  background-color:rgb(6, 217, 149);
   border: none !important;
   font-family: Helvetica, sans-serif;
 }
@@ -775,6 +774,9 @@ i.icon_13{
 }
 #panel-heading-green {
   background-color:#06d995;
+}
+#panel-heading-blue {
+  background-color:#4484ce;
 }
 .stats-info ul {
   margin: 0;
@@ -1299,9 +1301,23 @@ select[multiple] {
   background-color: #06d995;
   border-color: #00c887;
 }
-.panel.panel-blue.col-md-4,
-.panel.panel-green.col-md-4 {
+.panel.panel-blue.col-md-6,
+.panel.panel-green.col-md-6 {
   padding: 0;
+}
+@media(min-width:992px) {
+  .panel.panel-green.col-md-6 {
+    width: 48%;
+    margin-right: 2%;
+  }
+}
+@media(max-width:991px) {
+  .divActivityBox {
+    margin-bottom: 0px;
+  }
+  #divExpireEnamBulan {
+    margin-bottom: 0;
+  }
 }
 .panel.panel-red {
   border-color: #ff2028;

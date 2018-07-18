@@ -20,7 +20,7 @@
 				<h4 class="panel-title">EXPIRED BULAN INI</h4>
 			</div>
 
-			<div id="divExpireBulanIni">
+			<div class="divActivityBox" id="divExpireBulanIni">
 			</div>		
 		</div>
 	</div>
@@ -30,11 +30,11 @@
 		<div class="activity_box">
 		
 			<!-- Judul -->
-			<div class="panel-heading" id="panel-heading-yellow">
+			<div class="panel-heading" id="panel-heading-blue">
 				<h4 class="panel-title">EXPIRED 3 BULAN</h4>
 			</div>
 		
-			<div id="divExpireTigaBulan">
+			<div class="divActivityBox" id="divExpireTigaBulan">
 			</div>
 		</div>
 	</div>
@@ -118,7 +118,7 @@
 </div>
 
 <!-- CEK STOK AWAL -->
-<div class="panel panel-green col-md-4" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+<div class="panel panel-green col-md-6" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	
 	<!-- Judul -->
 	<div class="panel-heading">
@@ -137,7 +137,7 @@
 </div>
 
 <!-- CEK LAPORAN PEMAKAIAN -->
-<div class="panel panel-blue col-md-4" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+<div class="panel panel-blue col-md-6" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	
 	<!-- Judul -->
 	<div class="panel-heading">
@@ -147,25 +147,7 @@
 	
 	<!-- Isi -->
 	<div class="panel-body no-padding" style="display: block;">
-		<form method="get" action="/pdf/stok" target="_blank">
-			<input type="month" name="bulan" value="<?=date('Y-m')?>">
-			<button type="submit" class="btn btn-primary">Kirim</button>
-		</form>
-	</div>
-</div>
-
-<!-- PRINT LAPORAN PEMAKAIAN -->
-<div class="panel panel-blue col-md-4" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
-	
-	<!-- Judul -->
-	<div class="panel-heading">
-		<h2>PRINT LAPORAN PEMAKAIAN</h2>
-		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
-	</div>
-	
-	<!-- Isi -->
-	<div class="panel-body no-padding" style="display: block;">
-		<form method="get" action="/pdf/stok" target="_blank">
+		<form method="get" action="/laporan/stok" target="_blank">
 			<input type="month" name="bulan" value="<?=date('Y-m')?>">
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>

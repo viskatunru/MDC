@@ -18,7 +18,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<!-- Stylesheet -->
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900">
 		<style>
 			body,
 			html {

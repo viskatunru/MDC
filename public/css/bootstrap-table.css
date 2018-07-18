@@ -280,7 +280,8 @@
 }
 
 /* support bootstrap 3 */
-.bootstrap-table .table thead > tr > th {
+.bootstrap-table .table thead > tr > th,
+.bootstrap-table .table tfoot > tr > td {
     padding: 0;
     margin: 0;
     background-color: #fcf8e3;
