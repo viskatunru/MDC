@@ -5,31 +5,20 @@
 
 <div class="panel panel-warning" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	<div class="panel-body no-padding">
-		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
+		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true" data-url="/pembelian/json">
 			<thead>
 				<tr class="warning">
-					<th data-sortable="true">ID</th>
-					<th data-sortable="true">Tanggal</th>
-					<th data-sortable="true">Nama Supplier</th>
-					<th data-sortable="true">Harga Total</th>
+					<th data-sortable="true" data-field="id">ID</th>
+					<th data-sortable="true" data-field="no_invoice">Nomor Invoice</th>
+					<th data-sortable="true" data-field="tanggal">Tanggal</th>
+					<th data-sortable="true" data-field="nama_supplier">Nama Supplier</th>
+					<th data-sortable="true" data-field="harga_total">Harga Total</th>
+					<th data-sortable="true" data-field="status">Status Pelunasan</th>
 					<th>Aksi</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				@foreach($pembelians as $pembelian)
-					<tr>
-						<td>{{$pembelian->id}}</td>
-						<td>{{date('j F Y', strtotime($pembelian->tanggal))}}</td>
-						<td><u><a href="/supplier/show/{{$pembelian->supplier->id}}">{{$pembelian->supplier->nama}}</a></u></td>
-						<td class="right">{{str_replace(',', '.', number_format($pembelian->harga_total))}}</td>
-						<td>
-							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-blue">Tampilkan</a>
-							<a href="/pembelian/edit/{{$pembelian->id}}" class="btn btn-primary">Edit</a>
-							<a href="/pembelian/delete/{{$pembelian->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
-						</td>
-					</tr>
-				@endforeach
 			</tbody>
 		</table>
 	</div>
