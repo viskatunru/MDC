@@ -14,7 +14,7 @@
 					<th data-sortable="true">Harga Total</th>
 					<th data-sortable="true">Tanggal Expired</th>
 					<th data-sortable="true">Penyimpanan</th>
-					<th>Aksi</th>
+					<!-- <th>Aksi</th> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -33,12 +33,12 @@
 						@endif
 					</td>
 					<td>{{$barang->penyimpanan->nama}}</td>
-					<td>
-						<!-- <a class="btn btn-primary" href="/pembelian/barang/edit/{{$pembelian->id}}/{{$barang->id}}">Edit</a>
-						<a class="btn btn-delete" href="/pembelian/barang/delete/{{$pembelian->id}}/{{$barang->pivot->id}}" onclick="return confirm('Apakah anda yakin?');">Hapus</a> -->
+					<!-- <td>
+						<a class="btn btn-primary" href="/pembelian/barang/edit/{{$pembelian->id}}/{{$barang->id}}">Edit</a>
+						<a class="btn btn-delete" href="/pembelian/barang/delete/{{$pembelian->id}}/{{$barang->pivot->id}}" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
 
 						<a class="btn btn-primary" href="/pembelian/edit/{{$pembelian->id}}">Edit</a>
-					</td>
+					</td> -->
 				</tr>
 				@endforeach
 			</tbody>
