@@ -81,12 +81,18 @@ class BarangController extends Controller
         {
             $tanggal = $request["expire_$counter"];
             $jumlah = $request["jumlah_$counter"];
+            $penyimpananExpire = $request["penyimpanan_$counter"];
+            if (isset($request["id_$counter"]))
+                $expire = Expire::find($request["id_$counter"]);
+            else
+            {
+                $expire = new Expire;
+                $expire->sisa = $jumlah;
+            }
 
-            $expire = new Expire;
             $expire->tanggal = $tanggal;
             $expire->jumlah = $jumlah;
-            $expire->sisa = $jumlah;
-            $expire->penyimpanan_id = $barang->penyimpanan_id;
+            $expire->penyimpanan_id = $penyimpananExpire;
             $expire->barang_id = $barang->id;
             $expire->pembelian_id = null;
             $expire->save();

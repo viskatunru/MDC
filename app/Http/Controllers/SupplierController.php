@@ -46,10 +46,10 @@ class SupplierController extends Controller
         //
         $supplier = new Supplier;
         $supplier->nama = $request->nama_supplier;
-        $supplier->alamat = $request->alamat;
-        $supplier->nomor_telepon = $request->nomor_telepon;
-        $supplier->email = $request->email;
         $supplier->nomor_rekening = $request->nomor_rekening;
+        $supplier->nomor_telepon = $request->nomor_telepon;
+        $supplier->alamat = $request->alamat;
+        $supplier->email = $request->email;
         $supplier->save();
         return redirect()->action('SupplierController@index');
     }
@@ -93,6 +93,10 @@ class SupplierController extends Controller
         //
         $supplier = Supplier::find($id);
         $supplier->nama = $request->nama_supplier;
+        $supplier->nomor_rekening = $request->nomor_rekening;
+        $supplier->nomor_telepon = $request->nomor_telepon;
+        $supplier->email = $request->email;
+        $supplier->alamat = $request->alamat;
         $supplier->save();
         return redirect()->route('supplier_all');
     }
