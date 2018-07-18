@@ -80,8 +80,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/ajax/barangByExpiryDate', 'AjaxController@barangByExpiryDate')->name('ajax_expire');
 	Route::get('/ajax/barang/showMonthly', 'PemakaianController@showMonthly');
 	Route::get('/ajax/barang/showYearly', 'PemakaianController@showYearly');
-	Route::get('/ajax/expire/hariini', 'AjaxController@expireHariIni');
 	Route::get('/ajax/expire/bulanini', 'AjaxController@expireBulanIni');
+	Route::get('/ajax/expire/tigabulan', 'AjaxController@expireTigaBulan');
+	Route::get('/ajax/expire/enambulan', 'AjaxController@expireEnamBulan');
 	Route::get('/ajax/pemakaian/harian', 'HomeController@pemakaianHarianJSON');
 	});
 Auth::routes();

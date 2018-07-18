@@ -196,9 +196,16 @@
 	$(document).ready(function(){
 		$.ajax({
 			type: "GET",
-			url: "/ajax/expire/hariini",
+			url: "/ajax/expire/tigabulan",
 			success: function( msg ) {
-				$('#divExpireHariIni').html(msg);
+				$('#divExpireTigaBulan').html(msg);
+			}
+		});
+		$.ajax({
+			type: "GET",
+			url: "/ajax/expire/enambulan",
+			success: function( msg ) {
+				$('#divExpireEnamBulan').html(msg);
 			}
 		});
 		$.ajax({
