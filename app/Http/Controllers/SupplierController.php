@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Supplier, App\Pembelian;
 class SupplierController extends Controller
 {
+
+    public function json()
+    {
+        $suppliers = Supplier::all();
+        return $suppliers;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +46,10 @@ class SupplierController extends Controller
         //
         $supplier = new Supplier;
         $supplier->nama = $request->nama_supplier;
+        $supplier->alamat = $request->alamat;
+        $supplier->nomor_telepon = $request->nomor_telepon;
+        $supplier->email = $request->email;
+        $supplier->nomor_rekening = $request->nomor_rekening;
         $supplier->save();
         return redirect()->action('SupplierController@index');
     }
