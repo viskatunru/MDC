@@ -42,6 +42,19 @@
 			</div>
 
 			<div class="form-group">
+				<label for="status_pelunasan" class="col-sm-2 control-label">Status Pelunasan</label>
+
+				<div class="col-sm-8">
+					<select required class="form-control1" name="status_pelunasan" id="status_pelunasan">
+						<option value="1">Lunas</option>
+						<option value="0">Belum Lunas</option>
+					</select>
+				</div>
+			</div>
+
+
+
+			<div class="form-group">
 				<label for="caribarang" class="col-sm-2 control-label">Aksi</label>
 					
 				<div class="col-sm-3">

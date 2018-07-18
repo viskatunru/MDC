@@ -6,6 +6,21 @@ use Illuminate\Http\Request;
 use App\Pembelian, App\Supplier, App\Barang, App\Category, App\Penyimpanan, App\Expire;
 class PembelianController extends Controller
 {
+
+    public function json()
+    {
+        $pembelians = Pembelian::all();
+        foreach($pembelians as $p)
+        {
+            $p->harga_total = str_replace(',', '.', number_format($p->harga_total));
+            $p->nama_supplier = $p->supplier->nama;   
+            if ($p->status_pelunasan == 1)
+                $p->status = "Lunas";
+            else
+                $p->status = "Tidak Lunas";
+        }
+        return $pembelians;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +53,7 @@ class PembelianController extends Controller
         $pembelian->tanggal = $request->tanggal;
         $pembelian->supplier_id = $request->supplier_id;
         $pembelian->harga_total = 0;
+        $pembelian->status_pelunasan = $request->status_pelunasan;
         $pembelian->save();
 
         $counter = 0;
