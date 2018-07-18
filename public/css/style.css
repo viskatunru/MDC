@@ -62,9 +62,12 @@ hr {
 #hariExpire {
   font-size: 15px;
 }
-#divExpireHariIni,
+/*#divExpireHariIni,
 #divExpireBulanIni {
   font-size: 14px;
+}*/
+#barangExpire {
+  line-height: 150%;
 }
 .msgExpire {
   font-size: 14px;
@@ -714,7 +717,10 @@ i.icon_13{
   margin: 10px 0 0 0;
 }
 .activity-row{
-	margin-bottom:2em;
+	/*margin-bottom: 2em;*/
+  margin-bottom: 15px;
+  padding: 10px 5px;
+  background: #f1f1f1;
 }
 .scrollbar{
 	height:314px;
