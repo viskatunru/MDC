@@ -16,6 +16,7 @@ class CreatePembeliansTable extends Migration
         Schema::create('pembelians', function (Blueprint $table) {
             $table->increments('id');
             $table->string('no_invoice');
+            $table->boolean('status_pelunasan');
             $table->date('tanggal');
             $table->double('harga_total');
             $table->timestamps();

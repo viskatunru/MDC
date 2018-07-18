@@ -23,7 +23,7 @@ class CreateBarangPembelianTable extends Migration
             $table->foreign('pembelian_id')->references('id')->on('pembelians')->onDelete('cascade');
 
             $table->integer('jumlah');
-            $table->integer('harga_satuan');
+            $table->integer('harga_satuan')->default(0);
         });
     }
 
