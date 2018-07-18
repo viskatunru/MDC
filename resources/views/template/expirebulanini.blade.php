@@ -13,6 +13,6 @@
 			</div>
 		@endforeach
 	@else
-		Tidak ada barang expired bulan ini.
+		<span class="msgExpire">Tidak ada barang expired.</span>
 	@endif
 </div>

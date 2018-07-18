@@ -59,6 +59,17 @@ hr {
 .right {
   text-align: right;
 }
+#hariExpire {
+  font-size: 15px;
+}
+#divExpireHariIni,
+#divExpireBulanIni {
+  font-size: 14px;
+}
+.msgExpire {
+  font-size: 14px;
+  color: #999;
+}
 /*-- header --*/
 .navbar .navbar-nav li a {
   padding: 0 10px;
@@ -1313,10 +1324,7 @@ select[multiple] {
 }
 @media(max-width:991px) {
   .divActivityBox {
-    margin-bottom: 0px;
-  }
-  #divExpireEnamBulan {
-    margin-bottom: 0;
+    margin-bottom: 20px;
   }
 }
 .panel.panel-red {
@@ -2521,13 +2529,6 @@ span.badge {
   height:245px;
 }
 .panel .panel-heading h2 {
-  font-size: 14px;
-}
-#hariExpire {
-  font-size: 14px;
-}
-#divExpireHariIni,
-#divExpireBulanIni {
   font-size: 14px;
 }
 }
