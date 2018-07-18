@@ -27,15 +27,34 @@ class AjaxController extends Controller
         return view('template.barangByExpire', compact('expires'));
     }
 
-    public function expireHariIni()
+    public function expireTigaBulan()
     {
-        $expires = Expire::where('tanggal', '=', date("Y-m-d 00:00:00"))->orderBy('tanggal')->get();
-        return view('template.expireHariIni', compact('expires'));
+        return $this->getExpires(30, 90);
+    }
+
+    public function expireEnamBulan()
+    {
+        return $this->getExpires(90, 180);
     }
 
     public function expireBulanIni()
     {
-        $expires = Expire::whereYear('tanggal', '=', date('Y'))->whereMonth('tanggal', '=', date('m'))->orderBy('tanggal')->get();
+        return $this->getExpires(0, 30);
+    }
+
+    public function getExpires($bwh, $atas)
+    {
+        $format = date_create(Carbon::now());
+        date_add($format, date_interval_create_from_date_string("$bwh days"));
+
+        $lowBound = date_format($format, 'Y-m-d');
+
+        $format = date_create(Carbon::now());
+        date_add($format, date_interval_create_from_date_string("$atas days"));
+
+        $uppBound = date_format($format, 'Y-m-d');
+
+        $expires = Expire::where('tanggal', '>', $lowBound)->where('tanggal', '<=', $uppBound)->get();
         return view('template.expireBulanIni', compact('expires'));
     }
 
