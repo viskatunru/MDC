@@ -14,6 +14,7 @@ class BarangController extends Controller
         {
             $barang->namakategori = $barang->category->nama;
             $barang->namapenyimpanan = $barang->penyimpanan->nama;
+            $barang->harga_beli = str_replace(',', '.', number_format($barang->harga_beli));
         }
         return $barangs;
     }
