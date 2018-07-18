@@ -7,9 +7,9 @@
 <div class="col_1">
 	
 	<!-- Kalender -->
-	<div class="col-md-4 span_7">	
+	<!-- <div class="col-md-4 span_7">	
 		<div class="cal1 cal_2"><div class="clndr"><div class="clndr-controls"><div class="clndr-control-button"><p class="clndr-previous-button">previous</p></div><div class="month">July 2015</div><div class="clndr-control-button rightalign"><p class="clndr-next-button">next</p></div></div><table class="clndr-table" border="0" cellspacing="0" cellpadding="0"><thead><tr class="header-days"><td class="header-day">S</td><td class="header-day">M</td><td class="header-day">T</td><td class="header-day">W</td><td class="header-day">T</td><td class="header-day">F</td><td class="header-day">S</td></tr></thead><tbody><tr><td class="day adjacent-month last-month calendar-day-2015-06-28"><div class="day-contents">28</div></td><td class="day adjacent-month last-month calendar-day-2015-06-29"><div class="day-contents">29</div></td><td class="day adjacent-month last-month calendar-day-2015-06-30"><div class="day-contents">30</div></td><td class="day calendar-day-2015-07-01"><div class="day-contents">1</div></td><td class="day calendar-day-2015-07-02"><div class="day-contents">2</div></td><td class="day calendar-day-2015-07-03"><div class="day-contents">3</div></td><td class="day calendar-day-2015-07-04"><div class="day-contents">4</div></td></tr><tr><td class="day calendar-day-2015-07-05"><div class="day-contents">5</div></td><td class="day calendar-day-2015-07-06"><div class="day-contents">6</div></td><td class="day calendar-day-2015-07-07"><div class="day-contents">7</div></td><td class="day calendar-day-2015-07-08"><div class="day-contents">8</div></td><td class="day calendar-day-2015-07-09"><div class="day-contents">9</div></td><td class="day calendar-day-2015-07-10"><div class="day-contents">10</div></td><td class="day calendar-day-2015-07-11"><div class="day-contents">11</div></td></tr><tr><td class="day calendar-day-2015-07-12"><div class="day-contents">12</div></td><td class="day calendar-day-2015-07-13"><div class="day-contents">13</div></td><td class="day calendar-day-2015-07-14"><div class="day-contents">14</div></td><td class="day calendar-day-2015-07-15"><div class="day-contents">15</div></td><td class="day calendar-day-2015-07-16"><div class="day-contents">16</div></td><td class="day calendar-day-2015-07-17"><div class="day-contents">17</div></td><td class="day calendar-day-2015-07-18"><div class="day-contents">18</div></td></tr><tr><td class="day calendar-day-2015-07-19"><div class="day-contents">19</div></td><td class="day calendar-day-2015-07-20"><div class="day-contents">20</div></td><td class="day calendar-day-2015-07-21"><div class="day-contents">21</div></td><td class="day calendar-day-2015-07-22"><div class="day-contents">22</div></td><td class="day calendar-day-2015-07-23"><div class="day-contents">23</div></td><td class="day calendar-day-2015-07-24"><div class="day-contents">24</div></td><td class="day calendar-day-2015-07-25"><div class="day-contents">25</div></td></tr><tr><td class="day calendar-day-2015-07-26"><div class="day-contents">26</div></td><td class="day calendar-day-2015-07-27"><div class="day-contents">27</div></td><td class="day calendar-day-2015-07-28"><div class="day-contents">28</div></td><td class="day calendar-day-2015-07-29"><div class="day-contents">29</div></td><td class="day calendar-day-2015-07-30"><div class="day-contents">30</div></td><td class="day calendar-day-2015-07-31"><div class="day-contents">31</div></td><td class="day adjacent-month next-month calendar-day-2015-08-01"><div class="day-contents">1</div></td></tr></tbody></table></div></div>
-	</div>
+	</div> -->
 	
 	<!-- Expire Hari Ini -->
 	<div class="col-md-4 span_8">
@@ -17,24 +17,38 @@
 			
 			<!-- Judul -->
 			<div class="panel-heading" id="panel-heading-red">
-				<h4 class="panel-title">EXPIRED HARI INI</h4>
+				<h4 class="panel-title">EXPIRED BULAN INI</h4>
 			</div>
 
-			<div id="divExpireHariIni">
+			<div id="divExpireBulanIni">
 			</div>		
 		</div>
 	</div>
 	
-	<!-- Expire Segera -->
+	<!-- Expire 3 Bulan -->
 	<div class="col-md-4 span_8">
 		<div class="activity_box">
 		
 			<!-- Judul -->
-			<div class="panel-heading" id="panel-heading-blue">
-				<h4 class="panel-title">EXPIRED BULAN INI</h4>
+			<div class="panel-heading" id="panel-heading-yellow">
+				<h4 class="panel-title">EXPIRED 3 BULAN</h4>
 			</div>
 		
-			<div id="divExpireBulanIni">
+			<div id="divExpireTigaBulan">
+			</div>
+		</div>
+	</div>
+
+	<!-- Expire 6 Bulan -->
+	<div class="col-md-4 span_8">
+		<div class="activity_box">
+		
+			<!-- Judul -->
+			<div class="panel-heading" id="panel-heading-green">
+				<h4 class="panel-title">EXPIRED 6 BULAN</h4>
+			</div>
+		
+			<div id="divExpireEnamBulan">
 			</div>
 		</div>
 	</div>
@@ -90,7 +104,7 @@
 	<div class="panel-body no-padding" style="display: block;">
 		<form method="get" id="formHariExpire">
 			<h4 id="hariExpire">Expired dalam berapa hari?</h4>
-			<input type="number" name="hari" id="inputHari" min="0" value="0"><br><br>
+			<input type="number" name="hari" id="inputHari" min="0" value="0">
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>
 
@@ -103,12 +117,12 @@
 
 </div>
 
-<!-- LIHAT STOK AWAL -->
-<div class="panel panel-green col-md-6" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+<!-- CEK STOK AWAL -->
+<div class="panel panel-green col-md-4" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	
 	<!-- Judul -->
 	<div class="panel-heading">
-		<h2>CEK STOK AWAL BULANAN</h2>
+		<h2>CEK STOK AWAL</h2>
 		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
 	</div>
 	
@@ -116,25 +130,43 @@
 	<div class="panel-body no-padding" style="display: block;">
 		<form method="post" action="/bulan/generate" target="_blank">
 			{{csrf_field()}}
-			<input type="month" name="bulan" value="<?=date('Y-m')?>"><br><br>
+			<input type="month" name="bulan" value="<?=date('Y-m')?>">
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>
 	</div>
 </div>
 
-<!-- LIHAT LAPORAN -->
-<div class="panel panel-blue col-md-6" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+<!-- CEK LAPORAN PEMAKAIAN -->
+<div class="panel panel-blue col-md-4" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	
 	<!-- Judul -->
 	<div class="panel-heading">
-		<h2>CEK LAPORAN PEMAKAIAN BULANAN</h2>
+		<h2>CEK LAPORAN PEMAKAIAN</h2>
 		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
 	</div>
 	
 	<!-- Isi -->
 	<div class="panel-body no-padding" style="display: block;">
 		<form method="get" action="/pdf/stok" target="_blank">
-			<input type="month" name="bulan" value="<?=date('Y-m')?>"><br><br>
+			<input type="month" name="bulan" value="<?=date('Y-m')?>">
+			<button type="submit" class="btn btn-primary">Kirim</button>
+		</form>
+	</div>
+</div>
+
+<!-- PRINT LAPORAN PEMAKAIAN -->
+<div class="panel panel-blue col-md-4" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+	
+	<!-- Judul -->
+	<div class="panel-heading">
+		<h2>PRINT LAPORAN PEMAKAIAN</h2>
+		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+	</div>
+	
+	<!-- Isi -->
+	<div class="panel-body no-padding" style="display: block;">
+		<form method="get" action="/pdf/stok" target="_blank">
+			<input type="month" name="bulan" value="<?=date('Y-m')?>">
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>
 	</div>

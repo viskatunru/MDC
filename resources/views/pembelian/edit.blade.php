@@ -37,10 +37,10 @@
 				<label for="caribarang" class="col-sm-2 control-label">Aksi</label>
 					
 				<div class="col-sm-3">
-					<a href="#" class="btn btn-primary" id="caribarang" style="width:100%;">Cari Barang</a>
+					<a href="#" class="btn btn-primary btn-full" id="caribarang">Cari Barang</a>
 				</div>
 				<div class="col-sm-3">
-					<a href="#" class="btn btn-delete" id="tutupbarang" style="width:100%;">Tutup Pencarian Barang</a>
+					<a href="#" class="btn btn-delete btn-full" id="tutupbarang">Tutup Pencarian Barang</a>
 				</div>
 			</div>
 
@@ -53,6 +53,7 @@
 								<th data-sortable="true" data-field="kode">Kode</th>
 								<th data-sortable="true" data-field="nama">Nama</th>
 								<th data-sortable="true" data-field="namakategori">Kategori</th>
+								<th data-sortable="true" data-field="namapenyimpanan">Penyimpanan</th>
 								<th data-sortable="true" data-field="stok">Stok Saat Ini</th>
 								<th data-field="id" data-formatter="LinkFormatter">Aksi</th>
 							</tr>
@@ -70,6 +71,7 @@
 								<th data-sortable="true">Kode</th>
 								<th data-sortable="true">Nama</th>
 								<th data-sortable="true">Jumlah</th>
+								<th data-sortable="true">Harga Total</th>
 								<th data-sortable="true">Tanggal Expired</th>
 								<th data-sortable="true">Penyimpanan</th>
 								<th>Aksi</th>
@@ -85,7 +87,7 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<button type="submit" class="btn btn-primary" style="width:100%;">Kirim</button>
+						<button type="submit" class="btn btn-primary btn-full">Kirim</button>
 					</div>
 				</div>
 			</div>
@@ -121,11 +123,11 @@
 		$('#tablebarang').attr('hidden', true);
 	});
 
-	var barangs = new Array();
+	var barangs = {!! $barangs !!};
 
 	function LinkFormatter(value, row, index) {
 		return "<a class='btn btn-primary' " +
-		"onclick='addBarang("+ row['id'] + ',"' + row['kode'] + '","' + row['nama']+ '"' + ")'>Tambah</a>";
+		"onclick='addBarang("+ row['id'] + ',"' + row['kode'] + '","' + row['nama'] + '","' + row['penyimpanan_id']+ '"' + ")'>Tambah</a>";
 	}
 
 	function addBarang(...args)
@@ -136,20 +138,28 @@
 
 	function updateTable()
 	{
+		console.log(barangs);
 		var tr = "";
 		var counter = 0;
 		for (var i = 0; i < barangs.length; i++)
 		{
+			if (barangs[i]['id'] != null)
+                tr += "<input type='hidden' class='form-control1' name='id_" + i + "' value='" + barangs[i]['id'] + "'></input>";
 			tr +=
 			"<tr>" +
-				"<td>" + barangs[i][1] + "</td>" + 
-				"<td>" + barangs[i][2] + "</td>" +
-				"<input type='hidden' name='id_" + counter + "' value='" + barangs[i][0] + "'>" +
-				"<td><input type='number' class='form-control1' value=1 required name='jumlah_" + counter + "'></td>" +
-				"<td><input type='date' class='form-control1' placeholder='Expire' name='expire_" + counter + "'</td>" +
-				"<td><select class='form-control1 cb_penyimpanan' name='penyimpanan_"+ counter + "'></select></td>" +
-				"<td><a onclick='deleteBarang(" + counter + ")' class='btn btn-delete'>Hapus</a></td>" + 
-			"</tr>";
+				"<td>" + barangs[i]['kode'] + "</td>" + 
+				"<td>" + barangs[i]['nama'] + "</td>" +
+				"<input type='hidden' name='id_" + counter + "' value='" + barangs[i]['id'] + "'>" +
+				"<td><input type='number' class='form-control1' value='" + barangs[i]['pivot']['jumlah'] + "'  min='1' required name='jumlah_" + counter + "'></td>" +
+				"<td><input type='number' class='form-control1' value='" + barangs[i]['pivot']['harga_satuan'] * barangs[i]['pivot']['jumlah'] + "' min='0' name='harga_" + counter +"'></td>" +
+				"<td><input type='date' class='form-control1' value='' name='expire_" + counter + "'</td>" +
+				"<td><select class='form-control1 cb_penyimpanan' id='penyimpanan_"+ counter + "' name='penyimpanan_"+ counter + "'></select></td>";
+			if (barangs[i]['id'] == null)
+                tr += "<td><a onclick='deleteBarang(" + i + ")' class='btn btn-delete'>Hapus</a></td>";
+            else
+                tr += "<td><a href='' class='btn btn-delete'" +
+                "onclick='return confirm(" + '"Apakah anda yakin?"' + ");'>Hapus Database</a></td>";
+            "</tr>";
 			counter++;
 		}
 		$('#tBarangs').html(tr);
@@ -167,16 +177,16 @@
         }
 	}
 
-	function barangIsAdded(id)
-	{
+	// function barangIsAdded(id)
+	// {
 
-		for (var i = 0; i < barangs.length; i++)
-		{
-			if (barangs[i][0] === id)
-				return true;
-		}
-		return false;
-	}
+	// 	for (var i = 0; i < barangs.length; i++)
+	// 	{
+	// 		if (barangs[i][0] === id)
+	// 			return true;
+	// 	}
+	// 	return false;
+	// }
 
 	function deleteBarang(id)
 	{		
@@ -186,5 +196,9 @@
 			updateTable();
 		}
 	}
+
+	$(document).ready(function(){
+        updateTable();
+    });
 </script>
 @endsection

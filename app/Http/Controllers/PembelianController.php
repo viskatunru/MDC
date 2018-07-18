@@ -189,7 +189,8 @@ class PembelianController extends Controller
         $suppliers = Supplier::all();
         $categories = Category::all();
         $penyimpanans = Penyimpanan::all();
-        return view('pembelian.edit', compact('pembelian', 'suppliers', 'categories', 'penyimpanans'));
+        $barangs = $pembelian->barangs;
+        return view('pembelian.edit', compact('pembelian', 'suppliers', 'categories', 'penyimpanans', 'barangs'));
     }
 
     /**

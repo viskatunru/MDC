@@ -45,10 +45,10 @@
 				<label for="caribarang" class="col-sm-2 control-label">Aksi</label>
 					
 				<div class="col-sm-3">
-					<a href="#" class="btn btn-primary" id="caribarang" style="width:100%;">Cari Barang</a>
+					<a href="#" class="btn btn-primary btn-full" id="caribarang">Cari Barang</a>
 				</div>
 				<div class="col-sm-3">
-					<a href="#" class="btn btn-delete" id="tutupbarang" style="width:100%;">Tutup Pencarian Barang</a>
+					<a href="#" class="btn btn-delete btn-full" id="tutupbarang">Tutup Pencarian Barang</a>
 				</div>
 			</div>
 
@@ -95,7 +95,7 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<button type="submit" class="btn btn-primary" style="width:100%;">Kirim</button>
+						<button type="submit" class="btn btn-primary btn-full">Kirim</button>
 					</div>
 				</div>
 			</div>
@@ -178,16 +178,16 @@
         }
 	}
 
-	function barangIsAdded(id)
-	{
+	// function barangIsAdded(id)
+	// {
 
-		for (var i = 0; i < barangs.length; i++)
-		{
-			if (barangs[i][0] === id)
-				return true;
-		}
-		return false;
-	}
+	// 	for (var i = 0; i < barangs.length; i++)
+	// 	{
+	// 		if (barangs[i][0] === id)
+	// 			return true;
+	// 	}
+	// 	return false;
+	// }
 
 	function deleteBarang(id)
 	{		

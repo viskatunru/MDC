@@ -62,9 +62,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</head>
 	
 	<body>
-		<center><h3>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3></center>
+		<center><h3><b>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3></b></center>
+		<br>
 
-		<table class="table table-striped">
+		<table class="table table-striped table-report">
 			<thead>
 				<tr>
 					<th>Kode</th>
@@ -86,7 +87,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<tr>
 						<td>{{$barang->kode}}</td>
 						<td>{{$barang->nama}}</td>
-						<td>{{$barang->pivot->stok_awal}}</td>
+						<td class="right">{{$barang->pivot->stok_awal}}</td>
 
 						<?php $total = 0; $pengeluaranPerBarang = 0; $jumlahBarangTerhitung = 0;?>
 						@foreach($pemakaiansBulanIni->where("barang_id", '=', $barang->id) as $pemakaian)							
@@ -104,7 +105,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							@endforeach
 						@endforeach
 						@foreach($dokters as $dokter)
-							<td>
+							<td class="right">
 								<?php 
 								if($jumlah[$dokter->id] > 0) 
 									echo $jumlah[$dokter->id]; 
@@ -119,13 +120,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							$pengeluaranPerBarang = ($total - $jumlahBarangTerhitung) * $barang->harga_beli + $pengeluaranPerBarang; 
 							$totalPengeluaranBulanIni += $pengeluaranPerBarang
 						?>
-						<td>{{$total}}</td>
-						<td>{{$barang->pivot->stok_awal - $total}}</td>
-						<td>{{$pengeluaranPerBarang}}</td>
+						<td class="right">{{$total}}</td>
+						<td class="right">{{$barang->pivot->stok_awal - $total}}</td>
+						<td>
+							<div class="td-left">Rp.</div>
+							<div class="td-right">{{str_replace(',', '.', number_format($pengeluaranPerBarang))}}</div>
+						</td>
 					</tr>
 				@endforeach
+			<tfoot>
+				<tr>
+					<td colspan="7"><b>Total Pengeluaran Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</b></td>
+					<td>
+						<div class="td-left">Rp.</div>
+						<div class="td-right">{{str_replace(',', '.', number_format($totalPengeluaranBulanIni))}}</div>
+					</td>
+				</tr>
+			</tfoot>
 			</tbody>
 		</table>
-		Total Pengeluaran Bulan July 2018 = Rp. {{$totalPengeluaranBulanIni}}
 	</body>
 </html>

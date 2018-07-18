@@ -30,7 +30,7 @@
 						<tr>
 							<td>
 								@if(isset($expire->pembelian))
-								{{$expire->pembelian->no_invoice}}
+								<u><a href="/pembelian/show/{{$expire->pembelian->id}}">{{$expire->pembelian->no_invoice}}</a></u>
 								@else
 								-
 								@endif

@@ -24,7 +24,7 @@
 						<td>{{date('j F Y', strtotime($pemakaian->tanggal))}}</td>
 						<td><u><a href="/barang/show/{{$pemakaian->barang->id}}">{{$pemakaian->barang->kode}}</a></u></td>
 						<td>{{$pemakaian->barang->nama}}</td>
-						<td>{{$pemakaian->jumlah}}</td>
+						<td class="right">{{str_replace(',', '.', number_format($pemakaian->jumlah))}}</td>
 						<td>
 							<a href="/pemakaian/edit/{{$pemakaian->id}}"><button class="btn btn-primary">Edit</button></a>
 							<a href="/pemakaian/delete/{{$pemakaian->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>

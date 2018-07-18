@@ -62,14 +62,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</head>
 	
 	<body>
-		<h3>Daftar Stok Barang Bulan {{date('F Y', strtotime("$bulan->bulan"))}}</h3>
+		<center><h3><b>Daftar Stok Awal Barang Bulan {{date('F Y', strtotime("$bulan->bulan"))}}</b></h3></center>
+		<br>
 
-		<table class="table table-striped">
+		<table class="table table-striped table-report">
 			<thead>
 				<tr>
 					<th>No</th>
-					<th>Kode Barang</th>
-					<th>Nama Barang</th>
+					<th>Kode</th>
+					<th>Nama</th>
 					<th>Stok Awal</th>
 				</tr>
 			</thead>
@@ -79,10 +80,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				?>
 				@foreach($bulan->barangs as $barang)
 					<tr>
-						<td>{{$i++}}</td>
+						<td class="center">{{$i++}}</td>
 						<td>{{$barang->kode}}</td>
 						<td>{{$barang->nama}}</td>
-						<td>{{$barang->pivot->stok_awal}}</td>
+						<td class="right">{{str_replace(',', '.', number_format($barang->pivot->stok_awal))}}</td>
 					</tr>
 				@endforeach
 			</tbody>

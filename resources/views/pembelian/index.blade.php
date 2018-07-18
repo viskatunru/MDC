@@ -22,9 +22,9 @@
 						<td>{{$pembelian->id}}</td>
 						<td>{{date('j F Y', strtotime($pembelian->tanggal))}}</td>
 						<td><u><a href="/supplier/show/{{$pembelian->supplier->id}}">{{$pembelian->supplier->nama}}</a></u></td>
-						<td>{{$pembelian->harga_total}}</td>
+						<td class="right">{{str_replace(',', '.', number_format($pembelian->harga_total))}}</td>
 						<td>
-							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-primary">Tampilkan Detail</a>
+							<a href="/pembelian/show/{{$pembelian->id}}" class="btn btn-blue">Tampilkan</a>
 							<a href="/pembelian/edit/{{$pembelian->id}}" class="btn btn-primary">Edit</a>
 							<a href="/pembelian/delete/{{$pembelian->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
 						</td>

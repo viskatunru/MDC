@@ -25,6 +25,40 @@ html, body {
 hr {
   border-top: 1px solid #ddd !important;
 }
+.table-report table,
+.table-report th,
+.table-report td {
+  border-collapse: collapse !important;
+  border: 1px solid #000 !important;
+  color: #000 !important;
+}
+.table-report thead tr th {
+  background: #ddd;
+  text-align: center;
+}
+.table-report tbody tr:nth-child(odd) {
+  background: #fff;
+}
+.table-report tbody tr:nth-child(even) {
+  background: #f1f1f1;
+}
+.table-report tfoot tr td {
+  background: #ddd;
+}
+.td-left {
+  float: left;
+  text-align: left;
+}
+.td-right {
+  float: right;
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
 /*-- header --*/
 .navbar .navbar-nav li a {
   padding: 0 10px;
@@ -226,7 +260,8 @@ hr {
   font-family: Helvetica, sans-serif;
 }
 nav.top1.navbar.navbar-default.navbar-static-top {
-  background-color:rgb(6, 217, 149);
+  /*background-color:rgb(6, 217, 149);*/
+  background-color:#4484ce;
   border: none !important;
   font-family: Helvetica, sans-serif;
 }
@@ -735,8 +770,11 @@ i.icon_13{
 #panel-heading-red {
   background-color:#ff383f;
 }
-#panel-heading-blue {
-  background-color:#4484ce;
+#panel-heading-yellow {
+  background-color:#ffc107;
+}
+#panel-heading-green {
+  background-color:#06d995;
 }
 .stats-info ul {
   margin: 0;
@@ -987,7 +1025,7 @@ button.note-color-btn {
 	padding:2em;
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-  border-top: none !important;
+  /*border-top: none !important;*/
 }
 .tab-content > .active {
   display: block;
@@ -1117,6 +1155,15 @@ button.note-color-btn {
   border-color: #ff383f;
   color: #ff383f !important;
 }*/
+.btn-blue {
+  background-color: rgb(68, 132, 206) !important;
+  border-color: rgb(68, 132, 206) !important;
+  color: #fff !important;
+}
+.btn-blue:hover {
+  background-color: rgb(64, 122, 189) !important;
+  border-color: rgb(64, 122, 189) !important;
+}
 .btn-full {
   width: 100% !important;
 }
@@ -1252,8 +1299,8 @@ select[multiple] {
   background-color: #06d995;
   border-color: #00c887;
 }
-.panel.panel-blue.col-md-6,
-.panel.panel-green.col-md-6 {
+.panel.panel-blue.col-md-4,
+.panel.panel-green.col-md-4 {
   padding: 0;
 }
 .panel.panel-red {
@@ -1543,7 +1590,7 @@ div.checker input {
   padding:15px !important;
 }
 .table > thead > tr > th {
-  border-bottom: 1px solid #ddd !important;
+  /*border-bottom: 1px solid #ddd !important;*/
 }
 .badge-success, .bg-green, .bootstrap-switch-success, .btn-success {
   border-color: #ef553a;
@@ -2800,8 +2847,10 @@ input {
   line-height: 24px !important;
 }
 .btn-primary,
-.btn-delete {
+.btn-delete,
+.btn-blue {
   font-size: 12px;
+  margin: 1px 0 !important;
   padding: 4px 12px !important;
 }
 .dropdown-menu>.active>a {

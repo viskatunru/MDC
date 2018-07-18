@@ -18,7 +18,7 @@
 				@foreach($suppliers as $supplier)
 					<tr>
 						<td>{{$supplier->nama}}</a></td>
-						<td><a href="/supplier/show/{{$supplier->id}}" class="btn btn-primary">Tampilkan</a></td>
+						<td><a href="/supplier/show/{{$supplier->id}}" class="btn btn-blue">Tampilkan</a></td>
 						<td>
 							<a href="/supplier/edit/{{$supplier->id}}" class="btn btn-primary">Edit</a>
 							<a href="/supplier/delete/{{$supplier->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>

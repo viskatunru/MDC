@@ -26,7 +26,7 @@
 						<td><u><a href="/dokter/show/{{$pemakaian->dokter->id}}">{{$pemakaian->dokter->nama}}</a></u></td>
 						<td><u><a href="/barang/show/{{$pemakaian->barang->id}}">{{$pemakaian->barang->kode}}</a></u></td>
 						<td>{{$pemakaian->barang->nama}}</td>
-						<td>{{$pemakaian->jumlah}}</td>
+						<td class="right">{{str_replace(',', '.', number_format($pemakaian->jumlah))}}</td>
 						<td>
 							<a href="/pemakaian/edit/{{$pemakaian->id}}" class="btn btn-primary">Edit</a>
 							<a href="/pemakaian/delete/{{$pemakaian->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>

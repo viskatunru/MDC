@@ -18,7 +18,7 @@
 				@foreach($dokters as $dokter)
 					<tr>
 						<td>{{$dokter->nama}}</a></td>
-						<td><a href="/dokter/show/{{$dokter->id}}" class="btn btn-primary">Tampilkan</a></td>
+						<td><a href="/dokter/show/{{$dokter->id}}" class="btn btn-blue">Tampilkan</a></td>
 						<td>
 							<a href="/dokter/edit/{{$dokter->id}}" class="btn btn-primary">Edit</a>
 							<a href="/dokter/delete/{{$dokter->id}}" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a>
