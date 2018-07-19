@@ -19,7 +19,7 @@ class ForeignBarangsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
-            $table->integer('penyimpanan_id')->unsigned();
+            $table->integer('penyimpanan_id')->unsigned()->nullabl();
             $table->foreign('penyimpanan_id')->references('id')->on('penyimpanans')->onDelete('cascade');
         });
     }

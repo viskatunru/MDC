@@ -36,7 +36,7 @@
 								@endif
 							</td>
 							<td>{{date("j F Y", strtotime($expire->tanggal))}}</td>
-							<td>{{str_replace(',', '.', number_format($expire->jumlah))}}</td>
+							<td>{{str_replace(',', '.', number_format($expire->sisa))}}</td>
 							<td>{{$expire->penyimpanan->nama}}</td>
 							<td>
 								<a href="/barang/edit/{{$barang->id}}" class="btn btn-primary">Edit</a>

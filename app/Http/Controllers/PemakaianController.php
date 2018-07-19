@@ -69,9 +69,9 @@ class PemakaianController extends Controller
         $barang->save();
 
         $expires = Expire::where('barang_id', '=', $barang->id)
-                ->where('sisa', '>', 0)->where('tanggal', '>=', date_format(Carbon::now() , 'Y-m-01'))
+                ->where('sisa', '>', 0)
+                ->where('tanggal', '>=', $pemakaian->tanggal)
                 ->orderBy('tanggal', 'asc')->get();
-
         if ($expires != null)
         {
             $jumlahBarang = $request->jumlah_barang;
@@ -147,12 +147,41 @@ class PemakaianController extends Controller
         $pemakaian->jumlah = $request->jumlah_barang;
         $pemakaian->save();
 
-        $expire = Expire::find($pemakaian->expire_id);
-
-        if ($expire != null)
+        foreach($pemakaian->expires as $expire)
         {
-            $expire->jumlah += $pemakaian->jumlah - $request->jumlah_barang;
+            $expire->sisa += $expire->pivot->jumlah;
             $expire->save();
+        }
+        $pemakaian->expires()->detach();
+
+
+        $expires = Expire::where('barang_id', '=', $barang->id)
+                ->where('sisa', '>', 0)
+                ->where('tanggal', '>=', $pemakaian->tanggal)
+                ->orderBy('tanggal', 'asc')->get();
+
+        if ($expires != null)
+        {
+            $jumlahBarang = $request->jumlah_barang;
+            foreach($expires as $expire)
+            {
+                $expire->sisa -= $jumlahBarang;
+
+                if ($expire->sisa >= 0)
+                {
+                    $expire->save();
+                    $pemakaian->expires()->attach($expire->id, ['jumlah' => $jumlahBarang]);
+                    break;
+                }
+                else
+                {
+                    $pemakaian->expires()->attach($expire->id, ['jumlah' => $jumlahBarang + $expire->sisa]);
+
+                    $jumlahBarang = $expire->sisa * -1;
+                    $expire->sisa = 0;
+                    $expire->save();
+                }
+            }
         }
 
         return redirect()->route('pemakaian_all');
@@ -171,6 +200,13 @@ class PemakaianController extends Controller
         $barang = $pemakaian->barang()->first();
         $barang->stok += $pemakaian->jumlah;
         $barang->save();
+
+        $expires = $pemakaian->expires;
+        foreach ($expires as $expire)
+        {
+            $expire->sisa += $expire->pivot->jumlah;
+            $expire->save();
+        }
 
         $pemakaian->delete();
         return redirect()->action('PemakaianController@index');
