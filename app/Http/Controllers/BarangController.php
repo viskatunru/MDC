@@ -66,12 +66,20 @@ class BarangController extends Controller
         $barang = new Barang;
         $barang->kode = $request->kode_barang;
         $barang->nama = $request->nama_barang;
-        $barang->stok = $request->stok_barang;
+
+        $barang->stok = 0;
+        $barang->harga_beli = 0;
+
+        if ($request->stok_barang != null)
+            $barang->stok = $request->stok_barang;
+
         $barang->category_id = $request->id_kategori;
         $barang->penyimpanan_id = $request->id_penyimpanan;
-        $barang->harga_beli = $request->harga_satuan;
-        $barang->save();
 
+        if ($request->harga_satuan != null)
+            $barang->harga_beli = $request->harga_satuan;
+        
+        $barang->save();
         $bulan = Bulan::where('bulan', '=', date_format(Carbon::now() , 'Y-m-01'))->first();
         if ($bulan != "")
         {
