@@ -43,8 +43,8 @@ class PemakaianController extends Controller
     public function create()
     {
         //
-        $dokters = Dokter::all();
-        $categories = Category::all();
+        $dokters = Dokter::orderBy('nama')->get();
+        $categories = Category::orderBy('nama')->get();
         $barangs = Barang::all();
         return view('pemakaian.create', compact('dokters', 'categories', 'barangs'));
     }

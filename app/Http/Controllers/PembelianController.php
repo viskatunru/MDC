@@ -41,7 +41,7 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        $suppliers = Supplier::all();
+        $suppliers = Supplier::orderBy('nama')->get();
         $categories = Category::all();
         $penyimpanans = Penyimpanan::all();
         return view('pembelian.create', compact('suppliers', 'categories', 'penyimpanans'));

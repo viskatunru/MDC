@@ -39,10 +39,10 @@ class BarangController extends Controller
     public function create()
     {
         //
-        $categories = Category::all();
+        $categories = Category::orderBy('nama')->get();
         $dokters = Dokter::all();
         $suppliers = Supplier::all();
-        $penyimpanans = Penyimpanan::all();
+        $penyimpanans = Penyimpanan::orderBy('nama')->get();
         return view('barang.create', compact('categories', 'penyimpanans'));
     }
 
