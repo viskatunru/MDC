@@ -98,7 +98,8 @@
                             <thead>
                                 <tr class="warning">
                                     <th data-sortable="true">Tanggal Expired</th>
-                                    <th data-sortable="true">Stok Barang</th>
+                                    <th data-sortable="true">Jumlah Awal</th>
+                                    <th data-sortable="true">Sisa Stok</th>
                                     <th data-sortable="true">Penyimpanan</th>
                                     <th>Hapus</th>
                                 </tr>
@@ -166,6 +167,7 @@
             "<tr>" +
                 "<td><input type='date' class='form-control1' value='" + expires[i]['tanggal'] + "' required name='expire_" + i+ "'</td>" + 
                 "<td><input type='number' class='form-control1' value='"+ expires[i]['jumlah'] + "' required name='jumlah_" + i + "'></td>" +
+                "<td><input type='number' class='form-control1' value='"+ expires[i]['sisa'] +"' required name='sisa_" + i +"'</td>" +
                 "<td><select class='form-control1 cb_penyimpanan' id='penyimpanan_" + i + "' name='penyimpanan_"+ i + "'></select></td>";
             if (expires[i]['id'] == null)
                 tr += "<td><a onclick='deleteExpire(" + i + ")' class='btn btn-delete'>Hapus</a></td>";
