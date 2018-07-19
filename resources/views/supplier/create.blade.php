@@ -46,7 +46,7 @@
 			<div class="panel-footer">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
-						<button type="submit" class="btn btn-primary btn-full">Kirim</button>
+						<button type="submit" class="btn btn-primary btn-full" onclick="this.disabled=true;this.value='Sedang memproses...';this.form.submit();">Kirim</button>
 					</div>
 				</div>
 			</div>

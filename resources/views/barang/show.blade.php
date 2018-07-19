@@ -18,7 +18,8 @@
 				<tr class="warning">
 					<th data-sortable="true">Nomor Invoice</th>
 					<th data-sortable="true">Tanggal Expired</th>
-					<th data-sortable="true">Jumlah</th>
+					<th data-sortable="true">Jumlah Awal</th>
+					<th data-sortable="true">Sisa Stok</th>
 					<th data-sortable="true">Penyimpanan</th>
 					<th>Aksi</th>
 				</tr>
@@ -36,6 +37,7 @@
 								@endif
 							</td>
 							<td>{{date("j F Y", strtotime($expire->tanggal))}}</td>
+							<td>{{str_replace(',', '.', number_format($expire->jumlah))}}</td>
 							<td>{{str_replace(',', '.', number_format($expire->sisa))}}</td>
 							<td>{{$expire->penyimpanan->nama}}</td>
 							<td>
