@@ -47,7 +47,6 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/pemakaian/edit/{id}', 'PemakaianController@update');
 	Route::get('/pemakaian/delete/{id}', 'PemakaianController@destroy');
 	Route::get('/pemakaian/json', 'PemakaianController@json');
-	Route::get('/test', 'PemakaianController@showYearly');
 
 	Route::get('/pembelian/show/{id}', 'PembelianController@show');
 	Route::get('/pembelian/edit/{id}', 'PembelianController@edit');
@@ -71,7 +70,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/penyimpanan/add', 'PenyimpananController@store');
 
 	Route::get('/laporan/stok', 'HomeController@lihatLaporanStok');
-	Route::get('/pdf/stok', 'HomeController@cetakLaporanStok');
+	Route::get('/pdf/dokter/stok', 'HomeController@cetakLaporanDokter');
+	Route::get('/pdf/ruangan/stok', 'HomeController@cetakLaporanRuangan');
 
 	Route::get('/expire/edit/{id}', 'ExpireController@edit');
 	Route::get('/barang/expire/delete/{id}', 'ExpireController@destroy');
@@ -90,3 +90,5 @@ Route::middleware(['auth'])->group(function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/test', 'HomeController@coba');

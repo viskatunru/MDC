@@ -77,13 +77,31 @@ class HomeController extends Controller
         return view('report.pemakaian', compact('barangs', 'dokters', 'pemakaiansBulanIni', 'tahunInput', 'bulanInput'));
     }
 
-    public function cetakLaporanStok()
+    public function cetakLaporanDokter()
     { 
         $input = explode('-',Input::get('bulan'));
         $tahunInput = $input[0];
         $bulanInput = (int)$input[1];
 
-        $dokters = Dokter::all();
+        $dokters = Dokter::where('nama', 'not like', '%op%')->get();
+        
+        $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
+
+        $bulan = Bulan::whereYear('bulan', '=', $tahunInput)->whereMonth('bulan', '=', $bulanInput)->first();
+        
+        $barangs = $bulan->barangs()->whereHas('pemakaians', function ($query) use ($tahunInput, $bulanInput){
+            $query->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput);
+        })->get();
+        return view('report.print', compact('barangs', 'dokters', 'pemakaiansBulanIni', 'tahunInput', 'bulanInput'));
+    }
+
+    public function cetakLaporanRuangan()
+    { 
+        $input = explode('-',Input::get('bulan'));
+        $tahunInput = $input[0];
+        $bulanInput = (int)$input[1];
+
+        $dokters = Dokter::where('nama', 'like', '%op%')->get();
         
         $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
 
@@ -103,5 +121,11 @@ class HomeController extends Controller
                 return Carbon::parse($val->tanggal)->format('m');
             });
         echo $pemakaians;
+    }
+
+    public function coba()
+    {
+        $dokters = Dokter::where('nama', 'not like', '%op%')->get();
+        return $dokters;
     }
 }
