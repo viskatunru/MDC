@@ -12,8 +12,8 @@ class BarangController extends Controller
         $barangs = Barang::all();
         foreach ($barangs as $barang)
         {
-            $barang->namakategori = $barang->category->nama;
-            $barang->namapenyimpanan = $barang->penyimpanan->nama;
+            $barang->namakategori = $barang->category == null ? "-" : $barang->category->nama;
+            $barang->namapenyimpanan = $barang->penyimpanan == null ? "-" : $barang->penyimpanan->nama;
             $barang->harga_beli = str_replace(',', '.', number_format($barang->harga_beli));
         }
         return $barangs;
