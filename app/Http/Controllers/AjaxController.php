@@ -24,6 +24,7 @@ class AjaxController extends Controller
         $uppBound = date_format($format, 'Y-m-d');
         $expires = Expire::where('tanggal', '>=', "$year-$month-$date 00:00:00")
                 ->where('tanggal', '<=', "$uppBound 00:00:00")
+                ->where('sisa', '>', 0)
                 ->orderBy('tanggal', "asc")
                 ->get();
         return view('template.barangByExpire', compact('expires'));
