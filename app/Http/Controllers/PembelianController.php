@@ -11,8 +11,8 @@ class PembelianController extends Controller
         $pembelians = Pembelian::all();
         foreach($pembelians as $p)
         {
-            $p->tanggal = date("j F Y", strtotime($p->tanggal));
-            $p->harga_total = str_replace(',', '.', number_format($p->harga_total));
+            $p->tanggal = "<span class='hidden'>".date("Y/m/d", strtotime($p->tanggal))."</span>".date("j F Y", strtotime($p->tanggal));
+            $p->harga_total = "<span class='hidden'>".$p->harga_total."</span>".str_replace(',', '.', number_format($p->harga_total));
             $p->nama_supplier = $p->supplier->nama;
             if ($p->status_pelunasan == 1)
                 $p->status = "Lunas";

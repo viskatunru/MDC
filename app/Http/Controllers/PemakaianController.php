@@ -14,7 +14,7 @@ class PemakaianController extends Controller
         $pemakaians = Pemakaian::all();
         foreach($pemakaians as $p)
         {
-            $p->tanggal = date("j F Y", strtotime($p->tanggal));
+            $p->tanggal = "<span class='hidden'>".date("Y/m/d", strtotime($p->tanggal))."</span>".date("j F Y", strtotime($p->tanggal));
             $p->jumlah = str_replace(',', '.', number_format($p->jumlah));
             $p->nama_dokter = $p->dokter->nama;
             $p->kode_barang = $p->barang->kode;
@@ -62,16 +62,17 @@ class PemakaianController extends Controller
         $pemakaian->dokter_id = $request->id_dokter;
         $pemakaian->barang_id = $request->id_barang;
         $pemakaian->jumlah = $request->jumlah_barang;
-        $pemakaian->save();
+        //$pemakaian->save();
 
         $barang = Barang::find($request->id_barang);
         $barang->stok -= $request->jumlah_barang;
-        $barang->save();
+        //$barang->save();
 
         $expires = Expire::where('barang_id', '=', $barang->id)
                 ->where('sisa', '>', 0)
                 ->where('tanggal', '>=', $pemakaian->tanggal)
                 ->orderBy('tanggal', 'asc')->get();
+        
         if ($expires != null)
         {
             $jumlahBarang = $request->jumlah_barang;
