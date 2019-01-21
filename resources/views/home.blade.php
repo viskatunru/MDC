@@ -88,7 +88,6 @@
 			</tbody>
 		</table>
 	</div>
-	
 </div>
 
 <!-- CEK EXPIRE -->
@@ -114,7 +113,6 @@
 			
 		</div>
 	</div>
-
 </div>
 
 <!-- CEK STOK AWAL -->
@@ -136,12 +134,12 @@
 	</div>
 </div>
 
-<!-- CEK LAPORAN PEMAKAIAN -->
+<!-- CEK LAPORAN PEMAKAIAN BULANAN -->
 <div class="panel panel-blue col-md-6" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
 	
 	<!-- Judul -->
 	<div class="panel-heading">
-		<h2>CEK LAPORAN PEMAKAIAN</h2>
+		<h2>CEK LAPORAN PEMAKAIAN BULANAN</h2>
 		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
 	</div>
 	
@@ -149,6 +147,24 @@
 	<div class="panel-body no-padding" style="display: block;">
 		<form method="get" action="/laporan/stok" target="_blank">
 			<input type="month" name="bulan" value="<?=date('Y-m')?>">
+			<button type="submit" class="btn btn-primary">Kirim</button>
+		</form>
+	</div>
+</div>
+
+<!-- CEK LAPORAN PEMAKAIAN TAHUNAN -->
+<div class="panel panel-blue col-md-6" data-widget="{&quot;draggable&quot;: &quot;false&quot;}" data-widget-static="">
+	
+	<!-- Judul -->
+	<div class="panel-heading">
+		<h2>CEK LAPORAN PEMAKAIAN TAHUNAN</h2>
+		<div class="panel-ctrls" data-actions-container="" data-action-collapse="{&quot;target&quot;: &quot;.panel-body&quot;}"><span class="button-icon has-bg"><i class="ti ti-angle-down"></i></span></div>
+	</div>
+	
+	<!-- Isi -->
+	<div class="panel-body no-padding" style="display: block;">
+		<form method="get" action="/laporan/stok/tahunan" target="_blank">
+			<input type="number" name="tahun" value="<?=date('Y')?>">
 			<button type="submit" class="btn btn-primary">Kirim</button>
 		</form>
 	</div>

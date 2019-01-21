@@ -70,8 +70,15 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/penyimpanan/add', 'PenyimpananController@store');
 
 	Route::get('/laporan/stok', 'HomeController@lihatLaporanStok');
+	Route::get('/laporan/stok/tahunan', 'HomeController@lihatLaporanStokTahunan');
+
+	Route::get('/pdf/dokter/stok/tahunan', 'HomeController@cetakLaporanDokterTahunan');
+	Route::get('/pdf/ruangan/stok/tahunan', 'HomeController@cetakLaporanRuanganTahunan');
+
+
 	Route::get('/pdf/dokter/stok', 'HomeController@cetakLaporanDokter');
 	Route::get('/pdf/ruangan/stok', 'HomeController@cetakLaporanRuangan');
+
 
 	Route::get('/expire/edit/{id}', 'ExpireController@edit');
 	Route::get('/barang/expire/delete/{id}', 'ExpireController@destroy');

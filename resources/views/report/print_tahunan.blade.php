@@ -61,7 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</head>
 	
 	<body>
-		<center><h3><b>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3></b></center>
+		<center><h3><b>Daftar Pemakaian Barang Tahun {{date('Y', strtotime("$tahunInput-01-01"))}}</h3></b></center>
 		<br>
 
 		<table class="table table-striped table-report">
@@ -129,7 +129,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				@endforeach
 			<tfoot>
 				<tr>
-					<td colspan="{{5+count($dokters)}}"><b>Total Pengeluaran Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</b></td>
+					<td colspan="{{5+count($dokters)}}"><b>Total Pengeluaran Tahun {{date('Y', strtotime("$tahunInput"))}}</b></td>
 					<td>
 						<div class="td-left">Rp.</div>
 						<div class="td-right">{{str_replace(',', '.', number_format($totalPengeluaranBulanIni))}}</div>

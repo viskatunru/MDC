@@ -93,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<tr>
 						<td><u><a href="/barang/show/{{$barang->id}}" target="_blank">{{$barang->kode}}</a></u></td>
 						<td>{{$barang->nama}}</td>
-						<td class="right">{{$barang->pivot->stok_awal}}</td>
+						<td class="right">{{$barang->stokAwal}}</td>
 
 						<?php $total = 0; $pengeluaranPerBarang = 0; $jumlahBarangTerhitung = 0;?>
 						@foreach($pemakaiansBulanIni->where("barang_id", '=', $barang->id) as $pemakaian)							
@@ -127,7 +127,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							$totalPengeluaranBulanIni += $pengeluaranPerBarang
 						?>
 						<td class="right">{{$total}}</td>
-						<td class="right">{{$barang->pivot->stok_awal - $total}}</td>
+						<td class="right">{{$barang->stokAwal - $total}}</td>
 						<td class="right">{{str_replace(',', '.', number_format($pengeluaranPerBarang))}}</td>
 					</tr>
 				@endforeach

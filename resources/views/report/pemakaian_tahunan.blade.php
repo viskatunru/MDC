@@ -17,6 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		
 		<!-- Stylesheet -->
 		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-table.css">
 		<link rel="stylesheet" type="text/css" href="/css/style.css">
 		<style>
 			body,
@@ -38,6 +39,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }</script>
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap-table.js"></script>
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" type="image/x-icon" href="/images/favicon/mdc-favicon.ico" />
@@ -61,30 +63,35 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</head>
 	
 	<body>
-		<center><h3><b>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3></b></center>
+		<div class="float-right">
+			<a href="/pdf/dokter/stok/tahunan?bulan={{$tahunInput}}" target="_blank" class="btn btn-blue">Print Dokter</a>
+			<a href="/pdf/ruangan/stok/tahunan?bulan={{$tahunInput}}" target="_blank" class="btn btn-primary">Print Ruangan</a>
+		</div>
+
+		<center><h3><b>Daftar Pemakaian Barang Bulan {{date('Y', strtotime("$tahunInput-01-01"))}}</h3></b></center>
 		<br>
 
-		<table class="table table-striped table-report">
+		<table class="table table-striped" data-toggle="table" data-pagination="true" data-search="true" data-show-toggle="true" data-show-columns="true">
 			<thead>
 				<tr>
-					<th>Kode</th>
-					<th>Nama</th>
-					<th>Stok Awal</th>
+					<th data-sortable="true">Kode</th>
+					<th data-sortable="true">Nama</th>
+					<th data-sortable="true">Stok Awal</th>
 					<?php $jumlah = array(); ?>
 					@foreach($dokters as $dokter)
-						<th>{{$dokter->nama}}</th>
+						<th data-sortable="true">{{$dokter->nama}}</th>
 						<?php $jumlah[$dokter->id] = 0; ?>
 					@endforeach
-					<th>Total Pemakaian</th>
-					<th>Stok Akhir</th>
-					<th>Pengeluaran</th>
+					<th data-sortable="true">Total Pemakaian</th>
+					<th data-sortable="true">Stok Akhir</th>
+					<th data-sortable="true">Pengeluaran</th>
 				</tr>
 			</thead>
 			<?php $totalPengeluaranBulanIni = 0; ?>
 			<tbody>
 				@foreach($barangs as $barang)
 					<tr>
-						<td>{{$barang->kode}}</td>
+						<td><u><a href="/barang/show/{{$barang->id}}" target="_blank">{{$barang->kode}}</a></u></td>
 						<td>{{$barang->nama}}</td>
 						<td class="right">{{$barang->stokAwal}}</td>
 
@@ -121,19 +128,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						?>
 						<td class="right">{{$total}}</td>
 						<td class="right">{{$barang->stokAwal - $total}}</td>
-						<td>
-							<div class="td-left">Rp.</div>
-							<div class="td-right">{{str_replace(',', '.', number_format($pengeluaranPerBarang))}}</div>
-						</td>
+						<td class="right">{{str_replace(',', '.', number_format($pengeluaranPerBarang))}}</td>
 					</tr>
 				@endforeach
 			<tfoot>
 				<tr>
-					<td colspan="{{5+count($dokters)}}"><b>Total Pengeluaran Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</b></td>
-					<td>
-						<div class="td-left">Rp.</div>
-						<div class="td-right">{{str_replace(',', '.', number_format($totalPengeluaranBulanIni))}}</div>
-					</td>
+					<td colspan="{{5+count($dokters)}}" style="border-right: 1px solid #ddd;"><b>Total Pengeluaran Bulan {{date('Y', strtotime("$tahunInput-01-01"))}}</b></td>
+					<td class="right">{{str_replace(',', '.', number_format($totalPengeluaranBulanIni))}}</td>
 				</tr>
 			</tfoot>
 			</tbody>

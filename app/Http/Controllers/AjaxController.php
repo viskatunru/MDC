@@ -9,7 +9,6 @@ use App\Expire, App\Barang, Carbon\Carbon, App\Pembelian;
 class AjaxController extends Controller
 {
     //
-
     public function barangByExpiryDate()
     {	
     	$tanggal = Input::get('tanggal', 0);
