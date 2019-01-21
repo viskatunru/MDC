@@ -54,7 +54,7 @@ class AjaxController extends Controller
 
         $uppBound = date_format($format, 'Y-m-d');
 
-        $expires = Expire::where('tanggal', '>', $lowBound)->where('tanggal', '<=', $uppBound)->where('sisa', '>', 0)->get();
+        $expires = Expire::where('tanggal', '>', $lowBound)->where('tanggal', '<=', $uppBound)->where('sisa', '>', 0)->orderBy("tanggal", "asc")->get();
         return view('template.expireBulanIni', compact('expires'));
     }
 
