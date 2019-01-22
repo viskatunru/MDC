@@ -144,24 +144,24 @@ class HomeController extends Controller
         {
             $b->stokAwal = $b->stok;
 
-            // $pembelians = $b->pembelians()->whereYear("tanggal", '>', $bulan)->get();
-            // foreach ($pembelians as $p) {
-            //     $b->stokAwal -= $p->pivot->jumlah;
-            // }
+            $pembelians = $b->pembelians()->whereYear("tanggal", '>', $bulan)->get();
+            foreach ($pembelians as $p) {
+                $b->stokAwal -= $p->pivot->jumlah;
+            }
 
             $pbbi = $b->pembelians()->whereYear('tanggal', '=', $bulan)->get();
             foreach ($pbbi as $p) {
                 $b->stokAwal += $p->pivot->jumlah;
             }
 
-            // $pemakaians = $b->pemakaians()->whereYear("tanggal", '>', $bulan)->get();
-            // foreach ($pemakaians as $p) {
-            //     $b->stokAwal -= $p->jumlah;
-            // }
+            $pemakaians = $b->pemakaians()->whereYear("tanggal", '>', $bulan)->get();
+            foreach ($pemakaians as $p) {
+                $b->stokAwal += $p->jumlah;
+            }
 
             // $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $bulan)->get();
             // foreach ($pkbi as $p) {
-            //     $b->stokAwal += $p->jumlah;
+            //     $b->stokAwal -= $p->jumlah;
             // }        
         }
 

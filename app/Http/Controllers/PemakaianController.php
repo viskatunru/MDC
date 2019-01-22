@@ -62,11 +62,11 @@ class PemakaianController extends Controller
         $pemakaian->dokter_id = $request->id_dokter;
         $pemakaian->barang_id = $request->id_barang;
         $pemakaian->jumlah = $request->jumlah_barang;
-        //$pemakaian->save();
+        $pemakaian->save();
 
         $barang = Barang::find($request->id_barang);
         $barang->stok -= $request->jumlah_barang;
-        //$barang->save();
+        $barang->save();
 
         $expires = Expire::where('barang_id', '=', $barang->id)
                 ->where('sisa', '>', 0)
@@ -79,7 +79,6 @@ class PemakaianController extends Controller
             foreach($expires as $expire)
             {
                 $expire->sisa -= $jumlahBarang;
-
                 if ($expire->sisa >= 0)
                 {
                     $expire->save();
