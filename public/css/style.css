@@ -1322,15 +1322,18 @@ select[multiple] {
   background-color: #06d995;
   border-color: #00c887;
 }
-.panel.panel-blue.col-md-6,
-.panel.panel-green.col-md-6 {
-  padding: 0;
+.panel.panel-yellow {
+  border-color: #fdd835;
 }
-@media(min-width:992px) {
-  .panel.panel-green.col-md-6 {
-    width: 48%;
-    margin-right: 2%;
-  }
+.panel.panel-yellow .panel-heading {
+  color: #fffde7;
+  background-color: #ffc107;
+  border-color: #fdd835;
+}
+.panel.panel-blue.col-md-4,
+.panel.panel-green.col-md-4,
+.panel.panel-yellow.col-md-4 {
+  padding: 0;
 }
 @media(max-width:991px) {
   .divActivityBox {
