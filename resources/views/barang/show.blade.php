@@ -26,47 +26,25 @@
 			</thead>
 			
 			<tbody>
-				@if (count($pembelians) > 0)
-					@foreach($pembelians as $p)
-						@php
-							$expires = $p->expires;
-						@endphp
-						
-						@if (count($expires) > 0)
-							@foreach ($expires as $expire)
-							<tr>
-								<td>
-									@if(isset($expire->pembelian))
-									<u><a href="/pembelian/show/{{$expire->pembelian->id}}">{{$expire->pembelian->no_invoice}}</a></u>
-									@else
-									-
-									@endif
-								</td>
-								<td>{{date("j F Y", strtotime($expire->tanggal))}}</td>
-								<td>{{str_replace(',', '.', number_format($expire->jumlah))}}</td>
-								<td>{{str_replace(',', '.', number_format($expire->sisa))}}</td>
-								<td>{{$expire->penyimpanan->nama}}</td>
-								<td>
-									<a href="/barang/edit/{{$barang->id}}" class="btn btn-primary">Edit</a>
-									<!-- <a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a> -->
-								</td>
-							</tr>
-							@endforeach
-						@else
-							<tr>
-								<td>
-									{{ $p->no_invoice }}
-								</td>
-								<td>{{date("j F Y", strtotime($p->tanggal))}}</td>
-								<td>{{str_replace(',', '.', number_format($p->jumlah))}}</td>
-								<td>-</td>
-								<td>-</td>
-								<td>
-									<a href="/barang/edit/{{$barang->id}}" class="btn btn-primary">Edit</a>
-									<!-- <a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a> -->
-								</td>
-							</tr>
-						@endif
+				@if (count($expires) > 0)
+					@foreach($expires as $expire)
+						<tr>
+							<td>
+								@if(isset($expire->pembelian))
+								<u><a href="/pembelian/show/{{$expire->pembelian->id}}">{{$expire->pembelian->no_invoice}}</a></u>
+								@else
+								-
+								@endif
+							</td>
+							<td>{{date("j F Y", strtotime($expire->tanggal))}}</td>
+							<td>{{str_replace(',', '.', number_format($expire->jumlah))}}</td>
+							<td>{{str_replace(',', '.', number_format($expire->sisa))}}</td>
+							<td>{{$expire->penyimpanan->nama}}</td>
+							<td>
+								<a href="/barang/edit/{{$barang->id}}" class="btn btn-primary">Edit</a>
+								<!-- <a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a> -->
+							</td>
+						</tr>
 					@endforeach
 				@endif
 			</tbody>

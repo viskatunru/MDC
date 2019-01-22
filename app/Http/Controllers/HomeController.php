@@ -10,25 +10,25 @@ use App\Bulan;
 class HomeController extends Controller
 {
 
-    public function dbnorm() {
-        $pembelian = new \App\Pembelian;
-        $pembelian->no_invoice = "admin_inputteds";
-        $pembelian->status_pelunasan = 1;
-        $pembelian->tanggal = "2014-09-09";
-        $pembelian->harga_total = 0;
-        $pembelian->supplier_id = 19;
-        $pembelian->save();
+    // public function dbnorm() {
+    //     $pembelian = new \App\Pembelian;
+    //     $pembelian->no_invoice = "admin_inputteds";
+    //     $pembelian->status_pelunasan = 1;
+    //     $pembelian->tanggal = "2014-09-09";
+    //     $pembelian->harga_total = 0;
+    //     $pembelian->supplier_id = 19;
+    //     $pembelian->save();
 
-        $expires = Expire::whereNull('pembelian_id')->get();
+    //     $expires = Expire::whereNull('pembelian_id')->get();
 
-        foreach ($expires as $e) {
-            $e->pembelian_id = $pembelian->id;
-            $e->save();
+    //     foreach ($expires as $e) {
+    //         $e->pembelian_id = $pembelian->id;
+    //         $e->save();
 
-            $barang = $e->barang;
-            $barang->pembelians()->save($pembelian, ['jumlah' => $e->jumlah, 'harga_satuan' => $barang->harga_beli]);
-        }
-    }
+    //         $barang = $e->barang;
+    //         $barang->pembelians()->save($pembelian, ['jumlah' => $e->jumlah, 'harga_satuan' => $barang->harga_beli]);
+    //     }
+    // }
     /**
      * Create a new controller instance.
      *
@@ -82,10 +82,15 @@ class HomeController extends Controller
     public function lihatLaporanStok()
     { 
         $input = explode('-',Input::get('bulan'));
-        $tahunInput = $input[0];
+        $tahunInput = (int)$input[0];
         $bulanInput = (int)$input[1];
 
         $bulan = Input::get('bulan')."-01";
+
+        $next = ($tahunInput * 12 + $bulanInput + 1);
+        $tahunBerikutnya = $next / 12;
+        $bulanBerikutnya = $next % 12 == 0 ? 12 : $next % 12;
+        $tanggalBerikutnya = "$tahunBerikutnya-$bulanBerikutnya-01";
 
         $dokters = Dokter::all();
         
@@ -96,20 +101,25 @@ class HomeController extends Controller
         foreach ($barangs as $b)
         {
             $b->stokAwal = $b->stok;
-            $pembelians = $b->pembelians()->whereDate("tanggal", '>=', $bulan)->get();
+            $pembelians = $b->pembelians()->whereDate("tanggal", '>=', $tanggalBerikutnya)->get();
             foreach ($pembelians as $p) 
             {
                 $b->stokAwal -= $p->pivot->jumlah;
             }
 
-            $pemakaians = $b->pemakaians()->whereDate("tanggal", '>=', $bulan)->get();
+            $pbbi = $b->pembelians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
+            foreach ($pbbi as $p) {
+                $b->stokAwal += $p->pivot->jumlah;
+            }
+
+            $pemakaians = $b->pemakaians()->whereDate("tanggal", '>=', $tanggalBerikutnya)->get();
             foreach ($pemakaians as $p) {
                 $b->stokAwal += $p->jumlah;
             }
 
-            $pbi = $b->pemakaians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
-            foreach ($pbi as $p) {
-                $b->stokAwal += $p->jumlah;
+            $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
+            foreach ($pkbi as $p) {
+                $b->stokAwal -= $p->jumlah;
             }
         }
 
