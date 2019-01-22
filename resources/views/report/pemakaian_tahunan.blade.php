@@ -127,7 +127,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							$totalPengeluaranBulanIni += $pengeluaranPerBarang
 						?>
 						<td class="right">{{$total}}</td>
-						<td class="right">{{$barang->stokAwal - $total}}</td>
+						<td class="right">{{$barang->stokAkhir}}</td>
 						<td class="right">{{str_replace(',', '.', number_format($pengeluaranPerBarang))}}</td>
 					</tr>
 				@endforeach

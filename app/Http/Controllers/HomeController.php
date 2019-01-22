@@ -87,11 +87,6 @@ class HomeController extends Controller
 
         $bulan = Input::get('bulan')."-01";
 
-        $next = ($tahunInput * 12 + $bulanInput + 1);
-        $tahunBerikutnya = $next / 12;
-        $bulanBerikutnya = $next % 12 == 0 ? 12 : $next % 12;
-        $tanggalBerikutnya = "$tahunBerikutnya-$bulanBerikutnya-01";
-
         $dokters = Dokter::all();
         
         $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
@@ -101,25 +96,27 @@ class HomeController extends Controller
         foreach ($barangs as $b)
         {
             $b->stokAwal = $b->stok;
-            $pembelians = $b->pembelians()->whereDate("tanggal", '>=', $tanggalBerikutnya)->get();
+            $pembelians = $b->pembelians()->whereDate("tanggal", '>=', $bulan)->get();
             foreach ($pembelians as $p) 
             {
                 $b->stokAwal -= $p->pivot->jumlah;
             }
-
-            $pbbi = $b->pembelians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
-            foreach ($pbbi as $p) {
-                $b->stokAwal += $p->pivot->jumlah;
-            }
-
-            $pemakaians = $b->pemakaians()->whereDate("tanggal", '>=', $tanggalBerikutnya)->get();
+            
+            $pemakaians = $b->pemakaians()->whereDate("tanggal", '>=', $bulan)->get();
             foreach ($pemakaians as $p) {
                 $b->stokAwal += $p->jumlah;
             }
+            
+            $b->stokAkhir = $b->stokAwal;
 
+            $pbbi = $b->pembelians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
+            foreach ($pbbi as $p) {
+                $b->stokAkhir += $p->pivot->jumlah;
+            }
+            
             $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
             foreach ($pkbi as $p) {
-                $b->stokAwal -= $p->jumlah;
+                $b->stokAkhir -= $p->jumlah;
             }
         }
 
@@ -143,26 +140,26 @@ class HomeController extends Controller
         foreach ($barangs as $b)
         {
             $b->stokAwal = $b->stok;
-
-            $pembelians = $b->pembelians()->whereYear("tanggal", '>', $bulan)->get();
+            $pembelians = $b->pembelians()->whereYear("tanggal", '>=', $bulan)->get();
             foreach ($pembelians as $p) {
                 $b->stokAwal -= $p->pivot->jumlah;
             }
 
-            $pbbi = $b->pembelians()->whereYear('tanggal', '=', $bulan)->get();
-            foreach ($pbbi as $p) {
-                $b->stokAwal += $p->pivot->jumlah;
-            }
-
-            $pemakaians = $b->pemakaians()->whereYear("tanggal", '>', $bulan)->get();
+            $pemakaians = $b->pemakaians()->whereYear("tanggal", '>=', $bulan)->get();
             foreach ($pemakaians as $p) {
                 $b->stokAwal += $p->jumlah;
             }
 
-            // $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $bulan)->get();
-            // foreach ($pkbi as $p) {
-            //     $b->stokAwal -= $p->jumlah;
-            // }        
+            $b->stokAkhir = $b->stokAwal;
+            $pbbi = $b->pembelians()->whereYear('tanggal', '=', $bulan)->get();
+            foreach ($pbbi as $p) {
+                $b->stokAkhir += $p->pivot->jumlah;
+            }
+
+            $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $bulan)->get();
+            foreach ($pkbi as $p) {
+                $b->stokAkhir -= $p->jumlah;
+            }        
         }
 
         // $barangs = $bulan->barangs()->whereHas('pemakaians', function ($query) use ($tahunInput, $bulanInput){
