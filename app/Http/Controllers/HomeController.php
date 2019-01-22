@@ -155,15 +155,15 @@ class HomeController extends Controller
                 $b->stokAwal += $p->pivot->jumlah;
             }
 
-            $pemakaians = $b->pemakaians()->whereYear("tanggal", '>', $bulan)->get();
-            foreach ($pemakaians as $p) {
-                $b->stokAwal += $p->jumlah;
-            }
+            // $pemakaians = $b->pemakaians()->whereYear("tanggal", '>', $bulan)->get();
+            // foreach ($pemakaians as $p) {
+            //     $b->stokAwal -= $p->jumlah;
+            // }
 
-            $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $bulan)->get();
-            foreach ($pkbi as $p) {
-                $b->stokAwal -= $p->jumlah;
-            }        
+            // $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $bulan)->get();
+            // foreach ($pkbi as $p) {
+            //     $b->stokAwal += $p->jumlah;
+            // }        
         }
 
         // $barangs = $bulan->barangs()->whereHas('pemakaians', function ($query) use ($tahunInput, $bulanInput){
