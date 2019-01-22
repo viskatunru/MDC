@@ -87,7 +87,7 @@ class BarangController extends Controller
         }
 
         $counter = 0;
-        
+
         $pembelian = Pembelian::where('no_invoice', '=', 'admin_inputted')->first();
 
         while (isset($request["expire_$counter"]))
@@ -132,10 +132,10 @@ class BarangController extends Controller
     {
         //
         $barang = Barang::find($id);
-        $pembelians = $barang->pembelians()->get();
-        // $expires = $barang->expires()->orderBy('tanggal')->get();
+        // $pembelians = $barang->pembelians()->get();
+        $expires = $barang->expires()->orderBy('tanggal')->get();
 
-        return view('barang.show', compact('barang' , 'pembelians'));
+        return view('barang.show', compact('barang' , 'expires'));
     }
 
     /**
