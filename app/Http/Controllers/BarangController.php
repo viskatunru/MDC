@@ -87,6 +87,9 @@ class BarangController extends Controller
         }
 
         $counter = 0;
+        
+        $pembelian = Pembelian::where('no_invoice', '=', 'admin_inputted')->first();
+
         while (isset($request["expire_$counter"]))
         {
             $tanggal = $request["expire_$counter"];
@@ -98,17 +101,17 @@ class BarangController extends Controller
             {
                 $expire = new Expire;
                 $expire->sisa = $jumlah;
+                $barang->pembelians()->save($pembelian, ['jumlah' => $jumlah, 'harga_satuan' => $request->harga_satuan]);
             }
 
             $expire->tanggal = $tanggal;
             $expire->jumlah = $jumlah;
             $expire->penyimpanan_id = $penyimpananExpire;
             $expire->barang_id = $barang->id;
-            $expire->pembelian_id = null;
+            $expire->pembelian_id = $pembelian->id;
             $expire->save();
             $counter++;
         }
-
 /*
         $pembelian = new Pembelian;
         $pembelian->supplier_id = $request->id_supplier;
@@ -129,9 +132,10 @@ class BarangController extends Controller
     {
         //
         $barang = Barang::find($id);
-        $expires = $barang->expires()->orderBy('tanggal')->get();
+        $pembelians = $barang->pembelians()->get();
+        // $expires = $barang->expires()->orderBy('tanggal')->get();
 
-        return view('barang.show', compact('barang' , 'expires'));
+        return view('barang.show', compact('barang' , 'pembelians'));
     }
 
     /**
@@ -170,6 +174,8 @@ class BarangController extends Controller
         $barang->save();
 
         $counter = 0;
+        $pembelian = Pembelian::where('no_invoice', '=', 'admin_inputted')->first();
+
         while (isset($request["expire_$counter"]))
         {
             $tanggal = $request["expire_$counter"];
@@ -181,6 +187,7 @@ class BarangController extends Controller
             else
             {
                 $expire = new Expire;
+                $barang->pembelians()->save($pembelian, ['jumlah' => $request->jumlah, 'harga_satuan' => $barang->harga_satuan]);
             }
 
             $expire->sisa = $sisa;
@@ -188,6 +195,7 @@ class BarangController extends Controller
             $expire->jumlah = $jumlah;
             $expire->penyimpanan_id = $penyimpananExpire;
             $expire->barang_id = $barang->id;
+            $expire->pembelian_id = $pembelian;
             $expire->save();
             $counter++;
         }

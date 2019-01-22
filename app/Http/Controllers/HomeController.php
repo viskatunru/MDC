@@ -9,6 +9,26 @@ use App\Barang, App\Dokter, App\Pemakaian, App\Penyimpanan, App\Expire;
 use App\Bulan;
 class HomeController extends Controller
 {
+
+    public function dbnorm() {
+        $pembelian = new \App\Pembelian;
+        $pembelian->no_invoice = "admin_inputteds";
+        $pembelian->status_pelunasan = 1;
+        $pembelian->tanggal = "2014-09-09";
+        $pembelian->harga_total = 0;
+        $pembelian->supplier_id = 19;
+        $pembelian->save();
+
+        $expires = Expire::whereNull('pembelian_id')->get();
+
+        foreach ($expires as $e) {
+            $e->pembelian_id = $pembelian->id;
+            $e->save();
+
+            $barang = $e->barang;
+            $barang->pembelians()->save($pembelian, ['jumlah' => $e->jumlah, 'harga_satuan' => $barang->harga_beli]);
+        }
+    }
     /**
      * Create a new controller instance.
      *
