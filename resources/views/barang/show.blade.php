@@ -29,10 +29,10 @@
 				@if (count($pembelians) > 0)
 					@foreach($pembelians as $p)
 						@php
-							$expires = $p->expires();
+							$expires = $p->expires;
 						@endphp
 						
-						@if ($count($expires > 0))
+						@if (count($expires) > 0)
 							@foreach ($expires as $expire)
 							<tr>
 								<td>
@@ -53,6 +53,20 @@
 							</tr>
 							@endforeach
 						@else
+							<tr>
+								<td>
+									{{ $p->no_invoice }}
+								</td>
+								<td>{{date("j F Y", strtotime($p->tanggal))}}</td>
+								<td>{{str_replace(',', '.', number_format($p->jumlah))}}</td>
+								<td>-</td>
+								<td>-</td>
+								<td>
+									<a href="/barang/edit/{{$barang->id}}" class="btn btn-primary">Edit</a>
+									<!-- <a href="" class="btn btn-delete" onclick="return confirm('Apakah anda yakin?');">Hapus</a> -->
+								</td>
+							</tr>
+						@endif
 					@endforeach
 				@endif
 			</tbody>

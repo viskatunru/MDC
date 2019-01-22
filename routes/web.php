@@ -94,7 +94,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/ajax/expire/enambulan', 'AjaxController@expireEnamBulan');
 	Route::get('/ajax/pemakaian/harian', 'HomeController@pemakaianHarianJSON');
 
-	Route::get('/run/db/norm', 'HomeController@dbnorm');
+	// Route::get('/run/db/norm', 'HomeController@dbnorm');
 	});
 Auth::routes();
 

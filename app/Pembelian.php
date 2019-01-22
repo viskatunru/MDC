@@ -16,4 +16,9 @@ class Pembelian extends Model
     {
     	return $this->belongsTo('App\Supplier');
     }
+
+    public function expires()
+    {
+    	return $this->hasMany("App\Expire");
+    }
 }
