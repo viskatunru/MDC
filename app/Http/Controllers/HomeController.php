@@ -86,6 +86,11 @@ class HomeController extends Controller
             foreach ($pemakaians as $p) {
                 $b->stokAwal += $p->jumlah;
             }
+
+            $pbi = $b->pemakaians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
+            foreach ($pbi as $p) {
+                $b->stokAwal += $p->jumlah;
+            }
         }
 
         // $barangs = $bulan->barangs()->whereHas('pemakaians', function ($query) use ($tahunInput, $bulanInput){
