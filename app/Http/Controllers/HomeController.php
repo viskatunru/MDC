@@ -180,7 +180,7 @@ class HomeController extends Controller
         
         $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
 
-        $barangs = Barang::all();
+        $barangs = Barang::orderBy("nama", 'desc')->get();
 
         foreach ($barangs as $b)
         {
@@ -227,7 +227,7 @@ class HomeController extends Controller
         
         $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->get();
 
-        $barangs = Barang::all();
+        $barangs = Barang::orderBy("nama", 'desc')->get();
 
         foreach ($barangs as $b)
         {
