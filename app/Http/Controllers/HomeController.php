@@ -168,14 +168,15 @@ class HomeController extends Controller
         
         return view('report.pemakaian_tahunan', compact('barangs', 'dokters', 'pemakaiansBulanIni', 'tahunInput'));
     }
-    public function cetakLaporanDokter()
+
+    public function cetakLaporanSemua()
     { 
         $input = explode('-',Input::get('bulan'));
         $tahunInput = $input[0];
         $bulanInput = (int)$input[1];
         $bulan = Input::get('bulan')."-01";
 
-        $dokters = Dokter::where('nama', 'not like', '%op%')->get();
+        $dokters = Dokter::all();
         
         $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
 
@@ -189,10 +190,22 @@ class HomeController extends Controller
             {
                 $b->stokAwal -= $p->pivot->jumlah;
             }
-
+            
             $pemakaians = $b->pemakaians()->whereDate("tanggal", '>=', $bulan)->get();
             foreach ($pemakaians as $p) {
                 $b->stokAwal += $p->jumlah;
+            }
+            
+            $b->stokAkhir = $b->stokAwal;
+
+            $pbbi = $b->pembelians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
+            foreach ($pbbi as $p) {
+                $b->stokAkhir += $p->pivot->jumlah;
+            }
+            
+            $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
+            foreach ($pkbi as $p) {
+                $b->stokAkhir -= $p->jumlah;
             }
         }
 
@@ -204,7 +217,7 @@ class HomeController extends Controller
         return view('report.print', compact('barangs', 'dokters', 'pemakaiansBulanIni', 'tahunInput', 'bulanInput'));
     }
 
-    public function cetakLaporanDokterTahunan()
+    public function cetakLaporanSemuaTahunan()
     { 
         $input = explode('-',Input::get('bulan'));
         $tahunInput = $input[0];
@@ -219,92 +232,28 @@ class HomeController extends Controller
         foreach ($barangs as $b)
         {
             $b->stokAwal = $b->stok;
-            $pembelians = $b->pembelians()->whereDate("tanggal", '>=', $bulan)->get();
-            foreach ($pembelians as $p) 
-            {
+            $pembelians = $b->pembelians()->whereYear("tanggal", '>=', $bulan)->get();
+            foreach ($pembelians as $p) {
                 $b->stokAwal -= $p->pivot->jumlah;
             }
 
-            $pemakaians = $b->pemakaians()->whereDate("tanggal", '>=', $bulan)->get();
+            $pemakaians = $b->pemakaians()->whereYear("tanggal", '>=', $bulan)->get();
             foreach ($pemakaians as $p) {
                 $b->stokAwal += $p->jumlah;
             }
-        }
 
-        // $bulan = Bulan::whereYear('bulan', '=', $tahunInput)->whereMonth('bulan', '=', $bulanInput)->first();
-        
-        // $barangs = $bulan->barangs()->whereHas('pemakaians', function ($query) use ($tahunInput, $bulanInput){
-        //     $query->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput);
-        // })->get();
+            $b->stokAkhir = $b->stokAwal;
+            $pbbi = $b->pembelians()->whereYear('tanggal', '=', $bulan)->get();
+            foreach ($pbbi as $p) {
+                $b->stokAkhir += $p->pivot->jumlah;
+            }
+
+            $pkbi = $b->pemakaians()->whereYear('tanggal', '=', $bulan)->get();
+            foreach ($pkbi as $p) {
+                $b->stokAkhir -= $p->jumlah;
+            }        
+        }
         return view('report.print_tahunan', compact('barangs', 'dokters', 'pemakaiansBulanIni', 'tahunInput'));
-    }
-
-    public function cetakLaporanRuanganTahunan()
-    { 
-        $input = explode('-',Input::get('bulan'));
-        $tahunInput = $input[0];
-        $bulan = Input::get('bulan')."-01";
-
-        $dokters = Dokter::where('nama', 'like', '%op%')->get();
-        
-        $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->get();
-
-        $barangs = Barang::all();
-
-        foreach ($barangs as $b)
-        {
-            $b->stokAwal = $b->stok;
-            $pembelians = $b->pembelians()->whereDate("tanggal", '>=', $bulan)->get();
-            foreach ($pembelians as $p) 
-            {
-                $b->stokAwal -= $p->pivot->jumlah;
-            }
-
-            $pemakaians = $b->pemakaians()->whereDate("tanggal", '>=', $bulan)->get();
-            foreach ($pemakaians as $p) {
-                $b->stokAwal += $p->jumlah;
-            }
-        }
-
-        // $bulan = Bulan::whereYear('bulan', '=', $tahunInput)->whereMonth('bulan', '=', $bulanInput)->first();
-        
-        // $barangs = $bulan->barangs()->whereHas('pemakaians', function ($query) use ($tahunInput, $bulanInput){
-        //     $query->whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput);
-        // })->get();
-        return view('report.print_tahunan', compact('barangs', 'dokters', 'pemakaiansBulanIni', 'tahunInput'));
-    }
-
-    public function cetakLaporanRuangan()
-    { 
-        $input = explode('-',Input::get('bulan'));
-        $tahunInput = $input[0];
-        $bulanInput = (int)$input[1];
-        $bulan = Input::get('bulan')."-01";
-
-
-        $dokters = Dokter::where('nama', 'like', '%op%')->get();
-        
-        $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->whereMonth('tanggal', '=', $bulanInput)->get();
-
-
-        $barangs = Barang::all();
-
-        foreach ($barangs as $b)
-        {
-            $b->stokAwal = $b->stok;
-            $pembelians = $b->pembelians()->whereDate("tanggal", '>=', $bulan)->get();
-            foreach ($pembelians as $p) 
-            {
-                $b->stokAwal -= $p->pivot->jumlah;
-            }
-
-            $pemakaians = $b->pemakaians()->whereDate("tanggal", '>=', $bulan)->get();
-            foreach ($pemakaians as $p) {
-                $b->stokAwal += $p->jumlah;
-            }
-        }
-
-        return view('report.print', compact('barangs', 'dokters', 'pemakaiansBulanIni', 'tahunInput', 'bulanInput'));
     }
 
     public function test()

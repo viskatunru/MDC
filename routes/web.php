@@ -72,6 +72,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/laporan/stok', 'HomeController@lihatLaporanStok');
 	Route::get('/laporan/stok/tahunan', 'HomeController@lihatLaporanStokTahunan');
 
+	Route::get('/pdf/all/stok', 'HomeController@cetakLaporanSemua');
+	Route::get('/pdf/all/stok/tahunan', 'HomeController@cetakLaporanSemuaTahunan');
+
 	Route::get('/pdf/dokter/stok/tahunan', 'HomeController@cetakLaporanDokterTahunan');
 	Route::get('/pdf/ruangan/stok/tahunan', 'HomeController@cetakLaporanRuanganTahunan');
 

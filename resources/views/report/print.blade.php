@@ -59,7 +59,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
 	</head>
-	
 	<body>
 		<center><h3><b>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3></b></center>
 		<br>

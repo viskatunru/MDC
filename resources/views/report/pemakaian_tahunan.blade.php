@@ -64,8 +64,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	
 	<body>
 		<div class="float-right">
-			<a href="/pdf/dokter/stok/tahunan?bulan={{$tahunInput}}" target="_blank" class="btn btn-blue">Print Dokter</a>
-			<a href="/pdf/ruangan/stok/tahunan?bulan={{$tahunInput}}" target="_blank" class="btn btn-primary">Print Ruangan</a>
+			<a href="/pdf/semua/stok/tahunan?bulan={{$tahunInput}}" target="_blank" class="btn btn-blue">Cetak Laporan</a>
 		</div>
 
 		<center><h3><b>Daftar Pemakaian Barang Bulan {{date('Y', strtotime("$tahunInput-01-01"))}}</h3></b></center>
