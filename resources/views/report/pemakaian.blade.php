@@ -64,7 +64,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	
 	<body>
 		<div class="float-right">
-			<a href="/pdf/semua/stok?bulan={{$tahunInput}}-{{$bulanInput}}" target="_blank" class="btn btn-blue">Cetak Laporan</a>
+			<a href="/pdf/all/stok?bulan={{$tahunInput}}-{{$bulanInput}}" target="_blank" class="btn btn-blue">Cetak Laporan</a>
 		</div>
 
 		<center><h3><b>Daftar Pemakaian Barang Bulan {{date('F Y', strtotime("$tahunInput-$bulanInput"))}}</h3></b></center>
@@ -126,7 +126,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							$totalPengeluaranBulanIni += $pengeluaranPerBarang
 						?>
 						<td class="right">{{$total}}</td>
-						<td class="right">{{$barang->stokAwal - $total}}</td>
+						<td class="right">{{$barang->stokAkhir}}</td>
 						<td class="right">{{str_replace(',', '.', number_format($pengeluaranPerBarang))}}</td>
 					</tr>
 				@endforeach

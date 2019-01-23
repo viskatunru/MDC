@@ -219,11 +219,11 @@ class HomeController extends Controller
 
     public function cetakLaporanSemuaTahunan()
     { 
-        $input = explode('-',Input::get('bulan'));
+        $input = explode('-',Input::get('tahun'));
         $tahunInput = $input[0];
-        $bulan = Input::get('bulan')."-01";
+        $bulan = Input::get('tahun')."-01";
 
-        $dokters = Dokter::where('nama', 'not like', '%op%')->get();
+        $dokters = Dokter::all();
         
         $pemakaiansBulanIni = Pemakaian::whereYear('tanggal', '=', $tahunInput)->get();
 
